@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214928",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "eleve",
+  "fields": [
+    {
+      "fieldName": "matricule",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenoms",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValues": "F,M"
+    },
+    {
+      "fieldName": "situationMatrimoniale",
+      "fieldType": "SituationMatrimoniale",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "SEUL,FIANCE,CONCUBINAGE,MARIE,VEUF"
+    },
+    {
+      "fieldName": "dateParcoursDebut",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateParcoursFin",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Eleve",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "encadreur",
+      "otherEntityRelationshipName": "eleve",
+      "relationshipName": "encadreur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "theme",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "eleve",
+      "relationshipName": "projet",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "specialite",
+      "otherEntityRelationshipName": "eleve",
+      "relationshipName": "specialite",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

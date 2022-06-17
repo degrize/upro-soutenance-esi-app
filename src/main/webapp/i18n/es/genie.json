@@ -1,0 +1,26 @@
+{
+  "uproSoutenanceEsiApp": {
+    "genie": {
+      "home": {
+        "title": "Genies",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Genie",
+        "createOrEditLabel": "Crear o editar Genie",
+        "notFound": "Ningún Genies encontrado"
+      },
+      "created": "Un nuevo Genie ha sido creado con el identificador {{ param }}",
+      "updated": "Un Genie ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Genie ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Genie {{ id }}?"
+      },
+      "detail": {
+        "title": "Genie"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "nomDirecteur": "Nom Directeur",
+      "contactDirecteur": "Contact Directeur"
+    }
+  }
+}

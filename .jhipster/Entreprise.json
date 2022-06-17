@@ -1,0 +1,66 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214930",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "entreprise",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "codeENtreprise",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "secteurActivite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomDirecteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactDirecteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailDirecteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomMaitreStage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactMaitreStage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "emailMaitreStage",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Entreprise",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "entreprise",
+      "ownerSide": false,
+      "relationshipName": "projet",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

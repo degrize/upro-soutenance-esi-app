@@ -1,0 +1,195 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-eleve-heading" data-cy="EleveCreateUpdateHeading" jhiTranslate="uproSoutenanceEsiApp.eleve.home.createOrEditLabel">
+        Create or edit a Eleve
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.matricule" for="field_matricule">Matricule</label>
+          <input type="text" class="form-control" name="matricule" id="field_matricule" data-cy="matricule" formControlName="matricule" />
+          <div *ngIf="editForm.get('matricule')!.invalid && (editForm.get('matricule')!.dirty || editForm.get('matricule')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('matricule')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+          <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.prenoms" for="field_prenoms">Prenoms</label>
+          <input type="text" class="form-control" name="prenoms" id="field_prenoms" data-cy="prenoms" formControlName="prenoms" />
+          <div *ngIf="editForm.get('prenoms')!.invalid && (editForm.get('prenoms')!.dirty || editForm.get('prenoms')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('prenoms')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.sexe" for="field_sexe">Sexe</label>
+          <select class="form-control" name="sexe" formControlName="sexe" id="field_sexe" data-cy="sexe">
+            <option [ngValue]="null">{{ 'uproSoutenanceEsiApp.Sexe.null' | translate }}</option>
+            <option *ngFor="let sexe of sexeValues" [value]="sexe">{{ 'uproSoutenanceEsiApp.Sexe.' + sexe | translate }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.situationMatrimoniale" for="field_situationMatrimoniale"
+            >Situation Matrimoniale</label
+          >
+          <select
+            class="form-control"
+            name="situationMatrimoniale"
+            formControlName="situationMatrimoniale"
+            id="field_situationMatrimoniale"
+            data-cy="situationMatrimoniale"
+          >
+            <option [ngValue]="null">{{ 'uproSoutenanceEsiApp.SituationMatrimoniale.null' | translate }}</option>
+            <option *ngFor="let situationMatrimoniale of situationMatrimonialeValues" [value]="situationMatrimoniale">
+              {{ 'uproSoutenanceEsiApp.SituationMatrimoniale.' + situationMatrimoniale | translate }}
+            </option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('situationMatrimoniale')!.invalid &&
+              (editForm.get('situationMatrimoniale')!.dirty || editForm.get('situationMatrimoniale')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('situationMatrimoniale')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursDebut" for="field_dateParcoursDebut"
+            >Date Parcours Debut</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateParcoursDebut"
+              data-cy="dateParcoursDebut"
+              type="text"
+              class="form-control"
+              name="dateParcoursDebut"
+              ngbDatepicker
+              #dateParcoursDebutDp="ngbDatepicker"
+              formControlName="dateParcoursDebut"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateParcoursDebutDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursFin" for="field_dateParcoursFin"
+            >Date Parcours Fin</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateParcoursFin"
+              data-cy="dateParcoursFin"
+              type="text"
+              class="form-control"
+              name="dateParcoursFin"
+              ngbDatepicker
+              #dateParcoursFinDp="ngbDatepicker"
+              formControlName="dateParcoursFin"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateParcoursFinDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.encadreur" for="field_encadreur">Encadreur</label>
+          <select class="form-control" id="field_encadreur" data-cy="encadreur" name="encadreur" formControlName="encadreur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="encadreurOption.id === editForm.get('encadreur')!.value?.id ? editForm.get('encadreur')!.value : encadreurOption"
+              *ngFor="let encadreurOption of encadreursSharedCollection; trackBy: trackEncadreurById"
+            >
+              {{ encadreurOption.nom }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.projet" for="field_projet">Projet</label>
+          <select class="form-control" id="field_projet" data-cy="projet" name="projet" formControlName="projet">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="projetOption.id === editForm.get('projet')!.value?.id ? editForm.get('projet')!.value : projetOption"
+              *ngFor="let projetOption of projetsSharedCollection; trackBy: trackProjetById"
+            >
+              {{ projetOption.theme }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.eleve.specialite" for="field_specialite">Specialite</label>
+          <select class="form-control" id="field_specialite" data-cy="specialite" name="specialite" formControlName="specialite">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                specialiteOption.id === editForm.get('specialite')!.value?.id ? editForm.get('specialite')!.value : specialiteOption
+              "
+              *ngFor="let specialiteOption of specialitesSharedCollection; trackBy: trackSpecialiteById"
+            >
+              {{ specialiteOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

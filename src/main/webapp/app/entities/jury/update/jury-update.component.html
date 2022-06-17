@@ -1,0 +1,159 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-jury-heading" data-cy="JuryCreateUpdateHeading" jhiTranslate="uproSoutenanceEsiApp.jury.home.createOrEditLabel">
+        Create or edit a Jury
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.nomPresident" for="field_nomPresident">Nom President</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomPresident"
+            id="field_nomPresident"
+            data-cy="nomPresident"
+            formControlName="nomPresident"
+          />
+          <div
+            *ngIf="editForm.get('nomPresident')!.invalid && (editForm.get('nomPresident')!.dirty || editForm.get('nomPresident')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomPresident')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.nomRapporteur" for="field_nomRapporteur">Nom Rapporteur</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomRapporteur"
+            id="field_nomRapporteur"
+            data-cy="nomRapporteur"
+            formControlName="nomRapporteur"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomRapporteur')!.invalid && (editForm.get('nomRapporteur')!.dirty || editForm.get('nomRapporteur')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomRapporteur')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.nomProfAnglais" for="field_nomProfAnglais"
+            >Nom Prof Anglais</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomProfAnglais"
+            id="field_nomProfAnglais"
+            data-cy="nomProfAnglais"
+            formControlName="nomProfAnglais"
+          />
+          <div
+            *ngIf="
+              editForm.get('nomProfAnglais')!.invalid && (editForm.get('nomProfAnglais')!.dirty || editForm.get('nomProfAnglais')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('nomProfAnglais')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.numeroSalle" for="field_numeroSalle">Numero Salle</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numeroSalle"
+            id="field_numeroSalle"
+            data-cy="numeroSalle"
+            formControlName="numeroSalle"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.anneeAcademique" for="field_anneeAcademique"
+            >Annee Academique</label
+          >
+          <select
+            class="form-control"
+            id="field_anneeAcademique"
+            data-cy="anneeAcademique"
+            name="anneeAcademique"
+            formControlName="anneeAcademique"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                anneeAcademiqueOption.id === editForm.get('anneeAcademique')!.value?.id
+                  ? editForm.get('anneeAcademique')!.value
+                  : anneeAcademiqueOption
+              "
+              *ngFor="let anneeAcademiqueOption of anneeAcademiquesSharedCollection; trackBy: trackAnneeAcademiqueById"
+            >
+              {{ anneeAcademiqueOption.anneeScolaire }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.jury.genie" for="field_genie">Genie</label>
+          <select class="form-control" id="field_genie" data-cy="genie" name="genie" formControlName="genie">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="genieOption.id === editForm.get('genie')!.value?.id ? editForm.get('genie')!.value : genieOption"
+              *ngFor="let genieOption of geniesSharedCollection; trackBy: trackGenieById"
+            >
+              {{ genieOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

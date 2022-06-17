@@ -1,0 +1,178 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-entreprise-heading"
+        data-cy="EntrepriseCreateUpdateHeading"
+        jhiTranslate="uproSoutenanceEsiApp.entreprise.home.createOrEditLabel"
+      >
+        Create or edit a Entreprise
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+          <div *ngIf="editForm.get('nom')!.invalid && (editForm.get('nom')!.dirty || editForm.get('nom')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('nom')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.codeENtreprise" for="field_codeENtreprise"
+            >Code E Ntreprise</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="codeENtreprise"
+            id="field_codeENtreprise"
+            data-cy="codeENtreprise"
+            formControlName="codeENtreprise"
+          />
+          <div
+            *ngIf="
+              editForm.get('codeENtreprise')!.invalid && (editForm.get('codeENtreprise')!.dirty || editForm.get('codeENtreprise')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('codeENtreprise')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.secteurActivite" for="field_secteurActivite"
+            >Secteur Activite</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="secteurActivite"
+            id="field_secteurActivite"
+            data-cy="secteurActivite"
+            formControlName="secteurActivite"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.adresse" for="field_adresse">Adresse</label>
+          <input type="text" class="form-control" name="adresse" id="field_adresse" data-cy="adresse" formControlName="adresse" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.nomDirecteur" for="field_nomDirecteur"
+            >Nom Directeur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomDirecteur"
+            id="field_nomDirecteur"
+            data-cy="nomDirecteur"
+            formControlName="nomDirecteur"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.contactDirecteur" for="field_contactDirecteur"
+            >Contact Directeur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contactDirecteur"
+            id="field_contactDirecteur"
+            data-cy="contactDirecteur"
+            formControlName="contactDirecteur"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.emailDirecteur" for="field_emailDirecteur"
+            >Email Directeur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="emailDirecteur"
+            id="field_emailDirecteur"
+            data-cy="emailDirecteur"
+            formControlName="emailDirecteur"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.nomMaitreStage" for="field_nomMaitreStage"
+            >Nom Maitre Stage</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="nomMaitreStage"
+            id="field_nomMaitreStage"
+            data-cy="nomMaitreStage"
+            formControlName="nomMaitreStage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.contactMaitreStage" for="field_contactMaitreStage"
+            >Contact Maitre Stage</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contactMaitreStage"
+            id="field_contactMaitreStage"
+            data-cy="contactMaitreStage"
+            formControlName="contactMaitreStage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.entreprise.emailMaitreStage" for="field_emailMaitreStage"
+            >Email Maitre Stage</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="emailMaitreStage"
+            id="field_emailMaitreStage"
+            data-cy="emailMaitreStage"
+            formControlName="emailMaitreStage"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

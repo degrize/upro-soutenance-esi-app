@@ -1,0 +1,34 @@
+{
+  "uproSoutenanceEsiApp": {
+    "entreprise": {
+      "home": {
+        "title": "Entreprises",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Entreprise",
+        "createOrEditLabel": "Create or edit a Entreprise",
+        "notFound": "No Entreprises found"
+      },
+      "created": "A new Entreprise is created with identifier {{ param }}",
+      "updated": "A Entreprise is updated with identifier {{ param }}",
+      "deleted": "A Entreprise is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Entreprise {{ id }}?"
+      },
+      "detail": {
+        "title": "Entreprise"
+      },
+      "id": "ID",
+      "nom": "Nom",
+      "codeENtreprise": "Code E Ntreprise",
+      "secteurActivite": "Secteur Activite",
+      "adresse": "Adresse",
+      "nomDirecteur": "Nom Directeur",
+      "contactDirecteur": "Contact Directeur",
+      "emailDirecteur": "Email Directeur",
+      "nomMaitreStage": "Nom Maitre Stage",
+      "contactMaitreStage": "Contact Maitre Stage",
+      "emailMaitreStage": "Email Maitre Stage",
+      "projet": "Projet"
+    }
+  }
+}

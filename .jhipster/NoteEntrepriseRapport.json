@@ -1,0 +1,48 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214931",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "note_entreprise_rapport",
+  "fields": [
+    {
+      "fieldName": "note",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateAjout",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateModification",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "NoteEntrepriseRapport",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "noteEntrepriseRapport",
+      "relationshipName": "entreprise",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "theme",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "noteEntrepriseRapport",
+      "relationshipName": "projet",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

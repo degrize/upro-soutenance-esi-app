@@ -1,0 +1,33 @@
+{
+  "uproSoutenanceEsiApp": {
+    "eleve": {
+      "home": {
+        "title": "Eleves",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Eleve",
+        "createOrEditLabel": "Crear o editar Eleve",
+        "notFound": "Ningún Eleves encontrado"
+      },
+      "created": "Un nuevo Eleve ha sido creado con el identificador {{ param }}",
+      "updated": "Un Eleve ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Eleve ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Eleve {{ id }}?"
+      },
+      "detail": {
+        "title": "Eleve"
+      },
+      "id": "ID",
+      "matricule": "Matricule",
+      "nom": "Nom",
+      "prenoms": "Prenoms",
+      "sexe": "Sexe",
+      "situationMatrimoniale": "Situation Matrimoniale",
+      "dateParcoursDebut": "Date Parcours Debut",
+      "dateParcoursFin": "Date Parcours Fin",
+      "encadreur": "Encadreur",
+      "projet": "Projet",
+      "specialite": "Specialite"
+    }
+  }
+}

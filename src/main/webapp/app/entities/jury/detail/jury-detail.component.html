@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="jury">
+      <h2 data-cy="juryDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.jury.detail.title">Jury</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ jury.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.nomPresident">Nom President</span></dt>
+        <dd>
+          <span>{{ jury.nomPresident }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.nomRapporteur">Nom Rapporteur</span></dt>
+        <dd>
+          <span>{{ jury.nomRapporteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.nomProfAnglais">Nom Prof Anglais</span></dt>
+        <dd>
+          <span>{{ jury.nomProfAnglais }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.numeroSalle">Numero Salle</span></dt>
+        <dd>
+          <span>{{ jury.numeroSalle }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.anneeAcademique">Annee Academique</span></dt>
+        <dd>
+          <div *ngIf="jury.anneeAcademique">
+            <a [routerLink]="['/annee-academique', jury.anneeAcademique?.id, 'view']">{{ jury.anneeAcademique?.anneeScolaire }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.jury.genie">Genie</span></dt>
+        <dd>
+          <div *ngIf="jury.genie">
+            <a [routerLink]="['/genie', jury.genie?.id, 'view']">{{ jury.genie?.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/jury', jury.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

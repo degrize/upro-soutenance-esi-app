@@ -1,0 +1,30 @@
+{
+  "uproSoutenanceEsiApp": {
+    "projet": {
+      "home": {
+        "title": "Projets",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Projet",
+        "createOrEditLabel": "Crear o editar Projet",
+        "notFound": "Ningún Projets encontrado"
+      },
+      "created": "Un nuevo Projet ha sido creado con el identificador {{ param }}",
+      "updated": "Un Projet ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Projet ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Projet {{ id }}?"
+      },
+      "detail": {
+        "title": "Projet"
+      },
+      "id": "ID",
+      "theme": "Theme",
+      "rapport": "Rapport",
+      "cout": "Cout",
+      "dateAjout": "Date Ajout",
+      "dateModification": "Date Modification",
+      "anneeAcademique": "Annee Academique",
+      "entreprise": "Entreprise"
+    }
+  }
+}

@@ -1,0 +1,170 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-projet-heading" data-cy="ProjetCreateUpdateHeading" jhiTranslate="uproSoutenanceEsiApp.projet.home.createOrEditLabel">
+        Create or edit a Projet
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.theme" for="field_theme">Theme</label>
+          <input type="text" class="form-control" name="theme" id="field_theme" data-cy="theme" formControlName="theme" />
+          <div *ngIf="editForm.get('theme')!.invalid && (editForm.get('theme')!.dirty || editForm.get('theme')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('theme')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.rapport" for="field_rapport">Rapport</label>
+          <div>
+            <div *ngIf="editForm.get('rapport')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('rapport')!.value, editForm.get('rapportContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('rapportContentType')!.value }}, {{ byteSize(editForm.get('rapport')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ rapport: null }); editForm.patchValue({ rapportContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_rapport"
+              data-cy="rapport"
+              (change)="setFileData($event, 'rapport', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="rapport" id="field_rapport" data-cy="rapport" formControlName="rapport" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="rapportContentType"
+            id="field_rapportContentType"
+            formControlName="rapportContentType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.cout" for="field_cout">Cout</label>
+          <input type="number" class="form-control" name="cout" id="field_cout" data-cy="cout" formControlName="cout" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.dateAjout" for="field_dateAjout">Date Ajout</label>
+          <div class="input-group">
+            <input
+              id="field_dateAjout"
+              data-cy="dateAjout"
+              type="text"
+              class="form-control"
+              name="dateAjout"
+              ngbDatepicker
+              #dateAjoutDp="ngbDatepicker"
+              formControlName="dateAjout"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateAjoutDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.dateModification" for="field_dateModification"
+            >Date Modification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateModification"
+              data-cy="dateModification"
+              type="text"
+              class="form-control"
+              name="dateModification"
+              ngbDatepicker
+              #dateModificationDp="ngbDatepicker"
+              formControlName="dateModification"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateModificationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.anneeAcademique" for="field_anneeAcademique"
+            >Annee Academique</label
+          >
+          <select
+            class="form-control"
+            id="field_anneeAcademique"
+            data-cy="anneeAcademique"
+            name="anneeAcademique"
+            formControlName="anneeAcademique"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                anneeAcademiqueOption.id === editForm.get('anneeAcademique')!.value?.id
+                  ? editForm.get('anneeAcademique')!.value
+                  : anneeAcademiqueOption
+              "
+              *ngFor="let anneeAcademiqueOption of anneeAcademiquesSharedCollection; trackBy: trackAnneeAcademiqueById"
+            >
+              {{ anneeAcademiqueOption.anneeScolaire }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="uproSoutenanceEsiApp.projet.entreprise" for="field_entreprises">Entreprise</label>
+          <select
+            class="form-control"
+            id="field_entreprises"
+            data-cy="entreprise"
+            multiple
+            name="entreprises"
+            formControlName="entreprises"
+          >
+            <option
+              [ngValue]="getSelectedEntreprise(entrepriseOption, editForm.get('entreprises')!.value)"
+              *ngFor="let entrepriseOption of entreprisesSharedCollection; trackBy: trackEntrepriseById"
+            >
+              {{ entrepriseOption.nom }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

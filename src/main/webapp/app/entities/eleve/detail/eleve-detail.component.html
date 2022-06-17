@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="eleve">
+      <h2 data-cy="eleveDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.eleve.detail.title">Eleve</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ eleve.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.matricule">Matricule</span></dt>
+        <dd>
+          <span>{{ eleve.matricule }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.nom">Nom</span></dt>
+        <dd>
+          <span>{{ eleve.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.prenoms">Prenoms</span></dt>
+        <dd>
+          <span>{{ eleve.prenoms }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.sexe">Sexe</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'uproSoutenanceEsiApp.Sexe.' + eleve.sexe }}">{{ eleve.sexe }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.situationMatrimoniale">Situation Matrimoniale</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'uproSoutenanceEsiApp.SituationMatrimoniale.' + eleve.situationMatrimoniale }}">{{
+            eleve.situationMatrimoniale
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursDebut">Date Parcours Debut</span></dt>
+        <dd>
+          <span>{{ eleve.dateParcoursDebut | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursFin">Date Parcours Fin</span></dt>
+        <dd>
+          <span>{{ eleve.dateParcoursFin | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.encadreur">Encadreur</span></dt>
+        <dd>
+          <div *ngIf="eleve.encadreur">
+            <a [routerLink]="['/encadreur', eleve.encadreur?.id, 'view']">{{ eleve.encadreur?.nom }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.projet">Projet</span></dt>
+        <dd>
+          <div *ngIf="eleve.projet">
+            <a [routerLink]="['/projet', eleve.projet?.id, 'view']">{{ eleve.projet?.theme }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.eleve.specialite">Specialite</span></dt>
+        <dd>
+          <div *ngIf="eleve.specialite">
+            <a [routerLink]="['/specialite', eleve.specialite?.id, 'view']">{{ eleve.specialite?.nom }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/eleve', eleve.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

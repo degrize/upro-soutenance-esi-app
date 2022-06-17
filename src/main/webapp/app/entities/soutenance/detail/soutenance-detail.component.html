@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="soutenance">
+      <h2 data-cy="soutenanceDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.soutenance.detail.title">Soutenance</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ soutenance.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.mention">Mention</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'uproSoutenanceEsiApp.Mention.' + soutenance.mention }}">{{ soutenance.mention }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.note">Note</span></dt>
+        <dd>
+          <span>{{ soutenance.note }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateDuJour">Date Du Jour</span></dt>
+        <dd>
+          <span>{{ soutenance.dateDuJour | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.remarque">Remarque</span></dt>
+        <dd>
+          <span>{{ soutenance.remarque }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateAjout">Date Ajout</span></dt>
+        <dd>
+          <span>{{ soutenance.dateAjout | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateModification">Date Modification</span></dt>
+        <dd>
+          <span>{{ soutenance.dateModification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.projet">Projet</span></dt>
+        <dd>
+          <div *ngIf="soutenance.projet">
+            <a [routerLink]="['/projet', soutenance.projet?.id, 'view']">{{ soutenance.projet?.theme }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.jury">Jury</span></dt>
+        <dd>
+          <div *ngIf="soutenance.jury">
+            <a [routerLink]="['/jury', soutenance.jury?.id, 'view']">{{ soutenance.jury?.nomPresident }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.soutenance.anneeAcademique">Annee Academique</span></dt>
+        <dd>
+          <div *ngIf="soutenance.anneeAcademique">
+            <a [routerLink]="['/annee-academique', soutenance.anneeAcademique?.id, 'view']">{{
+              soutenance.anneeAcademique?.anneeScolaire
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/soutenance', soutenance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
