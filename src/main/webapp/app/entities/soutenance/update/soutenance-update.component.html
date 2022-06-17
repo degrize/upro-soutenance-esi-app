@@ -1,0 +1,190 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-soutenance-heading"
+        data-cy="SoutenanceCreateUpdateHeading"
+        jhiTranslate="uproSoutenanceEsiApp.soutenance.home.createOrEditLabel"
+      >
+        Create or edit a Soutenance
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.mention" for="field_mention">Mention</label>
+          <select class="form-control" name="mention" formControlName="mention" id="field_mention" data-cy="mention">
+            <option [ngValue]="null">{{ 'uproSoutenanceEsiApp.Mention.null' | translate }}</option>
+            <option *ngFor="let mention of mentionValues" [value]="mention">
+              {{ 'uproSoutenanceEsiApp.Mention.' + mention | translate }}
+            </option>
+          </select>
+          <div *ngIf="editForm.get('mention')!.invalid && (editForm.get('mention')!.dirty || editForm.get('mention')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('mention')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.note" for="field_note">Note</label>
+          <input type="number" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+          <div *ngIf="editForm.get('note')!.invalid && (editForm.get('note')!.dirty || editForm.get('note')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('note')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('note')?.errors?.number" jhiTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.dateDuJour" for="field_dateDuJour">Date Du Jour</label>
+          <div class="input-group">
+            <input
+              id="field_dateDuJour"
+              data-cy="dateDuJour"
+              type="text"
+              class="form-control"
+              name="dateDuJour"
+              ngbDatepicker
+              #dateDuJourDp="ngbDatepicker"
+              formControlName="dateDuJour"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDuJourDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('dateDuJour')!.invalid && (editForm.get('dateDuJour')!.dirty || editForm.get('dateDuJour')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('dateDuJour')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.remarque" for="field_remarque">Remarque</label>
+          <input type="text" class="form-control" name="remarque" id="field_remarque" data-cy="remarque" formControlName="remarque" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.dateAjout" for="field_dateAjout">Date Ajout</label>
+          <div class="input-group">
+            <input
+              id="field_dateAjout"
+              data-cy="dateAjout"
+              type="text"
+              class="form-control"
+              name="dateAjout"
+              ngbDatepicker
+              #dateAjoutDp="ngbDatepicker"
+              formControlName="dateAjout"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateAjoutDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.dateModification" for="field_dateModification"
+            >Date Modification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateModification"
+              data-cy="dateModification"
+              type="text"
+              class="form-control"
+              name="dateModification"
+              ngbDatepicker
+              #dateModificationDp="ngbDatepicker"
+              formControlName="dateModification"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateModificationDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.projet" for="field_projet">Projet</label>
+          <select class="form-control" id="field_projet" data-cy="projet" name="projet" formControlName="projet">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="projetOption.id === editForm.get('projet')!.value?.id ? editForm.get('projet')!.value : projetOption"
+              *ngFor="let projetOption of projetsCollection; trackBy: trackProjetById"
+            >
+              {{ projetOption.theme }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.jury" for="field_jury">Jury</label>
+          <select class="form-control" id="field_jury" data-cy="jury" name="jury" formControlName="jury">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="juryOption.id === editForm.get('jury')!.value?.id ? editForm.get('jury')!.value : juryOption"
+              *ngFor="let juryOption of juriesSharedCollection; trackBy: trackJuryById"
+            >
+              {{ juryOption.nomPresident }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.anneeAcademique" for="field_anneeAcademique"
+            >Annee Academique</label
+          >
+          <select
+            class="form-control"
+            id="field_anneeAcademique"
+            data-cy="anneeAcademique"
+            name="anneeAcademique"
+            formControlName="anneeAcademique"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                anneeAcademiqueOption.id === editForm.get('anneeAcademique')!.value?.id
+                  ? editForm.get('anneeAcademique')!.value
+                  : anneeAcademiqueOption
+              "
+              *ngFor="let anneeAcademiqueOption of anneeAcademiquesSharedCollection; trackBy: trackAnneeAcademiqueById"
+            >
+              {{ anneeAcademiqueOption.anneeScolaire }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

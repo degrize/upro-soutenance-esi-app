@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity Eleve.
+    -->
+    <changeSet id="20220617214928-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="encadreur_id"
+                                 baseTableName="eleve"
+                                 constraintName="fk_eleve__encadreur_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="encadreur"/>
+
+        <addForeignKeyConstraint baseColumnNames="projet_id"
+                                 baseTableName="eleve"
+                                 constraintName="fk_eleve__projet_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="projet"/>
+
+        <addForeignKeyConstraint baseColumnNames="specialite_id"
+                                 baseTableName="eleve"
+                                 constraintName="fk_eleve__specialite_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="specialite"/>
+    </changeSet>
+</databaseChangeLog>

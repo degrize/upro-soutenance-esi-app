@@ -1,0 +1,139 @@
+<div>
+  <h2 id="page-heading" data-cy="EleveHeading">
+    <span jhiTranslate="uproSoutenanceEsiApp.eleve.home.title">Eleves</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="uproSoutenanceEsiApp.eleve.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-eleve"
+        [routerLink]="['/eleve/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="uproSoutenanceEsiApp.eleve.home.createLabel"> Create a new Eleve </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="eleves?.length === 0">
+    <span jhiTranslate="uproSoutenanceEsiApp.eleve.home.notFound">No eleves found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="eleves && eleves.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="matricule">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nom">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.nom">Nom</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prenoms">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.prenoms">Prenoms</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sexe">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.sexe">Sexe</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situationMatrimoniale">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.situationMatrimoniale">Situation Matrimoniale</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateParcoursDebut">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursDebut">Date Parcours Debut</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateParcoursFin">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.dateParcoursFin">Date Parcours Fin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="encadreur.nom">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.encadreur">Encadreur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="projet.theme">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.projet">Projet</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="specialite.nom">
+            <span jhiTranslate="uproSoutenanceEsiApp.eleve.specialite">Specialite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let eleve of eleves; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/eleve', eleve.id, 'view']">{{ eleve.id }}</a>
+          </td>
+          <td>{{ eleve.matricule }}</td>
+          <td>{{ eleve.nom }}</td>
+          <td>{{ eleve.prenoms }}</td>
+          <td jhiTranslate="{{ 'uproSoutenanceEsiApp.Sexe.' + eleve.sexe }}">{{ eleve.sexe }}</td>
+          <td jhiTranslate="{{ 'uproSoutenanceEsiApp.SituationMatrimoniale.' + eleve.situationMatrimoniale }}">
+            {{ eleve.situationMatrimoniale }}
+          </td>
+          <td>{{ eleve.dateParcoursDebut | formatMediumDate }}</td>
+          <td>{{ eleve.dateParcoursFin | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="eleve.encadreur">
+              <a [routerLink]="['/encadreur', eleve.encadreur?.id, 'view']">{{ eleve.encadreur?.nom }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eleve.projet">
+              <a [routerLink]="['/projet', eleve.projet?.id, 'view']">{{ eleve.projet?.theme }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="eleve.specialite">
+              <a [routerLink]="['/specialite', eleve.specialite?.id, 'view']">{{ eleve.specialite?.nom }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/eleve', eleve.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/eleve', eleve.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(eleve)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="eleves && eleves.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

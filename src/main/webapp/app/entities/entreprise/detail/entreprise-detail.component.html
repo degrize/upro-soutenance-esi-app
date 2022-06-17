@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entreprise">
+      <h2 data-cy="entrepriseDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.entreprise.detail.title">Entreprise</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entreprise.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.nom">Nom</span></dt>
+        <dd>
+          <span>{{ entreprise.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.codeENtreprise">Code E Ntreprise</span></dt>
+        <dd>
+          <span>{{ entreprise.codeENtreprise }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.secteurActivite">Secteur Activite</span></dt>
+        <dd>
+          <span>{{ entreprise.secteurActivite }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.adresse">Adresse</span></dt>
+        <dd>
+          <span>{{ entreprise.adresse }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.nomDirecteur">Nom Directeur</span></dt>
+        <dd>
+          <span>{{ entreprise.nomDirecteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.contactDirecteur">Contact Directeur</span></dt>
+        <dd>
+          <span>{{ entreprise.contactDirecteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.emailDirecteur">Email Directeur</span></dt>
+        <dd>
+          <span>{{ entreprise.emailDirecteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.nomMaitreStage">Nom Maitre Stage</span></dt>
+        <dd>
+          <span>{{ entreprise.nomMaitreStage }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.contactMaitreStage">Contact Maitre Stage</span></dt>
+        <dd>
+          <span>{{ entreprise.contactMaitreStage }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.entreprise.emailMaitreStage">Email Maitre Stage</span></dt>
+        <dd>
+          <span>{{ entreprise.emailMaitreStage }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entreprise', entreprise.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

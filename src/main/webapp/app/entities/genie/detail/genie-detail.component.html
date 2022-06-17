@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="genie">
+      <h2 data-cy="genieDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.genie.detail.title">Genie</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ genie.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.genie.nom">Nom</span></dt>
+        <dd>
+          <span>{{ genie.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.genie.nomDirecteur">Nom Directeur</span></dt>
+        <dd>
+          <span>{{ genie.nomDirecteur }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.genie.contactDirecteur">Contact Directeur</span></dt>
+        <dd>
+          <span>{{ genie.contactDirecteur }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/genie', genie.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

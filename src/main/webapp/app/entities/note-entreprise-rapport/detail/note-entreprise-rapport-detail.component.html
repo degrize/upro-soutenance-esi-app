@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="noteEntrepriseRapport">
+      <h2 data-cy="noteEntrepriseRapportDetailsHeading">
+        <span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.detail.title">Note Entreprise Rapport</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ noteEntrepriseRapport.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.note">Note</span></dt>
+        <dd>
+          <span>{{ noteEntrepriseRapport.note }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.observation">Observation</span></dt>
+        <dd>
+          <span>{{ noteEntrepriseRapport.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.dateAjout">Date Ajout</span></dt>
+        <dd>
+          <span>{{ noteEntrepriseRapport.dateAjout | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.dateModification">Date Modification</span></dt>
+        <dd>
+          <span>{{ noteEntrepriseRapport.dateModification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.entreprise">Entreprise</span></dt>
+        <dd>
+          <div *ngIf="noteEntrepriseRapport.entreprise">
+            <a [routerLink]="['/entreprise', noteEntrepriseRapport.entreprise?.id, 'view']">{{ noteEntrepriseRapport.entreprise?.nom }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.noteEntrepriseRapport.projet">Projet</span></dt>
+        <dd>
+          <div *ngIf="noteEntrepriseRapport.projet">
+            <a [routerLink]="['/projet', noteEntrepriseRapport.projet?.id, 'view']">{{ noteEntrepriseRapport.projet?.theme }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/note-entreprise-rapport', noteEntrepriseRapport.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

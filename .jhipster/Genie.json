@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214935",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "genie",
+  "fields": [
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nomDirecteur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contactDirecteur",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Genie",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

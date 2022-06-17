@@ -7,6 +7,16 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "anneeAcademique": "Annee Academique",
+        "encadreur": "Encadreur",
+        "eleve": "Eleve",
+        "projet": "Projet",
+        "entreprise": "Entreprise",
+        "noteEntrepriseRapport": "Note Entreprise Rapport",
+        "soutenance": "Soutenance",
+        "jury": "Jury",
+        "specialite": "Specialite",
+        "genie": "Genie",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

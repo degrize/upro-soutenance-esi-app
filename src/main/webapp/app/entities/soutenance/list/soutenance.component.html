@@ -1,0 +1,144 @@
+<div>
+  <h2 id="page-heading" data-cy="SoutenanceHeading">
+    <span jhiTranslate="uproSoutenanceEsiApp.soutenance.home.title">Soutenances</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="uproSoutenanceEsiApp.soutenance.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-soutenance"
+        [routerLink]="['/soutenance/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="uproSoutenanceEsiApp.soutenance.home.createLabel"> Create a new Soutenance </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="soutenances?.length === 0">
+    <span jhiTranslate="uproSoutenanceEsiApp.soutenance.home.notFound">No soutenances found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="soutenances && soutenances.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="mention">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.mention">Mention</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="note">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.note">Note</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateDuJour">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateDuJour">Date Du Jour</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="remarque">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.remarque">Remarque</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateAjout">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateAjout">Date Ajout</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dateModification">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.dateModification">Date Modification</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="projet.theme">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.projet">Projet</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="jury.nomPresident">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.jury">Jury</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="anneeAcademique.anneeScolaire">
+            <span jhiTranslate="uproSoutenanceEsiApp.soutenance.anneeAcademique">Annee Academique</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let soutenance of soutenances; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/soutenance', soutenance.id, 'view']">{{ soutenance.id }}</a>
+          </td>
+          <td jhiTranslate="{{ 'uproSoutenanceEsiApp.Mention.' + soutenance.mention }}">{{ soutenance.mention }}</td>
+          <td>{{ soutenance.note }}</td>
+          <td>{{ soutenance.dateDuJour | formatMediumDate }}</td>
+          <td>{{ soutenance.remarque }}</td>
+          <td>{{ soutenance.dateAjout | formatMediumDate }}</td>
+          <td>{{ soutenance.dateModification | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="soutenance.projet">
+              <a [routerLink]="['/projet', soutenance.projet?.id, 'view']">{{ soutenance.projet?.theme }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="soutenance.jury">
+              <a [routerLink]="['/jury', soutenance.jury?.id, 'view']">{{ soutenance.jury?.nomPresident }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="soutenance.anneeAcademique">
+              <a [routerLink]="['/annee-academique', soutenance.anneeAcademique?.id, 'view']">{{
+                soutenance.anneeAcademique?.anneeScolaire
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/soutenance', soutenance.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/soutenance', soutenance.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(soutenance)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="soutenances && soutenances.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

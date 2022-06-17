@@ -1,0 +1,54 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214929",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "projet",
+  "fields": [
+    {
+      "fieldName": "theme",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rapport",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "cout",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "dateAjout",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateModification",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Projet",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "anneeScolaire",
+      "otherEntityName": "anneeAcademique",
+      "otherEntityRelationshipName": "projet",
+      "relationshipName": "anneeAcademique",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "nom",
+      "otherEntityName": "entreprise",
+      "otherEntityRelationshipName": "projet",
+      "ownerSide": true,
+      "relationshipName": "entreprise",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

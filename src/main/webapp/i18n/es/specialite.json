@@ -1,0 +1,24 @@
+{
+  "uproSoutenanceEsiApp": {
+    "specialite": {
+      "home": {
+        "title": "Specialites",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Specialite",
+        "createOrEditLabel": "Crear o editar Specialite",
+        "notFound": "Ningún Specialites encontrado"
+      },
+      "created": "Un nuevo Specialite ha sido creado con el identificador {{ param }}",
+      "updated": "Un Specialite ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Specialite ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Specialite {{ id }}?"
+      },
+      "detail": {
+        "title": "Specialite"
+      },
+      "id": "ID",
+      "nom": "Nom"
+    }
+  }
+}

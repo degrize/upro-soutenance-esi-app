@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="projet">
+      <h2 data-cy="projetDetailsHeading"><span jhiTranslate="uproSoutenanceEsiApp.projet.detail.title">Projet</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ projet.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.theme">Theme</span></dt>
+        <dd>
+          <span>{{ projet.theme }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.rapport">Rapport</span></dt>
+        <dd>
+          <div *ngIf="projet.rapport">
+            <a (click)="openFile(projet.rapport, projet.rapportContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ projet.rapportContentType }}, {{ byteSize(projet.rapport) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.cout">Cout</span></dt>
+        <dd>
+          <span>{{ projet.cout }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.dateAjout">Date Ajout</span></dt>
+        <dd>
+          <span>{{ projet.dateAjout | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.dateModification">Date Modification</span></dt>
+        <dd>
+          <span>{{ projet.dateModification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.anneeAcademique">Annee Academique</span></dt>
+        <dd>
+          <div *ngIf="projet.anneeAcademique">
+            <a [routerLink]="['/annee-academique', projet.anneeAcademique?.id, 'view']">{{ projet.anneeAcademique?.anneeScolaire }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="uproSoutenanceEsiApp.projet.entreprise">Entreprise</span></dt>
+        <dd>
+          <span *ngFor="let entreprise of projet.entreprises; let last = last">
+            <a [routerLink]="['/entreprise', entreprise?.id, 'view']">{{ entreprise.nom }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/projet', projet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

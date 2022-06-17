@@ -1,0 +1,12 @@
+{
+  "uproSoutenanceEsiApp": {
+    "SituationMatrimoniale": {
+      "null": "",
+      "SEUL": "SEUL",
+      "FIANCE": "FIANCE",
+      "CONCUBINAGE": "CONCUBINAGE",
+      "MARIE": "MARIE",
+      "VEUF": "VEUF"
+    }
+  }
+}

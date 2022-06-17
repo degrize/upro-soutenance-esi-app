@@ -1,0 +1,29 @@
+{
+  "uproSoutenanceEsiApp": {
+    "noteEntrepriseRapport": {
+      "home": {
+        "title": "Note Entreprise Rapports",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Note Entreprise Rapport",
+        "createOrEditLabel": "Create or edit a Note Entreprise Rapport",
+        "notFound": "No Note Entreprise Rapports found"
+      },
+      "created": "A new Note Entreprise Rapport is created with identifier {{ param }}",
+      "updated": "A Note Entreprise Rapport is updated with identifier {{ param }}",
+      "deleted": "A Note Entreprise Rapport is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Note Entreprise Rapport {{ id }}?"
+      },
+      "detail": {
+        "title": "Note Entreprise Rapport"
+      },
+      "id": "ID",
+      "note": "Note",
+      "observation": "Observation",
+      "dateAjout": "Date Ajout",
+      "dateModification": "Date Modification",
+      "entreprise": "Entreprise",
+      "projet": "Projet"
+    }
+  }
+}

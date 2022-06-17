@@ -48,6 +48,19 @@ public class CacheConfiguration {
             createCache(cm, com.esi.uppro.domain.User.class.getName());
             createCache(cm, com.esi.uppro.domain.Authority.class.getName());
             createCache(cm, com.esi.uppro.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.esi.uppro.domain.AnneeAcademique.class.getName());
+            createCache(cm, com.esi.uppro.domain.Encadreur.class.getName());
+            createCache(cm, com.esi.uppro.domain.Eleve.class.getName());
+            createCache(cm, com.esi.uppro.domain.Projet.class.getName());
+            createCache(cm, com.esi.uppro.domain.Projet.class.getName() + ".entreprises");
+            createCache(cm, com.esi.uppro.domain.Entreprise.class.getName());
+            createCache(cm, com.esi.uppro.domain.Entreprise.class.getName() + ".projets");
+            createCache(cm, com.esi.uppro.domain.NoteEntrepriseRapport.class.getName());
+            createCache(cm, com.esi.uppro.domain.Soutenance.class.getName());
+            createCache(cm, com.esi.uppro.domain.Jury.class.getName());
+            createCache(cm, com.esi.uppro.domain.Jury.class.getName() + ".soutenances");
+            createCache(cm, com.esi.uppro.domain.Specialite.class.getName());
+            createCache(cm, com.esi.uppro.domain.Genie.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

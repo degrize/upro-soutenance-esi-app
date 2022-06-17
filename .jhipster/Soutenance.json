@@ -1,0 +1,67 @@
+{
+  "applications": "*",
+  "changelogDate": "20220617214932",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "soutenance",
+  "fields": [
+    {
+      "fieldName": "mention",
+      "fieldType": "Mention",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PASSABLE,ASSEZ_BIEN,BIEN,TRES_BIEN,HONORABLE,EXCELENTE"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "Double",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateDuJour",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "remarque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateAjout",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "dateModification",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Soutenance",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "theme",
+      "otherEntityName": "projet",
+      "otherEntityRelationshipName": "soutenance",
+      "ownerSide": true,
+      "relationshipName": "projet",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityField": "nomPresident",
+      "otherEntityName": "jury",
+      "otherEntityRelationshipName": "soutenance",
+      "relationshipName": "jury",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "anneeScolaire",
+      "otherEntityName": "anneeAcademique",
+      "otherEntityRelationshipName": "soutenance",
+      "relationshipName": "anneeAcademique",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
