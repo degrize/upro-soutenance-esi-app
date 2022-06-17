@@ -1,0 +1,136 @@
+
+enum Mention {
+	PASSABLE, ASSEZ_BIEN, BIEN, TRES_BIEN, HONORABLE, EXCELENTE
+}
+
+enum SituationMatrimoniale {
+    SEUL, FIANCE, CONCUBINAGE, MARIE, VEUF
+}
+
+enum Sexe {
+	F, M
+}
+
+
+
+entity AnneeAcademique {
+	anneeScolaire String required,
+}
+
+entity Encadreur {
+	nom String required,
+    prenoms String required,
+    contact String required,
+    email String,
+}
+
+entity Eleve {
+	matricule String required,
+    nom String required,
+    prenoms String required,
+    sexe Sexe,
+    situationMatrimoniale SituationMatrimoniale required,
+    dateParcoursDebut LocalDate,
+    dateParcoursFin LocalDate,
+    
+}
+
+entity Projet {
+	theme String required,
+    rapport Blob,
+    cout Integer,
+    dateAjout LocalDate,
+    dateModification LocalDate
+}
+
+entity Entreprise {
+	nom String required,
+    codeENtreprise String required,
+    secteurActivite String,
+    adresse String,
+    nomDirecteur String,
+    contactDirecteur String,
+    emailDirecteur String,
+    nomMaitreStage String,
+    contactMaitreStage String,
+    emailMaitreStage String
+    
+}
+
+entity NoteEntrepriseRapport {
+	note Double required,
+    observation String,
+    dateAjout LocalDate,
+    dateModification LocalDate
+    
+}
+
+entity Soutenance {
+	mention Mention required,
+    note Double required,
+    dateDuJour LocalDate required,
+    remarque String,
+    dateAjout LocalDate,
+    dateModification LocalDate
+    
+}
+
+
+entity Jury {
+	nomPresident String required,
+    nomRapporteur String required,
+    nomProfAnglais String required,
+    numeroSalle String,
+}
+
+entity Specialite {
+	nom String required
+}
+
+entity Genie {
+	nom String required,
+    nomDirecteur String,
+    contactDirecteur String
+}
+
+
+relationship ManyToOne {
+	Eleve{encadreur(nom)} to Encadreur,
+    Eleve{projet(theme)} to Projet,
+    Eleve{specialite(nom)} to Specialite,
+    
+    Projet{anneeAcademique(anneeScolaire)} to AnneeAcademique,
+    
+    Jury{anneeAcademique(anneeScolaire)} to AnneeAcademique,
+    Jury{genie(nom)} to Genie,
+    
+    Soutenance{jury(nomPresident)} to Jury{soutenance},
+    Soutenance{anneeAcademique(anneeScolaire)} to AnneeAcademique,
+    
+    NoteEntrepriseRapport{entreprise(nom)} to Entreprise,
+    NoteEntrepriseRapport{projet(theme)} to Projet,
+    
+}
+
+
+relationship ManyToMany {
+	Projet{entreprise(nom)} to Entreprise{projet},
+}
+
+relationship OneToOne {
+	Soutenance{projet(theme)} to Projet
+}
+
+
+// Set pagination options
+paginate all with pagination
+
+// Use Data Transfer Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
+
