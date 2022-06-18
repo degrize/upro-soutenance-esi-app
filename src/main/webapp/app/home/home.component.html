@@ -1,12 +1,5 @@
-<div class="row">
-  <div class="col-md-3">
-    <span class="hipster img-fluid rounded"></span>
-  </div>
-
-  <div class="col-md-9">
-    <h1 class="display-4"><span jhiTranslate="home.title">Welcome, Java Hipster!</span> (Upro Soutenance Esi App)</h1>
-
-    <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
+<div>
+  <!--<div class="col-md-9">
 
     <div [ngSwitch]="account !== null">
       <div class="alert alert-success" *ngSwitchCase="true">
@@ -30,49 +23,150 @@
       </div>
     </div>
 
-    <p jhiTranslate="home.question">If you have any question on JHipster:</p>
 
-    <ul>
-      <li>
-        <a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.homepage"
-          >JHipster homepage</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://stackoverflow.com/tags/jhipster/info"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.stackoverflow"
-          >JHipster on Stack Overflow</a
-        >
-      </li>
-      <li>
-        <a
-          href="https://github.com/jhipster/generator-jhipster/issues?state=open"
-          target="_blank"
-          rel="noopener noreferrer"
-          jhiTranslate="home.link.bugtracker"
-          >JHipster bug tracker</a
-        >
-      </li>
-      <li>
-        <a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.chat"
-          >JHipster public chat room</a
-        >
-      </li>
-      <li>
-        <a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.link.follow"
-          >follow @jhipster on Twitter</a
-        >
-      </li>
-    </ul>
+  </div>-->
 
-    <p>
-      <span jhiTranslate="home.like">If you like JHipster, don't forget to give us a star on</span>
-      <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer" jhiTranslate="home.github"
-        >GitHub</a
-      >!
-    </p>
-  </div>
+  <!--===== HOME =====-->
+  <section class="home" id="home">
+    <div class="home__container bd-grid">
+      <h1 class="home__title"><span>ESI</span><br />PFE</h1>
+
+      <div class="home__scroll">
+        <a href="#about" class="home__scroll-link"><i class="bx bx-up-arrow-alt"></i>Scroll down</a>
+      </div>
+
+      <img src="../../content/images/perfil.png" alt="" class="home__img" />
+    </div>
+  </section>
+
+  <!--===== ABOUT =====-->
+  <section class="about section" id="about">
+    <h2 class="section-title">A propos</h2>
+
+    <div class="about__container bd-grid">
+      <div class="about__img">
+        <img src="../../content/images/perfil.png" alt="" />
+      </div>
+
+      <div>
+        <h2 class="about__subtitle">I'am Jhon Doe</h2>
+        <span class="about__profession">Web designer</span>
+        <p class="about__text">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Adipisci consectetur, architecto quas fugiat, iste inventore facere
+          repellendus delectus id, vitae blanditiis.
+        </p>
+
+        <div class="about__social">
+          <a href="#" class="about__social-icon"><i class="bx bxl-linkedin"></i></a>
+          <a href="#" class="about__social-icon"><i class="bx bxl-github"></i></a>
+          <a href="#" class="about__social-icon"><i class="bx bxl-dribbble"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--===== SKILLS =====-->
+  <section class="skills section" id="skills">
+    <h2 class="section-title">Compétences</h2>
+
+    <div class="skills__container bd-grid">
+      <div class="skills__box">
+        <h3 class="skills__subtitle">Development</h3>
+        <span class="skills__name">Html</span>
+        <span class="skills__name">Css</span>
+        <span class="skills__name">Javascript</span>
+        <span class="skills__name">Scss</span>
+        <span class="skills__name">React</span>
+        <span class="skills__name">Vue</span>
+
+        <h3 class="skills__subtitle">Design</h3>
+        <span class="skills__name">Figma</span>
+        <span class="skills__name">Adobe XD</span>
+        <span class="skills__name">Photoshop</span>
+      </div>
+
+      <div class="skills__img">
+        <img src="../../content/images/skill.jpg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <!--===== PORTFOLIO =====-->
+  <section class="portfolio section" id="portfolio">
+    <h2 class="section-title">Filieres</h2>
+
+    <div class="portfolio__container bd-grid">
+      <div class="portfolio__img">
+        <img src="../../content/images/work1.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+      <div class="portfolio__img">
+        <img src="../../content/images/work2.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+      <div class="portfolio__img">
+        <img src="../../content/images/work3.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+      <div class="portfolio__img">
+        <img src="../../content/images/work4.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+      <div class="portfolio__img">
+        <img src="../../content/images/work5.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+      <div class="portfolio__img">
+        <img src="../../content/images/work6.jpg" alt="" />
+
+        <div class="portfolio__link">
+          <a href="#" class="portfolio__link-name">View details</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--===== CONTACT =====-->
+  <section class="contact section" id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact__container bd-grid">
+      <div class="contact__info">
+        <h3 class="contact__subtitle">EMAIL</h3>
+        <span class="contact__text">info.mail.com</span>
+
+        <h3 class="contact__subtitle">PHONE</h3>
+        <span class="contact__text">+225 07999-999</span>
+
+        <h3 class="contact__subtitle">ADRESS</h3>
+        <span class="contact__text">My contry</span>
+      </div>
+
+      <form action="" class="contact__form">
+        <div class="contact__inputs">
+          <input type="text" placeholder="Name" class="contact__input" />
+          <input type="mail" placeholder="Email" class="contact__input" />
+        </div>
+
+        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
+
+        <input type="submit" value="Enviar" class="contact__button" />
+      </form>
+    </div>
+  </section>
 </div>
