@@ -1,13 +1,27 @@
 <jhi-page-ribbon></jhi-page-ribbon>
 
-<div>
-  <router-outlet name="navbar"></router-outlet>
-</div>
+<div [ngSwitch]="account !== null">
+  <div class="projet_main">
+    <div class="nav_container">
+      <router-outlet name="navbar"></router-outlet>
 
-<div>
-  <div class="">
-    <router-outlet></router-outlet>
+      <section class="dashboard">
+        <div class="top">
+          <i class="uil uil-bars sidebar-toggle"></i>
+
+          <div class="search-box">
+            <i class="uil uil-search"></i>
+            <input type="text" placeholder="Search here..." />
+          </div>
+
+          <img src="./content/images/profile.jpg" alt="" />
+        </div>
+      </section>
+    </div>
+
+    <div class="page_container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-
-  <jhi-footer></jhi-footer>
 </div>
+<jhi-footer></jhi-footer>

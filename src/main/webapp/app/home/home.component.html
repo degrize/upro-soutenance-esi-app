@@ -1,4 +1,4 @@
-<div>
+<div [ngSwitch]="account !== null">
   <!--<div class="col-md-9">
 
     <div [ngSwitch]="account !== null">
@@ -26,146 +26,397 @@
 
   </div>-->
 
-  <!--===== HOME =====-->
-  <section class="home" id="home">
-    <div class="home__container bd-grid">
-      <h1 class="home__title"><span>ESI</span><br />PFE</h1>
+  <div *ngSwitchCase="false">
+    <!--===== HOME =====-->
+    <section class="home" id="home">
+      <div class="home__container bd-grid">
+        <h1 class="home__title"><span>ESI</span><br />PFE</h1>
 
-      <div class="home__scroll">
-        <a href="#about" class="home__scroll-link"><i class="bx bx-up-arrow-alt"></i>Scroll down</a>
+        <div class="home__scroll">
+          <a href="#about" class="home__scroll-link"><i class="bx bx-up-arrow-alt"></i>Scroll down</a>
+        </div>
+
+        <img src="../../content/images/d.png" alt="" class="home__img" />
       </div>
+    </section>
 
-      <img src="../../content/images/d.png" alt="" class="home__img" />
-    </div>
-  </section>
+    <!--===== ABOUT =====-->
+    <section class="about section" id="about">
+      <h2 class="section-title">A propos</h2>
 
-  <!--===== ABOUT =====-->
-  <section class="about section" id="about">
-    <h2 class="section-title">A propos</h2>
+      <div class="about__container bd-grid">
+        <div class="about__img">
+          <img src="../../content/images/télécharger.png" alt="" />
+        </div>
 
-    <div class="about__container bd-grid">
-      <div class="about__img">
-        <img src="../../content/images/télécharger.png" alt="" />
+        <div>
+          <h2 class="about__subtitle">Je ?</h2>
+          <span class="about__profession">Etudiant en STIC</span>
+          <p class="about__text">
+            GeSoutenance est une application web permettant de gerer de facon automatique et rapide les soutenace a l'ESI
+          </p>
+
+          <div class="about__social">
+            <a href="#" class="about__social-icon"><i class="bx bxl-linkedin"></i></a>
+            <a href="#" class="about__social-icon"><i class="bx bxl-github"></i></a>
+            <a href="#" class="about__social-icon"><i class="bx bxl-dribbble"></i></a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div>
-        <h2 class="about__subtitle">Je ?</h2>
-        <span class="about__profession">Etudiant en STIC</span>
-        <p class="about__text">
-          GeSoutenance est une application web permettant de gerer de facon automatique et rapide les soutenace a l'ESI
-        </p>
+    <!--===== SKILLS =====-->
+    <section class="skills section" id="skills">
+      <h2 class="section-title">Compétences</h2>
 
-        <div class="about__social">
-          <a href="#" class="about__social-icon"><i class="bx bxl-linkedin"></i></a>
-          <a href="#" class="about__social-icon"><i class="bx bxl-github"></i></a>
-          <a href="#" class="about__social-icon"><i class="bx bxl-dribbble"></i></a>
+      <div class="skills__container bd-grid">
+        <div class="skills__box">
+          <h3 class="skills__subtitle">Developement</h3>
+          <span class="skills__name">Developeur</span>
+          <span class="skills__name">Electronicien</span>
+          <span class="skills__name">Informatitien</span>
+          <span class="skills__name">Mecanicien</span>
+          <span class="skills__name">Chimiste</span>
+          <span class="skills__name">Electrotechnicien</span>
+
+          <h3 class="skills__subtitle">Atout</h3>
+          <span class="skills__name">Droit</span>
+          <span class="skills__name">Comptabilité</span>
+          <span class="skills__name">Anglais</span>
+        </div>
+
+        <div class="skills__img">
+          <img src="../../content/images/skill.jpg" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!--===== PORTFOLIO =====-->
+    <section class="portfolio section" id="portfolio">
+      <h2 class="section-title">Filieres</h2>
+
+      <div class="portfolio__container bd-grid">
+        <div class="portfolio__img">
+          <img src="../../content/images/professional-programmer.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">TS STIC</a>
+          </div>
+        </div>
+        <div class="portfolio__img">
+          <img src="../../content/images/ing_mecatronique3.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">TS STGI</a>
+          </div>
+        </div>
+        <div class="portfolio__img">
+          <img src="../../content/images/ts_chimie3.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">TS STGP</a>
+          </div>
+        </div>
+        <div class="portfolio__img">
+          <img src="../../content/images/ing_eit3.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">ING STIC</a>
+          </div>
+        </div>
+        <div class="portfolio__img">
+          <img src="../../content/images/ts_pmsi3.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">ING STGI</a>
+          </div>
+        </div>
+        <div class="portfolio__img">
+          <img src="../../content/images/teamwork-dim-modern-lab.jpg" alt="" />
+
+          <div class="portfolio__link">
+            <a href="#" class="portfolio__link-name">ING STGP</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--===== CONTACT =====-->
+    <section class="contact section" id="contact">
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact__container bd-grid">
+        <div class="contact__info">
+          <h3 class="contact__subtitle">EMAIL</h3>
+          <span class="contact__text">kouadio.nzi18@inphb.ci</span>
+
+          <h3 class="contact__subtitle">PHONE</h3>
+          <span class="contact__text">+225 07-0881-0678</span>
+
+          <h3 class="contact__subtitle">ADRESS</h3>
+          <span class="contact__text">1093 Yamoussokro INP-HB</span>
+        </div>
+
+        <form action="" class="contact__form">
+          <div class="contact__inputs">
+            <input type="text" placeholder="Nom" class="contact__input" />
+            <input type="mail" placeholder="Email" class="contact__input" />
+          </div>
+
+          <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
+
+          <input type="submit" value="Envoyer" class="contact__button" />
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!--Lorsque l'utilisateur se connecte à son dashboard-->
+  <div *ngSwitchCase="true">
+    <section class="dashboard">
+      <div class="dash-content">
+        <div class="overview">
+          <div class="title">
+            <i class="uil uil-tachometer-fast-alt"></i>
+            <span class="text">Dashboard</span>
+          </div>
+
+          <div class="boxes">
+            <div class="box box1">
+              <i class="uil uil-thumbs-up"></i>
+              <span class="text">Note</span>
+              <span class="number">13</span>
+            </div>
+            <div class="box box2">
+              <i class="uil uil-comments"></i>
+              <span class="text">Mention</span>
+              <span class="number">Bien</span>
+            </div>
+            <div class="box box3">
+              <i class="uil uil-share"></i>
+              <span class="text">Diplome</span>
+              <span class="number">DTS(Licence 3) Informatique</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="title">
+            <i class="uil uil-clock-three"></i>
+            <span class="text">Documents de PFE</span>
+          </div>
+
+          <div class="activity-data">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="card">
+                  <div class="title-document-pfe card-header">
+                    <h5 class="card-title">Rapport</h5>
+                    <img src="../../content/images/rapport.png" alt="" />
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="card-link text-primary mt-2">Telecharger PDF</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="title-document-pfe card-header">
+                    <h5 class="card-title">Attestation</h5>
+                    <img src="../../content/images/rapport.png" alt="" />
+                  </div>
+                  <div class="card-body">
+                    <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="card-link text-primary">Telecharger</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="title">
+            <i class="uil uil-clock-three"></i>
+            <span class="text">Détail soutennace</span>
+          </div>
+
+          <div class="activity-data">
+            <div class="data names">
+              <span class="data-title">Name</span>
+              <span class="data-list">Prem Shahi</span>
+              <span class="data-list">Deepa Chand</span>
+              <span class="data-list">Manisha Chand</span>
+              <span class="data-list">Pratima Shahi</span>
+              <span class="data-list">Man Shahi</span>
+              <span class="data-list">Ganesh Chand</span>
+              <span class="data-list">Bikash Chand</span>
+            </div>
+            <div class="data email">
+              <span class="data-title">Email</span>
+              <span class="data-list">premshahi@gmail.com</span>
+              <span class="data-list">deepachand@gmail.com</span>
+              <span class="data-list">prakashhai@gmail.com</span>
+              <span class="data-list">manishachand@gmail.com</span>
+              <span class="data-list">pratimashhai@gmail.com</span>
+              <span class="data-list">manshahi@gmail.com</span>
+              <span class="data-list">ganeshchand@gmail.com</span>
+            </div>
+            <div class="data joined">
+              <span class="data-title">Joined</span>
+              <span class="data-list">2022-02-12</span>
+              <span class="data-list">2022-02-12</span>
+              <span class="data-list">2022-02-13</span>
+              <span class="data-list">2022-02-13</span>
+              <span class="data-list">2022-02-14</span>
+              <span class="data-list">2022-02-14</span>
+              <span class="data-list">2022-02-15</span>
+            </div>
+            <div class="data type">
+              <span class="data-title">Type</span>
+              <span class="data-list">New</span>
+              <span class="data-list">Member</span>
+              <span class="data-list">Member</span>
+              <span class="data-list">New</span>
+              <span class="data-list">Member</span>
+              <span class="data-list">New</span>
+              <span class="data-list">Member</span>
+            </div>
+            <div class="data status">
+              <span class="data-title">Status</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+              <span class="data-list">Liked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div>
+    <!-- MultiStep Form -->
+    <div class="container-fluid" id="grad1">
+      <div class="row justify-content-center mt-0">
+        <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+            <h2><strong>Sign Up Your User Account</strong></h2>
+            <p>Fill all form field to go to next step</p>
+            <div class="row">
+              <div class="col-md-12 mx-0">
+                <form id="msform">
+                  <!-- progressbar -->
+                  <ul id="progressbar">
+                    <li class="active" id="account"><strong>Account</strong></li>
+                    <li id="personal"><strong>Personal</strong></li>
+                    <li id="payment"><strong>Payment</strong></li>
+                    <li id="confirm"><strong>Finish</strong></li>
+                  </ul>
+                  <!-- fieldsets -->
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Account Information</h2>
+                      <input type="email" name="email" placeholder="Email Id" />
+                      <input type="text" name="uname" placeholder="UserName" />
+                      <input type="password" name="pwd" placeholder="Password" />
+                      <input type="password" name="cpwd" placeholder="Confirm Password" />
+                    </div>
+                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Personal Information</h2>
+                      <input type="text" name="fname" placeholder="First Name" />
+                      <input type="text" name="lname" placeholder="Last Name" />
+                      <input type="text" name="phno" placeholder="Contact No." />
+                      <input type="text" name="phno_2" placeholder="Alternate Contact No." />
+                    </div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    <input type="button" name="next" class="next action-button" value="Next Step" />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title">Payment Information</h2>
+                      <div class="radio-group">
+                        <div class="radio" data-value="credit">
+                          <img src="https://i.imgur.com/XzOzVHZ.jpg" width="200px" height="100px" />
+                        </div>
+                        <div class="radio" data-value="paypal">
+                          <img src="https://i.imgur.com/jXjwZlj.jpg" width="200px" height="100px" />
+                        </div>
+                        <br />
+                      </div>
+                      <label class="pay">Card Holder Name*</label>
+                      <input type="text" name="holdername" placeholder="" />
+                      <div class="row">
+                        <div class="col-9">
+                          <label class="pay">Card Number*</label>
+                          <input type="text" name="cardno" placeholder="" />
+                        </div>
+                        <div class="col-3">
+                          <label class="pay">CVC*</label>
+                          <input type="password" name="cvcpwd" placeholder="***" />
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-3">
+                          <label class="pay">Expiry Date*</label>
+                        </div>
+                        <div class="col-9">
+                          <select class="list-dt" id="month" name="expmonth">
+                            <option selected>Month</option>
+                            <option>January</option>
+                            <option>February</option>
+                            <option>March</option>
+                            <option>April</option>
+                            <option>May</option>
+                            <option>June</option>
+                            <option>July</option>
+                            <option>August</option>
+                            <option>September</option>
+                            <option>October</option>
+                            <option>November</option>
+                            <option>December</option>
+                          </select>
+                          <select class="list-dt" id="year" name="expyear">
+                            <option selected>Year</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    <input type="button" name="make_payment" class="next action-button" value="Confirm" />
+                  </fieldset>
+                  <fieldset>
+                    <div class="form-card">
+                      <h2 class="fs-title text-center">Success !</h2>
+                      <br /><br />
+                      <div class="row justify-content-center">
+                        <div class="col-3">
+                          <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image" />
+                        </div>
+                      </div>
+                      <br /><br />
+                      <div class="row justify-content-center">
+                        <div class="col-7 text-center">
+                          <h5>You Have Successfully Signed Up</h5>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!--===== SKILLS =====-->
-  <section class="skills section" id="skills">
-    <h2 class="section-title">Compétences</h2>
-
-    <div class="skills__container bd-grid">
-      <div class="skills__box">
-        <h3 class="skills__subtitle">Developement</h3>
-        <span class="skills__name">Developeur</span>
-        <span class="skills__name">Electronicien</span>
-        <span class="skills__name">Informatitien</span>
-        <span class="skills__name">Mecanicien</span>
-        <span class="skills__name">Chimiste</span>
-        <span class="skills__name">Electrotechnicien</span>
-
-        <h3 class="skills__subtitle">Atout</h3>
-        <span class="skills__name">Droit</span>
-        <span class="skills__name">Comptabilité</span>
-        <span class="skills__name">Anglais</span>
-      </div>
-
-      <div class="skills__img">
-        <img src="../../content/images/skill.jpg" alt="" />
-      </div>
-    </div>
-  </section>
-
-  <!--===== PORTFOLIO =====-->
-  <section class="portfolio section" id="portfolio">
-    <h2 class="section-title">Filieres</h2>
-
-    <div class="portfolio__container bd-grid">
-      <div class="portfolio__img">
-        <img src="../../content/images/professional-programmer.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">TS STIC</a>
-        </div>
-      </div>
-      <div class="portfolio__img">
-        <img src="../../content/images/ing_mecatronique3.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">TS STGI</a>
-        </div>
-      </div>
-      <div class="portfolio__img">
-        <img src="../../content/images/ts_chimie3.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">TS STGP</a>
-        </div>
-      </div>
-      <div class="portfolio__img">
-        <img src="../../content/images/ing_eit3.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">ING STIC</a>
-        </div>
-      </div>
-      <div class="portfolio__img">
-        <img src="../../content/images/ts_pmsi3.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">ING STGI</a>
-        </div>
-      </div>
-      <div class="portfolio__img">
-        <img src="../../content/images/teamwork-dim-modern-lab.jpg" alt="" />
-
-        <div class="portfolio__link">
-          <a href="#" class="portfolio__link-name">ING STGP</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--===== CONTACT =====-->
-  <section class="contact section" id="contact">
-    <h2 class="section-title">Contact</h2>
-
-    <div class="contact__container bd-grid">
-      <div class="contact__info">
-        <h3 class="contact__subtitle">EMAIL</h3>
-        <span class="contact__text">kouadio.nzi18@inphb.ci</span>
-
-        <h3 class="contact__subtitle">PHONE</h3>
-        <span class="contact__text">+225 07-0881-0678</span>
-
-        <h3 class="contact__subtitle">ADRESS</h3>
-        <span class="contact__text">1093 Yamoussokro INP-HB</span>
-      </div>
-
-      <form action="" class="contact__form">
-        <div class="contact__inputs">
-          <input type="text" placeholder="Nom" class="contact__input" />
-          <input type="mail" placeholder="Email" class="contact__input" />
-        </div>
-
-        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-
-        <input type="submit" value="Envoyer" class="contact__button" />
-      </form>
-    </div>
-  </section>
+  </div>
 </div>

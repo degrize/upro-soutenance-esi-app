@@ -39,6 +39,9 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.hideShow();
+    this.make_design();
+    this.nav_dashoardScript();
     this.entitiesNavbarItems = EntityNavbarItems;
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;
@@ -48,9 +51,6 @@ export class NavbarComponent implements OnInit {
     this.accountService.getAuthenticationState().subscribe(account => {
       this.account = account;
     });
-
-    this.make_design();
-    this.nav_dashoardScript();
   }
 
   changeLanguage(languageKey: string): void {
@@ -95,7 +95,7 @@ export class NavbarComponent implements OnInit {
     navLink.forEach(n => n.addEventListener('click', this.linkAction));
 
     /* ===== SCROLL SECTIONS ACTIVE LINK =====*/
-    window.addEventListener('scroll', this.scrollActive);
+    //window.addEventListener('scroll', this.scrollActive);
   }
 
   linkAction(): void {
@@ -130,12 +130,27 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  hideShow(): void {
+    const body = document.getElementById('body_nav_dasboard');
+    const body_nav = document.getElementById('nav_home');
+    /*if (body && body_nav) {
+      if (this.account) {
+        body.style.visibility = "hidden"
+        body_nav.style.visibility = "visible"
+      }else {
+        body.style.visibility = "visible"
+        body_nav.style.visibility = "hidden"
+      }
+    }*/
+  }
+
   nav_dashoardScript(): void {
-    const body = document.querySelector('#body_nav_dasboard');
+    const body = document.getElementById('body_nav_dasboard');
+
     if (body) {
-      const modeToggle = body.querySelector('.mode-toggle');
-      const sidebar = body.querySelector('#nav_dashboard');
-      const sidebarToggle = body.querySelector('.sidebar-toggle');
+      const modeToggle = document.querySelector('.mode-toggle');
+      const sidebar = document.querySelector('#nav_dashboard');
+      const sidebarToggle = document.querySelector('.sidebar-toggle');
 
       const getMode = localStorage.getItem('mode');
       if (getMode && getMode === 'dark') {
