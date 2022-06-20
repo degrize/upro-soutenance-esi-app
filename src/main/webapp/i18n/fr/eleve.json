@@ -2,20 +2,20 @@
   "uproSoutenanceEsiApp": {
     "eleve": {
       "home": {
-        "title": "Eleves",
+        "title": "Elèves",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Eleve",
-        "createOrEditLabel": "Créer ou éditer un Eleve",
-        "notFound": "Aucun Eleve trouvé"
+        "createLabel": "Créer un nouvel Elève",
+        "createOrEditLabel": "Créer ou éditer un Elève",
+        "notFound": "Aucun Elève trouvé"
       },
-      "created": "Un nouveau Eleve a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Eleve avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Eleve avec l'identifiant {{ param }} a été supprimé",
+      "created": "Un nouvel Elève a été créé avec l'identifiant {{ param }}",
+      "updated": "L'élève avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "L'élève avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Eleve {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer l'élève {{ id }} ?"
       },
       "detail": {
-        "title": "Eleve"
+        "title": "Elève"
       },
       "id": "ID",
       "matricule": "Matricule",
@@ -27,7 +27,7 @@
       "dateParcoursFin": "Date Parcours Fin",
       "encadreur": "Encadreur",
       "projet": "Projet",
-      "specialite": "Specialite"
+      "specialite": "Specialité"
     }
   }
 }

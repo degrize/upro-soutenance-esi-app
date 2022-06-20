@@ -2,33 +2,33 @@
   "uproSoutenanceEsiApp": {
     "entreprise": {
       "home": {
-        "title": "Entreprises",
+        "title": "Companies",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Entreprise",
-        "createOrEditLabel": "Create or edit a Entreprise",
+        "createLabel": "Create a new Company",
+        "createOrEditLabel": "Create or edit a Company",
         "notFound": "No Entreprises found"
       },
-      "created": "A new Entreprise is created with identifier {{ param }}",
-      "updated": "A Entreprise is updated with identifier {{ param }}",
-      "deleted": "A Entreprise is deleted with identifier {{ param }}",
+      "created": "A new Company is created with identifier {{ param }}",
+      "updated": "A Company is updated with identifier {{ param }}",
+      "deleted": "A Company is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Entreprise {{ id }}?"
+        "question": "Are you sure you want to delete Company {{ id }}?"
       },
       "detail": {
-        "title": "Entreprise"
+        "title": "Company"
       },
       "id": "ID",
-      "nom": "Nom",
-      "codeENtreprise": "Code E Ntreprise",
-      "secteurActivite": "Secteur Activite",
-      "adresse": "Adresse",
-      "nomDirecteur": "Nom Directeur",
-      "contactDirecteur": "Contact Directeur",
-      "emailDirecteur": "Email Directeur",
-      "nomMaitreStage": "Nom Maitre Stage",
-      "contactMaitreStage": "Contact Maitre Stage",
-      "emailMaitreStage": "Email Maitre Stage",
-      "projet": "Projet"
+      "name": "Name",
+      "CompanyCode": "Company Code",
+      "ActivityArea": "Activity Area",
+      "addresse": "Addresse",
+      "DirectorName ": "Director Name",
+      "Director'sContact": "Director's Contact",
+      "Director'sEmail": "Director's Email",
+      "StageMasterName": "Stage Master Name",
+      "StageMasterContact": "Stage Master Contact",
+      "StageMasterEmail": "Stage Master Email",
+      "project": "Project"
     }
   }
 }

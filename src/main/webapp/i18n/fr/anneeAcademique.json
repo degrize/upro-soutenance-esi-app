@@ -2,23 +2,23 @@
   "uproSoutenanceEsiApp": {
     "anneeAcademique": {
       "home": {
-        "title": "AnneeAcademiques",
+        "title": "Année Academiques",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Annee Academique",
-        "createOrEditLabel": "Créer ou éditer un Annee Academique",
-        "notFound": "Aucun Annee Academique trouvé"
+        "createLabel": "Créer une nouvelle Année Academique",
+        "createOrEditLabel": "Créer ou éditer une Année Academique",
+        "notFound": "Aucune Année Academique trouvée"
       },
-      "created": "Un nouveau Annee Academique a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Annee Academique avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Annee Academique avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Année Academique a été créée avec l'identifiant {{ param }}",
+      "updated": "L'année Academique avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "L'année Academique avec l'identifiant {{ param }} a été supprimée",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Annee Academique {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer l'année Academique {{ id }} ?"
       },
       "detail": {
-        "title": "Annee Academique"
+        "title": "Année Academique"
       },
       "id": "ID",
-      "anneeScolaire": "Annee Scolaire"
+      "anneeScolaire": "Année Scolaire"
     }
   }
 }

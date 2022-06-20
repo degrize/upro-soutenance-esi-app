@@ -4,15 +4,15 @@
       "home": {
         "title": "Entreprises",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Entreprise",
-        "createOrEditLabel": "Créer ou éditer un Entreprise",
-        "notFound": "Aucun Entreprise trouvé"
+        "createLabel": "Créer une nouvelle Entreprise",
+        "createOrEditLabel": "Créer ou éditer une Entreprise",
+        "notFound": "Aucune Entreprise trouvée"
       },
-      "created": "Un nouveau Entreprise a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Entreprise avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Entreprise avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Entreprise a été créée avec l'identifiant {{ param }}",
+      "updated": "L'entreprise avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "L'entreprise avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Entreprise {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer l'entreprise {{ id }} ?"
       },
       "detail": {
         "title": "Entreprise"

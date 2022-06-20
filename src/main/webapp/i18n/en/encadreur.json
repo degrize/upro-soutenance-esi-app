@@ -2,24 +2,24 @@
   "uproSoutenanceEsiApp": {
     "encadreur": {
       "home": {
-        "title": "Encadreurs",
+        "title": "Supervisors",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Encadreur",
-        "createOrEditLabel": "Create or edit a Encadreur",
+        "createLabel": "Create a new Supervisor",
+        "createOrEditLabel": "Create or edit a Supervisor",
         "notFound": "No Encadreurs found"
       },
-      "created": "A new Encadreur is created with identifier {{ param }}",
-      "updated": "A Encadreur is updated with identifier {{ param }}",
-      "deleted": "A Encadreur is deleted with identifier {{ param }}",
+      "created": "A new Supervisorr is created with identifier {{ param }}",
+      "updated": "A Supervisor is updated with identifier {{ param }}",
+      "deleted": "A Supervisor is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Encadreur {{ id }}?"
+        "question": "Are you sure you want to delete Supervisor {{ id }}?"
       },
       "detail": {
-        "title": "Encadreur"
+        "title": "Supervisor"
       },
       "id": "ID",
-      "nom": "Nom",
-      "prenoms": "Prenoms",
+      "name": "Name",
+      "First Name": "First Name",
       "contact": "Contact",
       "email": "Email"
     }
