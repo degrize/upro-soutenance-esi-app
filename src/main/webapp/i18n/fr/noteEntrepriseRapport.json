@@ -4,18 +4,18 @@
       "home": {
         "title": "NoteEntrepriseRapports",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Note Entreprise Rapport",
-        "createOrEditLabel": "Créer ou éditer un Note Entreprise Rapport",
-        "notFound": "Aucun Note Entreprise Rapport trouvé"
+        "createLabel": "Créer une nouvelle Note de l'entreprise Rapport",
+        "createOrEditLabel": "Créer ou éditer une Note de l'entreprise Rapport",
+        "notFound": "Aucune Note de l'entreprise Rapport trouvée"
       },
-      "created": "Un nouveau Note Entreprise Rapport a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Note Entreprise Rapport avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Note Entreprise Rapport avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Note de l'entreprise Rapport a été créée avec l'identifiant {{ param }}",
+      "updated": "La Note de l'entreprise Rapport avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "La Note de l'entreprise Rapport avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Note Entreprise Rapport {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Note de l'entreprise Rapport {{ id }} ?"
       },
       "detail": {
-        "title": "Note Entreprise Rapport"
+        "title": "Note de l'entreprise Rapport"
       },
       "id": "ID",
       "note": "Note",

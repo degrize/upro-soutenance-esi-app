@@ -2,29 +2,29 @@
   "uproSoutenanceEsiApp": {
     "projet": {
       "home": {
-        "title": "Projets",
+        "title": "Projects",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Projet",
-        "createOrEditLabel": "Create or edit a Projet",
-        "notFound": "No Projets found"
+        "createLabel": "Create a new Project",
+        "createOrEditLabel": "Create or edit a Project",
+        "notFound": "No Projects found"
       },
-      "created": "A new Projet is created with identifier {{ param }}",
-      "updated": "A Projet is updated with identifier {{ param }}",
-      "deleted": "A Projet is deleted with identifier {{ param }}",
+      "created": "A new Project is created with identifier {{ param }}",
+      "updated": "A Project is updated with identifier {{ param }}",
+      "deleted": "A Project is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Projet {{ id }}?"
+        "question": "Are you sure you want to delete Project {{ id }}?"
       },
       "detail": {
-        "title": "Projet"
+        "title": "Project"
       },
       "id": "ID",
       "theme": "Theme",
-      "rapport": "Rapport",
-      "cout": "Cout",
-      "dateAjout": "Date Ajout",
-      "dateModification": "Date Modification",
-      "anneeAcademique": "Annee Academique",
-      "entreprise": "Entreprise"
+      "report": "Report",
+      "cost": "Cost",
+      "dateAdded": "Date Added",
+      "ModificationDate": "Modification Date",
+      "AcademiqueYear": "Academique year",
+      "company": "company"
     }
   }
 }

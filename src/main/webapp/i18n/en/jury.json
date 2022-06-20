@@ -18,13 +18,13 @@
         "title": "Jury"
       },
       "id": "ID",
-      "nomPresident": "Nom President",
-      "nomRapporteur": "Nom Rapporteur",
-      "nomProfAnglais": "Nom Prof Anglais",
-      "numeroSalle": "Numero Salle",
-      "anneeAcademique": "Annee Academique",
-      "genie": "Genie",
-      "soutenance": "Soutenance"
+      "PresidentName": "President Name",
+      "ReporterName": "Reporter Name",
+      "EnglishTeacherName": "English Teacher Name",
+      "RoomNumbere": "Room Number",
+      "AcademiqueYear": "Academique Year",
+      "Engineering": "Engineering",
+      "Defense": "Defense"
     }
   }
 }

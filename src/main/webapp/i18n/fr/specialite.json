@@ -4,18 +4,18 @@
       "home": {
         "title": "Specialites",
         "refreshListLabel": "Actualiser la liste",
-        "createLabel": "Créer un nouveau Specialite",
-        "createOrEditLabel": "Créer ou éditer un Specialite",
-        "notFound": "Aucun Specialite trouvé"
+        "createLabel": "Créer une nouvelle Specialité",
+        "createOrEditLabel": "Créer ou éditer une Specialité",
+        "notFound": "Aucune Specialité trouvée"
       },
-      "created": "Un nouveau Specialite a été créé avec l'identifiant {{ param }}",
-      "updated": "Le Specialite avec l'identifiant {{ param }} a été mis à jour",
-      "deleted": "Le Specialite avec l'identifiant {{ param }} a été supprimé",
+      "created": "Une nouvelle Specialité a été créée avec l'identifiant {{ param }}",
+      "updated": "La Specialité avec l'identifiant {{ param }} a été mise à jour",
+      "deleted": "La Specialité avec l'identifiant {{ param }} a été supprimé",
       "delete": {
-        "question": "Êtes-vous certain de vouloir supprimer le Specialite {{ id }} ?"
+        "question": "Êtes-vous certain de vouloir supprimer la Specialité {{ id }} ?"
       },
       "detail": {
-        "title": "Specialite"
+        "title": "Specialité"
       },
       "id": "ID",
       "nom": "Nom"

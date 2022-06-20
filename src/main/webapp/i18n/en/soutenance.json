@@ -2,31 +2,31 @@
   "uproSoutenanceEsiApp": {
     "soutenance": {
       "home": {
-        "title": "Soutenances",
+        "title": "Defences",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Soutenance",
-        "createOrEditLabel": "Create or edit a Soutenance",
-        "notFound": "No Soutenances found"
+        "createLabel": "Create a new Defence",
+        "createOrEditLabel": "Create or edit a Defence",
+        "notFound": "No Defences found"
       },
-      "created": "A new Soutenance is created with identifier {{ param }}",
-      "updated": "A Soutenance is updated with identifier {{ param }}",
-      "deleted": "A Soutenance is deleted with identifier {{ param }}",
+      "created": "A new Defence is created with identifier {{ param }}",
+      "updated": "A Defence is updated with identifier {{ param }}",
+      "deleted": "A Defence is deleted with identifier {{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Soutenance {{ id }}?"
+        "question": "Are you sure you want to delete Defence {{ id }}?"
       },
       "detail": {
-        "title": "Soutenance"
+        "title": "Defence"
       },
       "id": "ID",
       "mention": "Mention",
       "note": "Note",
-      "dateDuJour": "Date Du Jour",
+      "Today'sDate": "Today's Date",
       "remarque": "Remarque",
-      "dateAjout": "Date Ajout",
-      "dateModification": "Date Modification",
-      "projet": "Projet",
+      "dateAdded": "Date Added",
+      "ModificationDate": "Modification Date",
+      "project": "Project",
       "jury": "Jury",
-      "anneeAcademique": "Annee Academique"
+      "Academique year": "Academique year"
     }
   }
 }

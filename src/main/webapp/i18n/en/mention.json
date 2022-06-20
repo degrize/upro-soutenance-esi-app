@@ -1,11 +1,11 @@
 {
   "uproSoutenanceEsiApp": {
     "Mention": {
-      "null": "",
+      "null": "NULL",
       "PASSABLE": "PASSABLE",
-      "ASSEZ_BIEN": "ASSEZ_BIEN",
-      "BIEN": "BIEN",
-      "TRES_BIEN": "TRES_BIEN",
+      "QUITE_WELL": "QUITE_WELL",
+      "GOOD": "GOOD",
+      "VERY_GOOD": "VERY_GOOD",
       "HONORABLE": "HONORABLE",
       "EXCELENTE": "EXCELENTE"
     }
