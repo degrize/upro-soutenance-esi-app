@@ -253,13 +253,13 @@ npm install --save ng-wizard --legacy-peer-deps
 Le table search [Pour le table search]: https://mdbootstrap.com/docs/b5/angular/getting-started/installation/
 
 ```
-npm i --save mdb-angular-ui-kit --legacy-peer-deps
+npm install --save mdb-angular-ui-kit --legacy-peer-deps
 ```
 
 Le fontawesome
 
 ```
-npm i --save @fortawesome/fontawesome-free --legacy-peer-deps
+npm install --save @fortawesome/fontawesome-free --legacy-peer-deps
 ```
 
 Encore pour le table search
