@@ -393,7 +393,7 @@ img {
 /* For small devices */
 @media screen and (max-width: 320px) {
   .home__img {
-    width: 230px;
+    max-width: 230px;
   }
   .l-header {
     max-height: 30px;
@@ -449,7 +449,7 @@ img {
       row-gap: 0;
     }
     &__img {
-      width: 524px;
+      width: 324px;
       right: 10%;
     }
   }

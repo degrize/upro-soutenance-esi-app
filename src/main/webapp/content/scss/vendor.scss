@@ -1,5 +1,23 @@
 /* after changing this file run 'npm run webapp:build' */
 
+/* Mandatory */
+@import '~ng-wizard/themes/ng_wizard.min.css';
+
+/* Optional */
+/* If a theme other than default is used, the css file for that theme is required. */
+@import '~ng-wizard/themes/ng_wizard_theme_arrows.min.css';
+@import '~ng-wizard/themes/ng_wizard_theme_circles.min.css';
+@import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import '~@fortawesome/fontawesome-free/scss/solid.scss';
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+@import '~@fortawesome/fontawesome-free/scss/brands.scss';
+
+// MDB SCSS
+@import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
+
 /***************************
 put Sass variables here:
 eg $input-color: red;
@@ -12,12 +30,3 @@ eg $input-color: red;
 @import 'styles_home';
 
 /* jhipster-needle-scss-add-vendor JHipster will add new css style */
-
-/* Mandatory */
-@import '~ng-wizard/themes/ng_wizard.min.css';
-
-/* Optional */
-/* If a theme other than default is used, the css file for that theme is required. */
-@import '~ng-wizard/themes/ng_wizard_theme_arrows.min.css';
-@import '~ng-wizard/themes/ng_wizard_theme_circles.min.css';
-@import '~ng-wizard/themes/ng_wizard_theme_dots.min.css';

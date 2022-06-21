@@ -16,6 +16,8 @@ import { TranslationModule } from 'app/shared/language/translation.module';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 const ngWizardConfig: NgWizardConfig = {
@@ -44,6 +46,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     NgxWebstorageModule.forRoot({ prefix: 'jhi', separator: '-', caseSensitive: true }),
     TranslationModule,
     NgWizardModule.forRoot(ngWizardConfig),
+    MdbCheckboxModule,
   ],
   providers: [
     Title,

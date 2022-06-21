@@ -1,5 +1,14 @@
 <div class="d-flex justify-content-center">
-  <div *ngIf="!stepOk">
+  <div class="col-10">
+    <h2
+      id="jhi-soutenance-heading"
+      data-cy="SoutenanceCreateUpdateHeading"
+      jhiTranslate="uproSoutenanceEsiApp.soutenance.home.createOrEditLabel"
+    >
+      Create or edit a Soutenance
+    </h2>
+    <br /><br />
+
     <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
       <ng-wizard-step
         [title]="'Etudiant'"
@@ -20,16 +29,8 @@
       </ng-wizard-step>
 
       <ng-wizard-step [title]="'Note'" [description]="'soutenance'">
-        <div class="col-8">
+        <div class="">
           <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2
-              id="jhi-soutenance-heading"
-              data-cy="SoutenanceCreateUpdateHeading"
-              jhiTranslate="uproSoutenanceEsiApp.soutenance.home.createOrEditLabel"
-            >
-              Create or edit a Soutenance
-            </h2>
-
             <div>
               <jhi-alert-error></jhi-alert-error>
 

@@ -57,7 +57,7 @@ JHipster ships with PWA (Progressive Web App) support, and it's turned off by de
 The service worker initialization code is disabled by default. To enable it, uncomment the following code in `src/main/webapp/app/app.module.ts`:
 
 ```typescript
-ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
+ServiceWorkerModule.register('ngsw-worker.js', { enabled: false });
 ```
 
 ### Managing dependencies
@@ -248,4 +248,22 @@ pour le multi step
 
 ```
 npm install --save ng-wizard --legacy-peer-deps
+```
+
+Le table search [Pour le table search]: https://mdbootstrap.com/docs/b5/angular/getting-started/installation/
+
+```
+npm i --save mdb-angular-ui-kit --legacy-peer-deps
+```
+
+Le fontawesome
+
+```
+npm i --save @fortawesome/fontawesome-free --legacy-peer-deps
+```
+
+Encore pour le table search
+
+```
+npm install --save @angular/material @angular/cdk --legacy-peer-deps
 ```
