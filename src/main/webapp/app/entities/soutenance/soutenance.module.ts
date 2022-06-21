@@ -5,9 +5,10 @@ import { SoutenanceDetailComponent } from './detail/soutenance-detail.component'
 import { SoutenanceUpdateComponent } from './update/soutenance-update.component';
 import { SoutenanceDeleteDialogComponent } from './delete/soutenance-delete-dialog.component';
 import { SoutenanceRoutingModule } from './route/soutenance-routing.module';
+import { NgWizardModule } from 'ng-wizard';
 
 @NgModule({
-  imports: [SharedModule, SoutenanceRoutingModule],
+  imports: [SharedModule, SoutenanceRoutingModule, NgWizardModule],
   declarations: [SoutenanceComponent, SoutenanceDetailComponent, SoutenanceUpdateComponent, SoutenanceDeleteDialogComponent],
   entryComponents: [SoutenanceDeleteDialogComponent],
 })

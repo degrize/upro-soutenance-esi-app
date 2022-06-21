@@ -24,6 +24,7 @@ export class NavbarComponent implements OnInit {
   version = '';
   account: Account | null = null;
   entitiesNavbarItems: any[] = [];
+  component_dash_id = '';
 
   constructor(
     private loginService: LoginService,
@@ -95,7 +96,7 @@ export class NavbarComponent implements OnInit {
     navLink.forEach(n => n.addEventListener('click', this.linkAction));
 
     /* ===== SCROLL SECTIONS ACTIVE LINK =====*/
-    //window.addEventListener('scroll', this.scrollActive);
+    // window.addEventListener('scroll', this.scrollActive);
   }
 
   linkAction(): void {
@@ -131,9 +132,9 @@ export class NavbarComponent implements OnInit {
   }
 
   hideShow(): void {
-    const body = document.getElementById('body_nav_dasboard');
-    const body_nav = document.getElementById('nav_home');
-    /*if (body && body_nav) {
+    // const body = document.getElementById('body_nav_dasboard');
+    // const body_nav = document.getElementById('nav_home');
+    /* if (body && body_nav) {
       if (this.account) {
         body.style.visibility = "hidden"
         body_nav.style.visibility = "visible"
@@ -186,6 +187,20 @@ export class NavbarComponent implements OnInit {
             }
           }
         });
+      }
+    }
+  }
+
+  active_clic_component(id: string): void {
+    const component_dash_color = document.querySelectorAll('.menu-items .nav-links li a .link-name');
+    for (let i = 0; i < component_dash_color.length; i++) {
+      const current = component_dash_color[i];
+      // const link_name = current.querySelector('.link-name') as HTMLElement;
+      // const icon = current.querySelector('.menu-items .nav-links li a i');
+      if (id === current.getAttribute('id')) {
+        current.classList.add('active');
+      } else {
+        current.classList.remove('active');
       }
     }
   }

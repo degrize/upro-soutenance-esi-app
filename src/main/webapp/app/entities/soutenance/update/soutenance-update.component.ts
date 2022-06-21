@@ -15,13 +15,20 @@ import { IAnneeAcademique } from 'app/entities/annee-academique/annee-academique
 import { AnneeAcademiqueService } from 'app/entities/annee-academique/service/annee-academique.service';
 import { Mention } from 'app/entities/enumerations/mention.model';
 
+// ng-wizard
+
+import { of } from 'rxjs';
+import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
+
 @Component({
   selector: 'jhi-soutenance-update',
   templateUrl: './soutenance-update.component.html',
+  styleUrls: ['./soutenance-update.component.scss'],
 })
 export class SoutenanceUpdateComponent implements OnInit {
   isSaving = false;
   mentionValues = Object.keys(Mention);
+  stepOk = false;
 
   projetsCollection: IProjet[] = [];
   juriesSharedCollection: IJury[] = [];
@@ -40,13 +47,37 @@ export class SoutenanceUpdateComponent implements OnInit {
     anneeAcademique: [],
   });
 
+  // ng-wizard
+  isValidTypeBoolean = true;
+  stepStates = {
+    normal: STEP_STATE.normal,
+    disabled: STEP_STATE.disabled,
+    error: STEP_STATE.error,
+    hidden: STEP_STATE.hidden,
+  };
+
+  config: NgWizardConfig = {
+    selected: 0,
+    theme: THEME.circles,
+    toolbarSettings: {
+      toolbarExtraButtons: [
+        {
+          text: 'Finish',
+          class: 'btn btn-info',
+          event: () => alert('Finished!!!'),
+        },
+      ],
+    },
+  };
+
   constructor(
     protected soutenanceService: SoutenanceService,
     protected projetService: ProjetService,
     protected juryService: JuryService,
     protected anneeAcademiqueService: AnneeAcademiqueService,
     protected activatedRoute: ActivatedRoute,
-    protected fb: FormBuilder
+    protected fb: FormBuilder,
+    private ngWizardService: NgWizardService
   ) {}
 
   ngOnInit(): void {
@@ -56,6 +87,36 @@ export class SoutenanceUpdateComponent implements OnInit {
       this.loadRelationshipsOptions();
     });
   }
+
+  // ng-wizard
+  showPreviousStep(event?: Event): any {
+    this.ngWizardService.previous();
+  }
+
+  showNextStep(event?: Event): any {
+    this.ngWizardService.next();
+  }
+
+  resetWizard(event?: Event): void {
+    this.ngWizardService.reset();
+  }
+
+  setTheme(theme: THEME): void {
+    this.ngWizardService.theme(theme);
+  }
+
+  stepChanged(args: StepChangedArgs): void {
+    console.log(args.step);
+  }
+
+  isValidFunctionReturnsBoolean(args: StepValidationArgs): boolean {
+    return true;
+  }
+
+  isValidFunctionReturnsObservable(args: StepValidationArgs): Observable<boolean> {
+    return of(true);
+  }
+  // end ng-wizard bloc code
 
   previousState(): void {
     window.history.back();
