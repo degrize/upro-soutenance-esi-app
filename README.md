@@ -242,7 +242,7 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/
 
-## LEs biblioteques et frameworks
+# LEs biblioteques et frameworks
 
 pour le multi step
 
@@ -265,5 +265,40 @@ npm install --save @fortawesome/fontawesome-free --legacy-peer-deps
 Encore pour le table search
 
 ```
-npm install --save @angular/material @angular/cdk --legacy-peer-deps
+npm install --save @angular/material @angular/cdk @angular/animations --legacy-peer-deps
+```
+
+Encore pour le search
+
+```
+npm install --save @angular/animations --legacy-peer-deps
+```
+
+Encore et encore
+
+```
+npm install --save ng-uikit-pro-standard --legacy-peer-deps
+```
+
+Add these two line on the tsconfig.json
+
+```
+    "noImplicitReturns": true,
+    "strictPropertyInitialization": false,
+```
+
+Add ng boostrap
+
+```
+npm install --save @ng-bootstrap/ng-bootstrap --legacy-peer-deps
+```
+
+Installer Angular
+
+```
+npm install -g @angular/cli
+```
+
+```
+npm install --save @ng-select/ng-select --legacy-peer-deps
 ```

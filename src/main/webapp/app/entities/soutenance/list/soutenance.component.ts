@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable, startWith } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { ISoutenance } from '../soutenance.model';
@@ -9,6 +9,11 @@ import { ISoutenance } from '../soutenance.model';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/config/pagination.constants';
 import { SoutenanceService } from '../service/soutenance.service';
 import { SoutenanceDeleteDialogComponent } from '../delete/soutenance-delete-dialog.component';
+
+import { IEleve } from '../../eleve/eleve.model';
+import { FormControl } from '@angular/forms';
+import { map } from 'rxjs/operators';
+import { EleveService } from '../../eleve/service/eleve.service';
 
 @Component({
   selector: 'jhi-soutenance',

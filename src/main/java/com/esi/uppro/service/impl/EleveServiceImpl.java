@@ -5,6 +5,7 @@ import com.esi.uppro.repository.EleveRepository;
 import com.esi.uppro.service.EleveService;
 import com.esi.uppro.service.dto.EleveDTO;
 import com.esi.uppro.service.mapper.EleveMapper;
+import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,5 +85,10 @@ public class EleveServiceImpl implements EleveService {
     public void delete(Long id) {
         log.debug("Request to delete Eleve : {}", id);
         eleveRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Eleve> getEleves() {
+        return eleveRepository.getEleves();
     }
 }

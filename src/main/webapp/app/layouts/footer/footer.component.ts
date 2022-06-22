@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { takeUntil } from 'rxjs/operators';
 import { AccountService } from '../../core/auth/account.service';
-import { Router } from '@angular/router';
 import { Account } from '../../core/auth/account.model';
 import { Subject } from 'rxjs';
 

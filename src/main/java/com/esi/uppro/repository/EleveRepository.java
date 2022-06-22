@@ -41,4 +41,7 @@ public interface EleveRepository extends JpaRepository<Eleve, Long> {
         "select eleve from Eleve eleve left join fetch eleve.encadreur left join fetch eleve.projet left join fetch eleve.specialite where eleve.id =:id"
     )
     Optional<Eleve> findOneWithToOneRelationships(@Param("id") Long id);
+
+    @Query("select eleve from Eleve eleve")
+    List<Eleve> getEleves();
 }

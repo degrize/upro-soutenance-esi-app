@@ -1,6 +1,8 @@
 package com.esi.uppro.service;
 
+import com.esi.uppro.domain.Eleve;
 import com.esi.uppro.service.dto.EleveDTO;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -63,4 +65,6 @@ public interface EleveService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    List<Eleve> getEleves();
 }

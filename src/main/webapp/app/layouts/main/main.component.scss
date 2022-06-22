@@ -11,6 +11,8 @@
   width: 100%;
   max-width: 997px;
   margin-top: 60px;
+  z-index: 0;
+  margin-bottom: 50px;
 }
 
 // La bar de menu
@@ -18,7 +20,6 @@
   position: relative;
   left: 250px;
   background-color: transparent;
-  min-height: 100vh;
   width: calc(100% - 250px);
   padding: 10px 14px;
   transition: $tran-05;

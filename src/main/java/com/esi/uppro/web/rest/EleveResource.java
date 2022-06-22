@@ -1,5 +1,6 @@
 package com.esi.uppro.web.rest;
 
+import com.esi.uppro.domain.Eleve;
 import com.esi.uppro.repository.EleveRepository;
 import com.esi.uppro.service.EleveService;
 import com.esi.uppro.service.dto.EleveDTO;
@@ -152,11 +153,7 @@ public class EleveResource {
     ) {
         log.debug("REST request to get a page of Eleves");
         Page<EleveDTO> page;
-        if (eagerload) {
-            page = eleveService.findAllWithEagerRelationships(pageable);
-        } else {
-            page = eleveService.findAll(pageable);
-        }
+        page = eleveService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -188,5 +185,13 @@ public class EleveResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/eleves/soutenance")
+    public ResponseEntity<List<Eleve>> getAllElevesSoutenance() {
+        log.debug("REST request to get a page of Eleves");
+        List<Eleve> result = eleveService.getEleves();
+
+        return ResponseEntity.ok().body(result);
     }
 }
