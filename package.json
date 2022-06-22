@@ -72,6 +72,7 @@
     "packaging": "jar"
   },
   "dependencies": {
+    "@angular-devkit/build-webpack": "^0.1400.2",
     "@angular/animations": "^14.0.2",
     "@angular/cdk": "^14.0.2",
     "@angular/common": "13.3.1",
@@ -110,7 +111,7 @@
     "@angular-builders/jest": "13.0.3",
     "@angular-devkit/build-angular": "13.3.1",
     "@angular-eslint/eslint-plugin": "13.2.0",
-    "@angular/cli": "13.3.1",
+    "@angular/cli": "^14.0.2",
     "@angular/compiler-cli": "13.3.1",
     "@angular/service-worker": "13.3.1",
     "@types/jest": "27.4.1",

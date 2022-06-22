@@ -7,10 +7,9 @@ import { SoutenanceDeleteDialogComponent } from './delete/soutenance-delete-dial
 import { SoutenanceRoutingModule } from './route/soutenance-routing.module';
 import { NgWizardModule } from 'ng-wizard';
 import { NgbdSortableHeaderDirective } from './list/search-table/sortable.directive';
-import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
-  imports: [SharedModule, SoutenanceRoutingModule, NgWizardModule, NgSelectModule],
+  imports: [SharedModule, SoutenanceRoutingModule, NgWizardModule],
   declarations: [
     SoutenanceComponent,
     SoutenanceDetailComponent,

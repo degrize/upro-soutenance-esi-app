@@ -302,3 +302,7 @@ npm install -g @angular/cli
 ```
 npm install --save @ng-select/ng-select --legacy-peer-deps
 ```
+
+```
+npm install @angular-devkit/build-webpack --legacy-peer-deps
+```

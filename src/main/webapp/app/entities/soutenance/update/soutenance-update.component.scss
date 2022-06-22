@@ -3,55 +3,9 @@
 @import '~bootstrap/scss/variables';
 
 // La bar de recherche
-.search-form {
-  background-color: transparent;
-  width: calc(100% - 250px);
-  padding: 10px 14px;
+.search-input {
+  width: 400px;
   transition: $tran-05;
-
-  .top {
-    display: flex;
-    width: calc(100% - 250px);
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 14px;
-    background-color: $panel-color;
-    transition: $tran-05;
-    z-index: 10;
-
-    .search-box {
-      position: relative;
-      height: 45px;
-      max-width: 600px;
-      width: 300px;
-      margin: 0 30px;
-
-      input {
-        position: absolute;
-        border: 1px solid $border-color;
-        background-color: $panel-color;
-        padding: 0 25px 0 50px;
-        border-radius: 5px;
-        height: 100%;
-        width: 500px;
-        max-width: 500px;
-        color: $text-color;
-        font-size: 15px;
-        font-weight: 400;
-        outline: none;
-      }
-    }
-
-    .search-box i {
-      position: absolute;
-      left: 15px;
-      font-size: 22px;
-      z-index: 10;
-      top: 50%;
-      transform: translateY(-50%);
-      color: $black-light-color;
-    }
-  }
 }
 
 .onoffswitch {

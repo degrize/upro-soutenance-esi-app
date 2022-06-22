@@ -43,8 +43,6 @@ spring:
   liquibase:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev, faker
-  profiles:
-    active: dev
   mail:
     host: smtp.gmail.com
     port: 587
@@ -60,6 +58,9 @@ spring:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
     cache: false
+  config:
+    activate:
+      on-profile:
 
 server:
   port: 9004
