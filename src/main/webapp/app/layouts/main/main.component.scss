@@ -11,14 +11,11 @@
   width: 100%;
   max-width: 997px;
   margin-top: 60px;
-  z-index: 0;
   margin-bottom: 50px;
 }
 
 // La bar de menu
 .dashboard {
-  position: relative;
-  left: 250px;
   background-color: transparent;
   width: calc(100% - 250px);
   padding: 10px 14px;
@@ -33,13 +30,17 @@ nav.close ~ .dashboard {
   top: 0;
   left: 250px;
   display: flex;
-  width: calc(100% - 250px);
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background-color: $panel-color;
+  //background-color: $panel-color;
+  background: rgba(61, 165, 189, 0.97);
   transition: $tran-05;
   z-index: 10;
+  height: 70px;
+  color: $white;
+  font-size: 40px;
 }
 nav.close ~ .dashboard .top {
   left: 73px;
@@ -82,4 +83,45 @@ nav.close ~ .dashboard .top {
 .top img {
   width: 40px;
   border-radius: 50%;
+}
+
+@media (max-width: 400px) {
+  .nav-left {
+    width: 130px !important;
+  }
+
+  .responsive-font-example {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: 0px;
+  }
+
+  .dashboard .top {
+    background: red;
+    color: white;
+    font-weight: 900;
+    width: 500px !important;
+    left: 0;
+  }
+  .page_container {
+  }
+}
+
+/* If the screen size is 1200px wide or more, set the font-size to 80px */
+@media (min-width: 1200px) {
+  .responsive-font-example {
+    font-size: 30px;
+    text-align: center;
+    align-self: center;
+  }
+}
+/* If the screen size is smaller than 1200px, set the font-size to 80px */
+@media (max-width: 1199.98px) {
+  .responsive-font-example {
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    left: -100px;
+  }
 }

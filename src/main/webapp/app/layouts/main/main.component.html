@@ -3,18 +3,13 @@
 <div [ngSwitch]="account !== null">
   <div class="projet_main">
     <div class="nav_container">
-      <router-outlet name="navbar"></router-outlet>
+      <div class="nav-left">
+        <router-outlet name="navbar"></router-outlet>
+      </div>
 
       <section class="dashboard">
         <div class="top">
-          <i class="uil uil-bars sidebar-toggle"></i>
-
-          <div class="search-box">
-            <i class="uil uil-search"></i>
-            <input type="text" placeholder="Search here..." />
-          </div>
-
-          <img src="./content/images/profile.jpg" alt="" />
+          <h1 style="font-size: 4vw">Gestion de soutenance</h1>
         </div>
       </section>
     </div>
