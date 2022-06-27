@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="#{email.createDocumentService.title}">JHipster activation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+
+    <!-- use the font -->
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body style="margin: 5px; padding: 5px; background-color: #fafafa">
+    <p th:text="#{email.createDocumentService.greeting(${user.lastName}, ${user.firstName})}">Dear</p>
+    <p th:text="#{email.createDocumentService.text1}">Veuilllez deposer la correction de rapport PFE a la bibliotheque de l'INPHB</p>
+
+    <p th:text="#{email.createDocumentService.text2}" style="color: red">Penalite de refus d'acquisition du diplome</p>
+    <p>
+      <span th:text="#{email.createDocumentService.text3}">Regards, </span>
+      <br />
+      <em th:text="#{email.createDocumentService.signature}">inphb/Esi-Ã©..</em>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title th:text="#{email.createDocumentService.title}">Validation contrôle conformité</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="shortcut icon" th:href="@{|${baseUrl}/favicon.ico|}" />
+  </head>
+  <body>
+    <p th:text="#{email.validationControleConformiteDocument.greeting(${user.lastName}, ${user.firstName})}">Dear</p>
+
+    <p>INPHB-ESI Ge soutenance</p>
+    <p></p>
+  </body>
+</html>

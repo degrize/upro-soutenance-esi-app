@@ -1,9 +1,11 @@
 package com.esi.uppro.repository;
 
+import com.esi.uppro.domain.Authority;
 import com.esi.uppro.domain.User;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -33,4 +35,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findOneWithAuthoritiesByEmailIgnoreCase(String email);
 
     Page<User> findAllByIdNotNullAndActivatedIsTrue(Pageable pageable);
+
+    Page<User> findAllByLoginNotIn(Pageable pageable, List<String> logins);
+
+    User findByLogin(String username);
+
+    Set<User> findByLoginNotIn(List<String> exclusions);
 }

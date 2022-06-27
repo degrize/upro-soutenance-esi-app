@@ -1,6 +1,7 @@
 package com.esi.uppro.service;
 
 import com.esi.uppro.domain.User;
+import com.esi.uppro.service.dto.ReportDTO;
 import java.nio.charset.StandardCharsets;
 import java.util.Locale;
 import javax.mail.MessagingException;
@@ -30,6 +31,8 @@ public class MailService {
     private static final String USER = "user";
 
     private static final String BASE_URL = "baseUrl";
+
+    private static final String REPORT = "report";
 
     private final JHipsterProperties jHipsterProperties;
 
@@ -108,5 +111,30 @@ public class MailService {
     public void sendPasswordResetMail(User user) {
         log.debug("Sending password reset email to '{}'", user.getEmail());
         sendEmailFromTemplate(user, "mail/passwordResetEmail", "email.reset.title");
+    }
+
+    @Async
+    public void sendEmailFromTemplate(User user, ReportDTO reportDTO, String templateName, String titleKey) {
+        Locale locale = Locale.forLanguageTag(user.getLangKey());
+        Context context = new Context(locale);
+        // context.setVariable(USER, user);
+        context.setVariable(REPORT, reportDTO);
+        // context.setVariable(BASE_URL, jHipsterProperties.getMail().getBaseUrl());
+        String content = templateEngine.process(templateName, context);
+        String subject = messageSource.getMessage(titleKey, null, locale);
+        sendEmail(user.getEmail(), subject, content, false, true);
+    }
+
+    // Envoie de mail aux differents responsables
+    @Async
+    public void sendReportEmail(User user, ReportDTO reportDTO) {
+        log.info("Daily report send to '{}'", user.getEmail());
+        sendEmailFromTemplate(user, reportDTO, "mail/reportAdminEmail", "email.reportAdminEmail.title");
+    }
+
+    @Async
+    public void sendReportEmailDepotRapport(User user) {
+        log.info("Daily report send to '{}'", user.getEmail());
+        sendEmailFromTemplate(user, "mail/createDocumentServiceEmail", "email.createDocumentService.title");
     }
 }

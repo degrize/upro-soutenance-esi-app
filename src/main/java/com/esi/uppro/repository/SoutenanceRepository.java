@@ -1,6 +1,7 @@
 package com.esi.uppro.repository;
 
 import com.esi.uppro.domain.Soutenance;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -41,4 +42,16 @@ public interface SoutenanceRepository extends JpaRepository<Soutenance, Long> {
         "select soutenance from Soutenance soutenance left join fetch soutenance.projet left join fetch soutenance.jury left join fetch soutenance.anneeAcademique where soutenance.id =:id"
     )
     Optional<Soutenance> findOneWithToOneRelationships(@Param("id") Long id);
+
+    @Query(
+        "select count(soutenance) from Soutenance soutenance where soutenance.note >= 12 and soutenance.dateDuJour between :startDate and :endDate"
+    )
+    int nbresoutenancevalide(@Param("startDate") ZonedDateTime startDate, @Param("endDate") ZonedDateTime endDate);
+
+    int countByDateAjoutBetween(ZonedDateTime startDate, ZonedDateTime endDate);
+
+    @Query(
+        "select count(soutenance) from Soutenance soutenance where soutenance.note < 12 and soutenance.dateDuJour between :startDate and :endDate"
+    )
+    int nbresoutenancevAjournee(@Param("startDate") ZonedDateTime startDate, @Param("endDate") ZonedDateTime endDate);
 }

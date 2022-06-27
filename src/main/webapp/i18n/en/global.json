@@ -59,7 +59,7 @@
         "authenticated": {
           "prefix": "If you want to ",
           "link": "sign in",
-          "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
+          "suffix": "GeDoutenance is committed to respecting your privacy.\n        GeDoutenance uses the information you provide to contact you about its relevant content, products and services. <br>\n        You can unsubscribe from these communications at any time. For more information"
         },
         "register": {
           "noaccount": "You don't have an account yet?",

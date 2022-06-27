@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Locale;
 import java.util.Set;
 import javax.persistence.*;
@@ -213,6 +214,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public int hashCode() {
         // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
         return getClass().hashCode();
+    }
+
+    public String getAuthoritiesCSV() {
+        StringBuilder sb = new StringBuilder();
+        for (Iterator<Authority> iter = this.authorities.iterator(); iter.hasNext();) {
+            sb.append(iter.next().getName());
+            if (iter.hasNext()) {
+                sb.append(',');
+            }
+        }
+        return sb.toString();
     }
 
     // prettier-ignore

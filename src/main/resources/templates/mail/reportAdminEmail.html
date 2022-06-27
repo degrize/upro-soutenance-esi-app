@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Soutenance PFE</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css" />
+
+    <!-- use the font -->
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body style="margin: 5px; padding: 5px; background-color: #fafafa">
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="80%" style="border-collapse: collapse">
+      <tr>
+        <td align="center" bgcolor="#EF5350" colspan="7" style="padding: 10px 0 10px 0; font-weight: bold; font-size: 24px; color: #ffffff">
+          <p>Rapport Ge-Soutennace PFE du <span th:text=" ${report.dateCourante}"></span></p>
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#eaeaea" colspan="7" style="padding: 20px 10px 20px 10px">
+          <p style="font-weight: bold; color: #ef5350">Résumé</p>
+          <p style="font-weight: bold">Total Projets soutenus : <span th:text=" ${report.totaEleveSoutenus}"></span></p>
+          <p style="font-weight: bold">Total Projets Ajournés : <span th:text=" ${report.totalEleveAjournee}"></span></p>
+          <p style="font-weight: bold">Total Projet Validés : <span th:text=" ${report.totalEleveValideSoutenance}"></span></p>
+        </td>
+      </tr>
+      <tr bgcolor="#EF5350" style="padding: 20px 10px 20px 10px; font-weight: bold; color: #ffffff; height: 40px">
+        <td colspan="2" align="center">Traitements</td>
+        <td align="right">Total</td>
+        <td align="right">Rapport Corrigé</td>
+        <td align="right">Validé Encadreur</td>
+        <td align="right">Transmis Inspecteur</td>
+        <td align="right">Validé DE</td>
+      </tr>
+    </table>
+  </body>
+</html>

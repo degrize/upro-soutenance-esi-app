@@ -94,7 +94,7 @@ export class SoutenanceUpdateComponent implements OnInit {
 
   config: NgWizardConfig = {
     selected: 0,
-    theme: THEME.circles,
+    theme: THEME.default,
   };
 
   isLoading = false;
@@ -106,6 +106,8 @@ export class SoutenanceUpdateComponent implements OnInit {
   ngbPaginationPage = 1;
   eleves?: IEleve[];
   eleves$?: Observable<IEleve[]>;
+  validerSoutennace = false;
+  isFormUpdate = false;
 
   filter = new FormControl('');
 
@@ -167,6 +169,9 @@ export class SoutenanceUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ soutenance }) => {
       this.updateForm(soutenance);
+
+      this.validerSoutennace = soutenance?.note >= 12 ? true : false;
+      this.isFormUpdate = soutenance?.id !== undefined ? true : false;
 
       this.loadRelationshipsOptions();
     });

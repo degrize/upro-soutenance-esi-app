@@ -1,7 +1,13 @@
 <div class="d-flex justify-content-center">
   <div class="col-11">
     <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
-      <ng-wizard-step [title]="'Etudiant'" [description]="'choix etudiant'" [canEnter]="isValidTypeBoolean" [canExit]="displayRadioValue()">
+      <ng-wizard-step
+        *ngIf="!isFormUpdate"
+        [title]="'Etudiant'"
+        [description]="'choix etudiant'"
+        [canEnter]="isValidTypeBoolean"
+        [canExit]="displayRadioValue()"
+      >
         <form>
           <div class="mb-3 row">
             <label for="table-complete-search" class="col-xs-3 col-sm-auto col-form-label">Rechercher l'etudiant:</label>
@@ -72,7 +78,7 @@
       </ng-wizard-step>
 
       <ng-wizard-step [title]="'Note'" [description]="'soutenance'">
-        <div class="col-8">
+        <div class="col-12 d-flex justify-content-center">
           <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <div>
               <jhi-alert-error></jhi-alert-error>
@@ -251,6 +257,25 @@
               </div>
             </div>
 
+            veuillez confirmez que l'etudiant valide sa soutenance ou NON
+            <br />
+            <div class="onoffswitch">
+              <input
+                type="checkbox"
+                [checked]="validerSoutennace"
+                name="onoffswitch"
+                class="onoffswitch-checkbox"
+                id="statutBeneficiaire"
+                name="statutBeneficiaire"
+                formControlName="statutBeneficiaire"
+              />
+              <label class="onoffswitch-label" for="statutBeneficiaire">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+              </label>
+            </div>
+            <br />
+
             <div>
               <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
                 <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
@@ -268,6 +293,14 @@
             </div>
           </form>
         </div>
+      </ng-wizard-step>
+
+      <ng-wizard-step [title]="'Etape 3'" [description]="'Depot de rapport'" [canEnter]="stepOk">
+        <span>Depot de rapport</span>
+      </ng-wizard-step>
+
+      <ng-wizard-step [title]="'Etape 5'" [description]="'Cloture du dossier'" [state]="stepStates.error">
+        <span>Cloture du dossier</span>
       </ng-wizard-step>
     </ng-wizard>
   </div>

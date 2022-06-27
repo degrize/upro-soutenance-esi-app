@@ -263,7 +263,16 @@
           >
             <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
               <i class="uil uil-files-landscapes"></i>
-              <span class="link-name" id="entity" jhiTranslate="global.menu.entities.main">Entities</span>
+              <span *jhiHasAnyAuthority="'ROLE_ADMIN'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
+                >Entities</span
+              >
+              <span *jhiHasAnyAuthority="'ROLE_ELEVE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main">Eleve</span>
+              <span *jhiHasAnyAuthority="'ROLE_DIRECTEUR_ETUDE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
+                >D.E</span
+              >
+              <span *jhiHasAnyAuthority="'ROLE_ENTREPRISE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
+                >Entreprise</span
+              >
             </a>
             <ul (click)="active_clic_component('entity')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
               <li>
