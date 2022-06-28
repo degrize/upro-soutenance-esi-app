@@ -75,7 +75,7 @@ public class ReportServiceImpl implements ReportService {
 
         int totalEleveValideSoutenance = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
         reportDTO.setTotalEleveValideSoutenance(totalEleveValideSoutenance);
-        int totaEleveSoutenus = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int totaEleveSoutenus = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
         reportDTO.setTotaEleveSoutenus(totaEleveSoutenus);
         int totalEleveAjournee = soutenanceRepository.nbresoutenancevAjournee(startDate, endDate);
         reportDTO.setTotalEleveAjournee(totalEleveAjournee);
@@ -131,7 +131,7 @@ public class ReportServiceImpl implements ReportService {
 
         int totalEleveValideSoutenance = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
         reportDTO.setTotalEleveValideSoutenance(totalEleveValideSoutenance);
-        int totaEleveSoutenus = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int totaEleveSoutenus = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
         reportDTO.setTotaEleveSoutenus(totaEleveSoutenus);
         int totalEleveAjournee = soutenanceRepository.nbresoutenancevAjournee(startDate, endDate);
         reportDTO.setTotalEleveAjournee(totalEleveAjournee);
@@ -187,7 +187,7 @@ public class ReportServiceImpl implements ReportService {
 
         int totalEleveValideSoutenance = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
         reportDTO.setTotalEleveValideSoutenance(totalEleveValideSoutenance);
-        int totaEleveSoutenus = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int totaEleveSoutenus = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
         reportDTO.setTotaEleveSoutenus(totaEleveSoutenus);
         int totalEleveAjournee = soutenanceRepository.nbresoutenancevAjournee(startDate, endDate);
         reportDTO.setTotalEleveAjournee(totalEleveAjournee);
@@ -243,7 +243,7 @@ public class ReportServiceImpl implements ReportService {
 
         int totalEleveValideSoutenance = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
         reportDTO.setTotalEleveValideSoutenance(totalEleveValideSoutenance);
-        int totaEleveSoutenus = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int totaEleveSoutenus = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
         reportDTO.setTotaEleveSoutenus(totaEleveSoutenus);
         int totalEleveAjournee = soutenanceRepository.nbresoutenancevAjournee(startDate, endDate);
         reportDTO.setTotalEleveAjournee(totalEleveAjournee);

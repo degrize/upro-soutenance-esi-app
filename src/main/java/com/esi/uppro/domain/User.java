@@ -83,6 +83,18 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Column(name = "reset_date")
     private Instant resetDate = null;
 
+    @ManyToOne
+    private Eleve eleve;
+
+    @ManyToOne
+    private Encadreur encadreur;
+
+    @ManyToOne
+    private Jury jury;
+
+    @ManyToOne
+    private Entreprise entreprise;
+
     @JsonIgnore
     @ManyToMany
     @JoinTable(
@@ -189,6 +201,58 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     public void setLangKey(String langKey) {
         this.langKey = langKey;
+    }
+
+    public Eleve getEleve() {
+        return eleve;
+    }
+
+    public void setEleve(Eleve eleve) {
+        this.eleve = eleve;
+    }
+
+    public User eleve(Eleve eleve) {
+        this.setEleve(eleve);
+        return this;
+    }
+
+    public Encadreur getEncadreur() {
+        return encadreur;
+    }
+
+    public void setEncadreur(Encadreur encadreur) {
+        this.encadreur = encadreur;
+    }
+
+    public User encadreur(Encadreur encadreur) {
+        this.setEncadreur(encadreur);
+        return this;
+    }
+
+    public Jury getJury() {
+        return jury;
+    }
+
+    public void setJury(Jury jury) {
+        this.jury = jury;
+    }
+
+    public User jury(Jury jury) {
+        this.setJury(jury);
+        return this;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    public User entreprise(Entreprise entreprise) {
+        this.setEntreprise(entreprise);
+        return this;
     }
 
     public Set<Authority> getAuthorities() {

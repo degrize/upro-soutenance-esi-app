@@ -127,19 +127,19 @@ public class SoutenanceServiceImpl implements SoutenanceService {
 
         startDate = LocalDate.of(annee, 7, 1);
         endDate = LocalDate.of(annee, 8, 1);
-        int soutenanceJuillet = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int soutenanceJuillet = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
 
         startDate = LocalDate.of(annee, 10, 1);
         endDate = LocalDate.of(annee, 11, 1);
-        int soutenanceOctobre = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int soutenanceOctobre = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
 
         startDate = LocalDate.of(annee, 2, 1);
         endDate = LocalDate.of(annee, 3, 1);
-        int soutenanceFevrier = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int soutenanceFevrier = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
 
         startDate = LocalDate.of(annee, 3, 1);
         endDate = LocalDate.of(annee, 4, 1);
-        int soutenanceMars = soutenanceRepository.countByDateAjoutBetween(startDate, endDate);
+        int soutenanceMars = soutenanceRepository.countByDateDuJourBetween(startDate, endDate);
 
         adminStatisticsDTO.setNbreEleveSoutenus(eleveSoutenus);
         adminStatisticsDTO.setNbreEleveAjourne(soutenanceAjourne);

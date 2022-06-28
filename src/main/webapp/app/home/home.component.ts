@@ -98,59 +98,67 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewChecked {
   }
 
   chartJsFunction(): void {
-    const mentionAnalyse = new Chart('mentionAnalyse', {
-      type: 'polarArea',
-      data: {
-        labels: ['Très bien', 'Bien', 'Assez bien', 'Passable'],
-        datasets: [
-          {
-            label: 'Mention Soutenance',
-            data: [
-              this.adminStatistics?.nbreMentionTresBien,
-              this.adminStatistics?.nbreMentionBien,
-              this.adminStatistics?.nbreMentionAssezBien,
-              this.adminStatistics?.nbreMentionPassable,
-            ],
-            backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-      },
-    });
+    if (Chart.getChart('mentionAnalyse')) {
+      Chart.getChart('mentionAnalyse')?.destroy();
+    } else {
+      const mentionAnalyse = new Chart('mentionAnalyse', {
+        type: 'polarArea',
+        data: {
+          labels: ['Très bien', 'Bien', 'Assez bien', 'Passable'],
+          datasets: [
+            {
+              label: 'Mention Soutenance',
+              data: [
+                this.adminStatistics?.nbreMentionTresBien,
+                this.adminStatistics?.nbreMentionBien,
+                this.adminStatistics?.nbreMentionAssezBien,
+                this.adminStatistics?.nbreMentionPassable,
+              ],
+              backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    }
 
-    const vagueSoutenance = new Chart('vagueSoutenance', {
-      type: 'bar',
-      data: {
-        labels: ['Juillet', 'Octobre', 'Fevrier', 'Mars'],
-        datasets: [
-          {
-            label: 'Vagues de Soutenance',
-            data: [
-              this.adminStatistics?.nbreSoutenuJuillet,
-              this.adminStatistics?.nbreSoutenuOctobre,
-              this.adminStatistics?.nbreSoutenuFevrier,
-              this.adminStatistics?.nbreSoutenuMars,
-            ],
-            backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-      },
-    });
+    if (Chart.getChart('vagueSoutenance')) {
+      Chart.getChart('vagueSoutenance')?.destroy();
+    } else {
+      const vagueSoutenance = new Chart('vagueSoutenance', {
+        type: 'bar',
+        data: {
+          labels: ['Juillet', 'Octobre', 'Fevrier', 'Mars'],
+          datasets: [
+            {
+              label: 'Vagues de Soutenance',
+              data: [
+                this.adminStatistics?.nbreSoutenuJuillet,
+                this.adminStatistics?.nbreSoutenuOctobre,
+                this.adminStatistics?.nbreSoutenuFevrier,
+                this.adminStatistics?.nbreSoutenuMars,
+              ],
+              backgroundColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)'],
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+        },
+      });
+    }
   }
 
   ngAfterViewChecked(): void {
-    this.chartJsFunction(); // on demarre le ChatJs
     this.animationScroll(); // On demmarre les animations
   }
 
   protected onSuccess(data: IAdminStatistics | null): void {
     this.adminStatistics = data ?? null;
     console.log(this.adminStatistics);
+    this.chartJsFunction(); // on demarre le ChatJs
   }
 
   protected onError(): void {

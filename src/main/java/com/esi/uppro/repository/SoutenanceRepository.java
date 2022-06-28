@@ -54,6 +54,8 @@ public interface SoutenanceRepository extends JpaRepository<Soutenance, Long> {
 
     int countByDateAjoutBetween(LocalDate startDate, LocalDate endDate);
 
+    int countByDateDuJourBetween(LocalDate startDate, LocalDate endDate);
+
     @Query(
         "select count(soutenance) from Soutenance soutenance where soutenance.note < 12 and soutenance.dateDuJour between :startDate and :endDate"
     )
