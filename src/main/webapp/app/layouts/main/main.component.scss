@@ -35,7 +35,7 @@ nav.close ~ .dashboard {
   align-items: center;
   padding: 10px 14px;
   //background-color: $panel-color;
-  background: rgba(61, 165, 189, 0.97);
+  background: $bg-nav-top;
   transition: $tran-05;
   z-index: 10;
   height: 60px;
@@ -98,7 +98,7 @@ nav.close ~ .dashboard .top {
   }
 
   .dashboard .top {
-    background: red;
+    background: $first-color;
     color: white;
     font-weight: 900;
     width: 500px !important;

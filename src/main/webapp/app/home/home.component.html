@@ -26,7 +26,7 @@
 
   </div>-->
 
-  <div *ngSwitchCase="false">
+  <div *ngSwitchCase="false" class="home-bloc">
     <!--===== HOME =====-->
     <section class="home" id="home">
       <div class="home__container bd-grid">
@@ -173,7 +173,7 @@
 
   <!--Lorsque l'utilisateur se connecte à son dashboard-->
   <div *ngSwitchCase="true">
-    <section class="dashboard">
+    <section class="dashboard" *jhiHasAnyAuthority="'ROLE_ELEVE'">
       <div class="dash-content">
         <div class="overview">
           <div class="title">
@@ -294,6 +294,57 @@
               <span class="data-list">Liked</span>
               <span class="data-list">Liked</span>
               <span class="data-list">Liked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section *jhiHasAnyAuthority="'ROLE_ADMIN'" class="admin_dashboard">
+      <div class="dash-content">
+        <div class="overview">
+          <div class="title">
+            <i class="uil uil-tachometer-fast-alt"></i>
+            <span class="text">Dashboard</span>
+          </div>
+
+          <div class="boxes">
+            <div class="card box box1">
+              <i class="uil uil-map-pin-alt"></i>
+              <span class="text">Rapports corrigés</span>
+              <span class="number">{{ this.adminStatistics?.nbreRapportRendus }}</span>
+            </div>
+            <div class="card box box2">
+              <i class="uil uil-medal"></i>
+              <span class="text">Elèves soutenus</span>
+              <span class="number"> {{ this.adminStatistics?.nbreEleveSoutenus }} </span>
+            </div>
+            <div class="card box box3">
+              <i class="uil uil-signout"></i>
+              <span class="text">Elèves Ajournés</span>
+              <span class="number">{{ this.adminStatistics?.nbreEleveAjourne }}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="activity">
+          <div class="activity-data">
+            <div class="graphBox">
+              <div class="box">
+                <div class="title mt-0">
+                  <i class="uil uil-clock-three"></i>
+                  <span class="text">Mentions</span>
+                </div>
+                <canvas id="mentionAnalyse"></canvas>
+              </div>
+              <div class="box">
+                <div class="title mt-0">
+                  <i class="uil uil-clock-three"></i>
+                  <span class="text">Vagues de soutenances</span>
+                </div>
+
+                <canvas id="vagueSoutenance"></canvas>
+              </div>
             </div>
           </div>
         </div>

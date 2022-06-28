@@ -1,6 +1,10 @@
 package com.esi.uppro.repository;
 
 import com.esi.uppro.domain.Soutenance;
+import com.esi.uppro.domain.enumeration.Mention;
+import com.esi.uppro.service.dto.SoutenanceDTO;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -46,12 +50,30 @@ public interface SoutenanceRepository extends JpaRepository<Soutenance, Long> {
     @Query(
         "select count(soutenance) from Soutenance soutenance where soutenance.note >= 12 and soutenance.dateDuJour between :startDate and :endDate"
     )
-    int nbresoutenancevalide(@Param("startDate") ZonedDateTime startDate, @Param("endDate") ZonedDateTime endDate);
+    int nbresoutenancevalide(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
-    int countByDateAjoutBetween(ZonedDateTime startDate, ZonedDateTime endDate);
+    int countByDateAjoutBetween(LocalDate startDate, LocalDate endDate);
 
     @Query(
         "select count(soutenance) from Soutenance soutenance where soutenance.note < 12 and soutenance.dateDuJour between :startDate and :endDate"
     )
-    int nbresoutenancevAjournee(@Param("startDate") ZonedDateTime startDate, @Param("endDate") ZonedDateTime endDate);
+    int nbresoutenancevAjournee(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query(
+        "select count(soutenance) from Soutenance soutenance where soutenance.rapportRendu = true and (soutenance.dateDuJour between :startDate and :endDate)"
+    )
+    int nbreRapportRendu(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+
+    @Query(
+        "select count(soutenance) from Soutenance soutenance where (soutenance.note >= :note1 and soutenance.note < :note2)  and (soutenance.dateDuJour between :startDate and :endDate)"
+    )
+    int nbreSoutenanceMention(
+        @Param("startDate") LocalDate startDate,
+        @Param("endDate") LocalDate endDate,
+        @Param("note1") Double note1,
+        @Param("note2") Double note2
+    );
+
+    @Query("select soutenance from Soutenance soutenance where soutenance.note >= 12")
+    List<Soutenance> soutenancesvalide();
 }

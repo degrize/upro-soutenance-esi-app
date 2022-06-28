@@ -88,7 +88,7 @@
                 <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
               </div>
 
-              <div class="row mb-3">
+              <div class="row mb-3" [hidden]="true">
                 <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.mention" for="field_mention">Mention</label>
                 <select class="form-control" name="mention" formControlName="mention" id="field_mention" data-cy="mention">
                   <option [ngValue]="null">{{ 'uproSoutenanceEsiApp.Mention.null' | translate }}</option>
@@ -165,7 +165,7 @@
                 <input type="text" class="form-control" name="remarque" id="field_remarque" data-cy="remarque" formControlName="remarque" />
               </div>
 
-              <div class="row mb-3">
+              <div class="row mb-3" [hidden]="true">
                 <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.dateAjout" for="field_dateAjout">Date Ajout</label>
                 <div class="input-group">
                   <input
@@ -184,7 +184,7 @@
                 </div>
               </div>
 
-              <div class="row mb-3">
+              <div class="row mb-3" [hidden]="true">
                 <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.soutenance.dateModification" for="field_dateModification"
                   >Date Modification</label
                 >
@@ -262,7 +262,7 @@
             <div class="onoffswitch">
               <input
                 type="checkbox"
-                [checked]="validerSoutennace"
+                [checked]="editForm.get(['note'])!.value >= 12"
                 name="onoffswitch"
                 class="onoffswitch-checkbox"
                 id="statutBeneficiaire"

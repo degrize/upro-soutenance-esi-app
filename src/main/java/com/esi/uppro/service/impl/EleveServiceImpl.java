@@ -1,14 +1,19 @@
 package com.esi.uppro.service.impl;
 
 import com.esi.uppro.domain.Eleve;
+import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.repository.EleveRepository;
+import com.esi.uppro.repository.SoutenanceRepository;
 import com.esi.uppro.service.EleveService;
 import com.esi.uppro.service.dto.EleveDTO;
+import com.esi.uppro.service.dto.SoutenanceDTO;
 import com.esi.uppro.service.mapper.EleveMapper;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -26,6 +31,9 @@ public class EleveServiceImpl implements EleveService {
     private final EleveRepository eleveRepository;
 
     private final EleveMapper eleveMapper;
+
+    @Autowired
+    private SoutenanceRepository soutenanceRepository;
 
     public EleveServiceImpl(EleveRepository eleveRepository, EleveMapper eleveMapper) {
         this.eleveRepository = eleveRepository;
@@ -89,6 +97,24 @@ public class EleveServiceImpl implements EleveService {
 
     @Override
     public List<Eleve> getEleves() {
-        return eleveRepository.getEleves();
+        List<Soutenance> soutenances = soutenanceRepository.soutenancesvalide();
+        List<Eleve> eleves = eleveRepository.getEleves();
+        List<Eleve> etudiants = new ArrayList<Eleve>();
+
+        int notYet = 0;
+
+        for (Eleve eleve : eleves) {
+            notYet = 0;
+            for (Soutenance souten : soutenances) {
+                if (souten.getProjet().getId() == eleve.getProjet().getId()) {
+                    notYet++;
+                }
+            }
+            if (notYet == 0) {
+                etudiants.add(eleve);
+            }
+        }
+
+        return etudiants;
     }
 }

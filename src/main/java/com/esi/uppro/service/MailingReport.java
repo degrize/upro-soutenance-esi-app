@@ -97,10 +97,10 @@ public class MailingReport {
                 reportDTO = reportService.adminDailyReport("weekly");
                 mailService.sendReportEmail(user, reportDTO);
             } else if (user.getAuthoritiesCSV().toLowerCase().contains("directeur_etude")) {
-                reportDTO = reportService.adminDailyReportManager("weekly", user);
+                reportDTO = reportService.adminDailyReportManager("year", user);
                 mailService.sendReportEmail(user, reportDTO);
             } else if (user.getAuthoritiesCSV().toLowerCase().contains("inspecteur")) {
-                reportDTO = reportService.adminDailyReportBackOffice("weekly", user);
+                reportDTO = reportService.adminDailyReportBackOffice("year", user);
                 mailService.sendReportEmail(user, reportDTO);
             }
         }

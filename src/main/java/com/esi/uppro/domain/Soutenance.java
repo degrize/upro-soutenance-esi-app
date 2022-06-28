@@ -47,6 +47,18 @@ public class Soutenance implements Serializable {
     @Column(name = "date_modification")
     private LocalDate dateModification;
 
+    @Column(name = "note_anglais")
+    private Double noteAnglais;
+
+    @Column(name = "note_francais")
+    private Double noteFrancais;
+
+    @Column(name = "note_technique")
+    private Double noteTechnique;
+
+    @Column(name = "rapport_rendu")
+    private Boolean rapportRendu;
+
     @JsonIgnoreProperties(value = { "anneeAcademique", "entreprises" }, allowSetters = true)
     @OneToOne
     @JoinColumn(unique = true)
@@ -152,6 +164,38 @@ public class Soutenance implements Serializable {
         this.dateModification = dateModification;
     }
 
+    public Double getNoteAnglais() {
+        return noteAnglais;
+    }
+
+    public void setNoteAnglais(Double noteAnglais) {
+        this.noteAnglais = noteAnglais;
+    }
+
+    public Double getNoteFrancais() {
+        return noteFrancais;
+    }
+
+    public void setNoteFrancais(Double noteFrancais) {
+        this.noteFrancais = noteFrancais;
+    }
+
+    public Double getNoteTechnique() {
+        return noteTechnique;
+    }
+
+    public void setNoteTechnique(Double noteTechnique) {
+        this.noteTechnique = noteTechnique;
+    }
+
+    public Boolean getRapportRendu() {
+        return rapportRendu;
+    }
+
+    public void setRapportRendu(Boolean rapportRendu) {
+        this.rapportRendu = rapportRendu;
+    }
+
     public Projet getProjet() {
         return this.projet;
     }
@@ -221,6 +265,10 @@ public class Soutenance implements Serializable {
             ", remarque='" + getRemarque() + "'" +
             ", dateAjout='" + getDateAjout() + "'" +
             ", dateModification='" + getDateModification() + "'" +
+            ", noteAnglais='" + getNoteAnglais() + "'" +
+            ", noteFrancais='" + getNoteFrancais() + "'" +
+            ", noteTechnique='" + getNoteTechnique() + "'" +
+            ", rapportRendu='" + getRapportRendu() + "'" +
             "}";
     }
 }

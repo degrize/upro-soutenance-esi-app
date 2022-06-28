@@ -7,6 +7,7 @@ import com.esi.uppro.service.ReportService;
 import com.esi.uppro.service.dto.ReportDTO;
 import com.esi.uppro.utils.DateUtils;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import org.slf4j.Logger;
@@ -30,23 +31,33 @@ public class ReportServiceImpl implements ReportService {
     public ReportDTO adminDailyReport(String period) {
         ReportDTO reportDTO = new ReportDTO();
 
-        ZoneId zoneId = ZoneId.of("Africa/Abidjan");
+        //ZoneId zoneId = ZoneId.of("Africa/Abidjan");
         LocalDate today = LocalDate.now();
-        ZonedDateTime startDate;
-        ZonedDateTime endDate;
+        LocalDate startDate;
+        LocalDate endDate;
 
         String dateCourante = null; // DateUtils.dateToString(startDate, "dd/MM/yyyy");
 
         switch (period) {
             case "daily":
-                startDate = today.atStartOfDay(zoneId);
-                endDate = today.plusDays(1).atStartOfDay(zoneId);
+                startDate = LocalDate.from(today);
+                endDate = LocalDate.from(today.plusDays(1));
 
                 dateCourante = DateUtils.dateToString(startDate, "dd/MM/yyyy");
                 break;
             case "weekly": // du 22/07/2020 00:00:00 au 29/07/2020 00:00:00
-                startDate = today.minusDays(6).atStartOfDay(zoneId); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                startDate = LocalDate.from(today.minusDays(6)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
                 endDate = startDate.plusDays(7);
+
+                dateCourante =
+                    "du " +
+                    DateUtils.dateToString(startDate, "dd/MM/yyyy") +
+                    " au " +
+                    DateUtils.dateToString(endDate.minusDays(1), "dd/MM/yyyy");
+                break;
+            case "year": // du 22/07/2020 00:00:00 au 22/07/2021 00:00:00
+                startDate = LocalDate.from(today.minusDays(364)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                endDate = startDate.plusDays(365);
 
                 dateCourante =
                     "du " +
@@ -76,23 +87,33 @@ public class ReportServiceImpl implements ReportService {
     public ReportDTO adminDailyReport(String period, User user) {
         ReportDTO reportDTO = new ReportDTO();
 
-        ZoneId zoneId = ZoneId.of("Africa/Abidjan");
+        //ZoneId zoneId = ZoneId.of("Africa/Abidjan");
         LocalDate today = LocalDate.now();
-        ZonedDateTime startDate;
-        ZonedDateTime endDate;
+        LocalDate startDate;
+        LocalDate endDate;
 
         String dateCourante = null; // DateUtils.dateToString(startDate, "dd/MM/yyyy");
 
         switch (period) {
             case "daily":
-                startDate = today.atStartOfDay(zoneId);
-                endDate = today.plusDays(1).atStartOfDay(zoneId);
+                startDate = LocalDate.from(today);
+                endDate = LocalDate.from(today.plusDays(1));
 
                 dateCourante = DateUtils.dateToString(startDate, "dd/MM/yyyy");
                 break;
             case "weekly": // du 22/07/2020 00:00:00 au 29/07/2020 00:00:00
-                startDate = today.minusDays(6).atStartOfDay(zoneId); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                startDate = LocalDate.from(today.minusDays(6)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
                 endDate = startDate.plusDays(7);
+
+                dateCourante =
+                    "du " +
+                    DateUtils.dateToString(startDate, "dd/MM/yyyy") +
+                    " au " +
+                    DateUtils.dateToString(endDate.minusDays(1), "dd/MM/yyyy");
+                break;
+            case "year": // du 22/07/2020 00:00:00 au 22/07/2021 00:00:00
+                startDate = LocalDate.from(today.minusDays(364)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                endDate = startDate.plusDays(365);
 
                 dateCourante =
                     "du " +
@@ -122,23 +143,33 @@ public class ReportServiceImpl implements ReportService {
     public ReportDTO adminDailyReportBackOffice(String period, User user) {
         ReportDTO reportDTO = new ReportDTO();
 
-        ZoneId zoneId = ZoneId.of("Africa/Abidjan");
+        //ZoneId zoneId = ZoneId.of("Africa/Abidjan");
         LocalDate today = LocalDate.now();
-        ZonedDateTime startDate;
-        ZonedDateTime endDate;
+        LocalDate startDate;
+        LocalDate endDate;
 
         String dateCourante = null; // DateUtils.dateToString(startDate, "dd/MM/yyyy");
 
         switch (period) {
             case "daily":
-                startDate = today.atStartOfDay(zoneId);
-                endDate = today.plusDays(1).atStartOfDay(zoneId);
+                startDate = LocalDate.from(today);
+                endDate = LocalDate.from(today.plusDays(1));
 
                 dateCourante = DateUtils.dateToString(startDate, "dd/MM/yyyy");
                 break;
             case "weekly": // du 22/07/2020 00:00:00 au 29/07/2020 00:00:00
-                startDate = today.minusDays(6).atStartOfDay(zoneId); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                startDate = LocalDate.from(today.minusDays(6)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
                 endDate = startDate.plusDays(7);
+
+                dateCourante =
+                    "du " +
+                    DateUtils.dateToString(startDate, "dd/MM/yyyy") +
+                    " au " +
+                    DateUtils.dateToString(endDate.minusDays(1), "dd/MM/yyyy");
+                break;
+            case "year": // du 22/07/2020 00:00:00 au 22/07/2021 00:00:00
+                startDate = LocalDate.from(today.minusDays(364)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                endDate = startDate.plusDays(365);
 
                 dateCourante =
                     "du " +
@@ -168,23 +199,33 @@ public class ReportServiceImpl implements ReportService {
     public ReportDTO adminDailyReportManager(String period, User user) {
         ReportDTO reportDTO = new ReportDTO();
 
-        ZoneId zoneId = ZoneId.of("Africa/Abidjan");
+        //ZoneId zoneId = ZoneId.of("Africa/Abidjan");
         LocalDate today = LocalDate.now();
-        ZonedDateTime startDate;
-        ZonedDateTime endDate;
+        LocalDate startDate;
+        LocalDate endDate;
 
         String dateCourante = null; // DateUtils.dateToString(startDate, "dd/MM/yyyy");
 
         switch (period) {
             case "daily":
-                startDate = today.atStartOfDay(zoneId);
-                endDate = today.plusDays(1).atStartOfDay(zoneId);
+                startDate = LocalDate.from(today);
+                endDate = LocalDate.from(today.plusDays(1));
 
                 dateCourante = DateUtils.dateToString(startDate, "dd/MM/yyyy");
                 break;
             case "weekly": // du 22/07/2020 00:00:00 au 29/07/2020 00:00:00
-                startDate = today.minusDays(6).atStartOfDay(zoneId); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                startDate = LocalDate.from(today.minusDays(6)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
                 endDate = startDate.plusDays(7);
+
+                dateCourante =
+                    "du " +
+                    DateUtils.dateToString(startDate, "dd/MM/yyyy") +
+                    " au " +
+                    DateUtils.dateToString(endDate.minusDays(1), "dd/MM/yyyy");
+                break;
+            case "year": // du 22/07/2020 00:00:00 au 22/07/2021 00:00:00
+                startDate = LocalDate.from(today.minusDays(364)); // du 23/07/2020 00:00:00 au 30/07/2020 00:00:00
+                endDate = startDate.plusDays(365);
 
                 dateCourante =
                     "du " +

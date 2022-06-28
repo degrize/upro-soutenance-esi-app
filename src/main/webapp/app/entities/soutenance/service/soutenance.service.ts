@@ -9,6 +9,8 @@ import { DATE_FORMAT } from 'app/config/input.constants';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
 import { createRequestOption } from 'app/core/request/request-util';
 import { ISoutenance, getSoutenanceIdentifier } from '../soutenance.model';
+import { IEleve } from '../../eleve/eleve.model';
+import { IAdminStatistics } from '../../enumerations/admin-statistics';
 
 export type EntityResponseType = HttpResponse<ISoutenance>;
 export type EntityArrayResponseType = HttpResponse<ISoutenance[]>;
@@ -44,6 +46,11 @@ export class SoutenanceService {
     return this.http
       .get<ISoutenance>(`${this.resourceUrl}/${id}`, { observe: 'response' })
       .pipe(map((res: EntityResponseType) => this.convertDateFromServer(res)));
+  }
+
+  findAdminStatistics(req?: any): Observable<HttpResponse<IAdminStatistics>> {
+    const options = createRequestOption(req);
+    return this.http.get<IAdminStatistics>(this.resourceUrl + '/admin-statstics', { params: options, observe: 'response' });
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

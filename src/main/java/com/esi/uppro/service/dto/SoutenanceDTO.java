@@ -4,6 +4,7 @@ import com.esi.uppro.domain.enumeration.Mention;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import javax.persistence.Column;
 import javax.validation.constraints.*;
 
 /**
@@ -27,6 +28,14 @@ public class SoutenanceDTO implements Serializable {
     private LocalDate dateAjout;
 
     private LocalDate dateModification;
+
+    private Double noteAnglais;
+
+    private Double noteFrancais;
+
+    private Double noteTechnique;
+
+    private Boolean rapportRendu;
 
     private ProjetDTO projet;
 
@@ -90,6 +99,38 @@ public class SoutenanceDTO implements Serializable {
         this.dateModification = dateModification;
     }
 
+    public Double getNoteAnglais() {
+        return noteAnglais;
+    }
+
+    public void setNoteAnglais(Double noteAnglais) {
+        this.noteAnglais = noteAnglais;
+    }
+
+    public Double getNoteFrancais() {
+        return noteFrancais;
+    }
+
+    public void setNoteFrancais(Double noteFrancais) {
+        this.noteFrancais = noteFrancais;
+    }
+
+    public Double getNoteTechnique() {
+        return noteTechnique;
+    }
+
+    public void setNoteTechnique(Double noteTechnique) {
+        this.noteTechnique = noteTechnique;
+    }
+
+    public Boolean getRapportRendu() {
+        return rapportRendu;
+    }
+
+    public void setRapportRendu(Boolean rapportRendu) {
+        this.rapportRendu = rapportRendu;
+    }
+
     public ProjetDTO getProjet() {
         return projet;
     }
@@ -149,6 +190,10 @@ public class SoutenanceDTO implements Serializable {
             ", projet=" + getProjet() +
             ", jury=" + getJury() +
             ", anneeAcademique=" + getAnneeAcademique() +
+            ", noteAnglais='" + getNoteAnglais() + "'" +
+            ", noteFrancais='" + getNoteFrancais() + "'" +
+            ", noteTechnique='" + getNoteTechnique() + "'" +
+            ", rapportRendu='" + getRapportRendu() + "'" +
             "}";
     }
 }

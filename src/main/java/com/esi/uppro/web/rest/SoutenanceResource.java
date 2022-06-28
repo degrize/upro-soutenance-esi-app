@@ -1,7 +1,9 @@
 package com.esi.uppro.web.rest;
 
+import com.esi.uppro.domain.Eleve;
 import com.esi.uppro.repository.SoutenanceRepository;
 import com.esi.uppro.service.SoutenanceService;
+import com.esi.uppro.service.dto.AdminStatisticsDTO;
 import com.esi.uppro.service.dto.SoutenanceDTO;
 import com.esi.uppro.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
@@ -188,5 +190,13 @@ public class SoutenanceResource {
             .noContent()
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
+    }
+
+    @GetMapping("/soutenances/admin-statstics")
+    public ResponseEntity<AdminStatisticsDTO> findAdminStatistics() {
+        log.debug("REST request to get a statistics Admin");
+        AdminStatisticsDTO result = soutenanceService.findAdminStatistics();
+
+        return ResponseEntity.ok().body(result);
     }
 }

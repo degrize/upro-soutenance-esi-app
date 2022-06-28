@@ -1,8 +1,9 @@
-import { Component, OnInit, HostListener, ViewChild, PipeTransform } from '@angular/core';
+import { Component, OnInit, PipeTransform, ViewChild } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable, startWith } from 'rxjs';
+// ng-wizard
+import { combineLatest, Observable, of, startWith } from 'rxjs';
 import { finalize, map } from 'rxjs/operators';
 
 import { ISoutenance, Soutenance } from '../soutenance.model';
@@ -16,19 +17,11 @@ import { AnneeAcademiqueService } from 'app/entities/annee-academique/service/an
 import { Mention } from 'app/entities/enumerations/mention.model';
 
 import { MdbTableDirective } from 'ng-uikit-pro-standard';
-
-// ng-wizard
-
-import { of } from 'rxjs';
-import { NgWizardConfig, NgWizardService, StepChangedArgs, StepValidationArgs, STEP_STATE, THEME } from 'ng-wizard';
+import { NgWizardConfig, NgWizardService, STEP_STATE, StepChangedArgs, StepValidationArgs, THEME } from 'ng-wizard';
 import { IEleve } from '../../eleve/eleve.model';
 import { DecimalPipe } from '@angular/common';
 import { EleveService } from '../../eleve/service/eleve.service';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from '../../../config/pagination.constants';
-import { SituationMatrimoniale } from '../../enumerations/situation-matrimoniale.model';
-import dayjs from 'dayjs/esm';
-import { IEncadreur } from '../../encadreur/encadreur.model';
-import { ISpecialite } from '../../specialite/specialite.model';
 
 const ELEVES: IEleve[] = [
   {
@@ -72,7 +65,7 @@ export class SoutenanceUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
-    mention: [null, [Validators.required]],
+    mention: [],
     note: [null, [Validators.required]],
     dateDuJour: [null, [Validators.required]],
     remarque: [],
@@ -216,6 +209,19 @@ export class SoutenanceUpdateComponent implements OnInit {
   save(): void {
     this.isSaving = true;
     const soutenance = this.createFromForm();
+    if (soutenance.note !== undefined) {
+      if (soutenance.note >= 10 && soutenance.note < 12) {
+        soutenance.mention = Mention.PASSABLE;
+      } else if (soutenance.note >= 12 && soutenance.note < 14) {
+        soutenance.mention = Mention.ASSEZ_BIEN;
+      } else if (soutenance.note >= 14 && soutenance.note < 16) {
+        soutenance.mention = Mention.BIEN;
+      } else if (soutenance.note >= 16 && soutenance.note < 18) {
+        soutenance.mention = Mention.TRES_BIEN;
+      } else if (soutenance.note >= 18 && soutenance.note < 20) {
+        soutenance.mention = Mention.EXCELENTE;
+      }
+    }
     if (soutenance.id !== undefined) {
       this.subscribeToSaveResponse(this.soutenanceService.update(soutenance));
     } else {
@@ -321,7 +327,6 @@ export class SoutenanceUpdateComponent implements OnInit {
     return {
       ...new Soutenance(),
       id: this.editForm.get(['id'])!.value,
-      mention: this.editForm.get(['mention'])!.value,
       note: this.editForm.get(['note'])!.value,
       dateDuJour: this.editForm.get(['dateDuJour'])!.value,
       remarque: this.editForm.get(['remarque'])!.value,
@@ -353,7 +358,6 @@ export class SoutenanceUpdateComponent implements OnInit {
     this.page = page;
     this.eleves = data ?? [];
     this.ngbPaginationPage = this.page;
-    console.log(data);
   }
 
   protected onError(): void {

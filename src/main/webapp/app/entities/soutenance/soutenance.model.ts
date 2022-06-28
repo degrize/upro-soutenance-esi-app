@@ -12,6 +12,10 @@ export interface ISoutenance {
   remarque?: string | null;
   dateAjout?: dayjs.Dayjs | null;
   dateModification?: dayjs.Dayjs | null;
+  noteAnglais?: number | null;
+  noteFrancais?: number | null;
+  noteTechnique?: number | null;
+  rapportRendu?: boolean | null;
   projet?: IProjet | null;
   jury?: IJury | null;
   anneeAcademique?: IAnneeAcademique | null;
@@ -26,6 +30,10 @@ export class Soutenance implements ISoutenance {
     public remarque?: string | null,
     public dateAjout?: dayjs.Dayjs | null,
     public dateModification?: dayjs.Dayjs | null,
+    public noteAnglais?: number | null,
+    public noteFrancais?: number | null,
+    public noteTechnique?: number | null,
+    public rapportRendu?: boolean | null,
     public projet?: IProjet | null,
     public jury?: IJury | null,
     public anneeAcademique?: IAnneeAcademique | null

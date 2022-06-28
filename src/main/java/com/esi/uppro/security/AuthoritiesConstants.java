@@ -23,5 +23,7 @@ public final class AuthoritiesConstants {
 
     public static final String DIRECTEUR_ESI = "ROLE_DIRECTEUR_ESI";
 
+    public static final String AGENT_SCOLARITE = "ROLE_AGENT_SCOLARITE";
+
     private AuthoritiesConstants() {}
 }

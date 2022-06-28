@@ -32,6 +32,9 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { PageRibbonComponent } from './layouts/profiles/page-ribbon.component';
 import { ActiveMenuDirective } from './layouts/navbar/active-menu.directive';
 import { ErrorComponent } from './layouts/error/error.component';
+import { ChartsModule } from 'ng-uikit-pro-standard';
+
+// CharJs
 
 @NgModule({
   imports: [
@@ -48,6 +51,7 @@ import { ErrorComponent } from './layouts/error/error.component';
     TranslationModule,
     NgWizardModule.forRoot(ngWizardConfig),
     MdbCheckboxModule,
+    ChartsModule,
   ],
   providers: [
     Title,

@@ -1,5 +1,6 @@
 package com.esi.uppro.service;
 
+import com.esi.uppro.service.dto.AdminStatisticsDTO;
 import com.esi.uppro.service.dto.SoutenanceDTO;
 import java.util.Optional;
 import org.springframework.data.domain.Page;
@@ -63,4 +64,6 @@ public interface SoutenanceService {
      * @param id the id of the entity.
      */
     void delete(Long id);
+
+    AdminStatisticsDTO findAdminStatistics();
 }

@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface AnneeAcademiqueRepository extends JpaRepository<AnneeAcademique, Long> {}
+public interface AnneeAcademiqueRepository extends JpaRepository<AnneeAcademique, Long> {
+    AnneeAcademique findFirstByOrderByIdDesc();
+}

@@ -42,6 +42,6 @@ public interface EleveRepository extends JpaRepository<Eleve, Long> {
     )
     Optional<Eleve> findOneWithToOneRelationships(@Param("id") Long id);
 
-    @Query("select eleve from Eleve eleve")
+    @Query("select distinct eleve from Eleve eleve")
     List<Eleve> getEleves();
 }
