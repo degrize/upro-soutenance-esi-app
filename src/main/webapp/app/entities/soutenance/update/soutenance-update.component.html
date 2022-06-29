@@ -3,7 +3,7 @@
     <ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
       <ng-wizard-step
         *ngIf="!isFormUpdate"
-        [title]="'Etudiant'"
+        [title]="'Etape 1'"
         [description]="'choix etudiant'"
         [canEnter]="isValidTypeBoolean"
         [canExit]="displayRadioValue()"
@@ -17,67 +17,79 @@
           </div>
         </form>
 
-        <div class="table-responsive" id="entities" *ngIf="eleves && eleves.length > 0">
-          <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-              <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
-                <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
-                <th scope="col" jhiSortBy="nom">
-                  <span jhiTranslate="uproSoutenanceEsiApp.eleve.nom">Nom</span> <fa-icon icon="sort"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="prenoms">
-                  <span jhiTranslate="uproSoutenanceEsiApp.eleve.prenoms">Prenoms</span> <fa-icon icon="sort"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="matricule">
-                  <span jhiTranslate="uproSoutenanceEsiApp.eleve.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
-                </th>
-                <th scope="col" jhiSortBy="projet">
-                  <span jhiTranslate="uproSoutenanceEsiApp.eleve.projet">Classe</span> <fa-icon icon="sort"></fa-icon>
-                </th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let eleve of eleves$ | async; index as i">
-                <td>
-                  <a [routerLink]="['/eleve', eleve.id, 'view']">{{ eleve.id }}</a>
-                </td>
-                <td>
-                  <ngb-highlight [result]="eleve.nom" [term]="filter.value"></ngb-highlight>
-                </td>
-                <td>
-                  <ngb-highlight [result]="eleve.prenoms" [term]="filter.value"></ngb-highlight>
-                </td>
-                <td>
-                  <ngb-highlight [result]="eleve.matricule" [term]="filter.value"></ngb-highlight>
-                </td>
-                <td>
-                  <ngb-highlight [result]="eleve.projet?.theme" [term]="filter.value"></ngb-highlight>
-                </td>
-                <td class="text-right">
-                  <div class="btn-group">
-                    <button
-                      type="submit"
-                      [routerLink]="['/eleve', eleve.id, 'view']"
-                      class="btn btn-info btn-sm"
-                      data-cy="entityDetailsButton"
-                    >
-                      <fa-icon icon="eye"></fa-icon>
-                      <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                    </button>
+        <ng-container *jhiHasAnyAuthority="['ROLE_JURY', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']">
+          <div class="table-responsive" id="entities" *ngIf="eleves && eleves.length > 0">
+            <table class="table table-striped" aria-describedby="page-heading">
+              <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+                  <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+                  <th scope="col" jhiSortBy="nom">
+                    <span jhiTranslate="uproSoutenanceEsiApp.eleve.nom">Nom</span> <fa-icon icon="sort"></fa-icon>
+                  </th>
+                  <th scope="col" jhiSortBy="prenoms">
+                    <span jhiTranslate="uproSoutenanceEsiApp.eleve.prenoms">Prenoms</span> <fa-icon icon="sort"></fa-icon>
+                  </th>
+                  <th scope="col" jhiSortBy="matricule">
+                    <span jhiTranslate="uproSoutenanceEsiApp.eleve.matricule">Matricule</span> <fa-icon icon="sort"></fa-icon>
+                  </th>
+                  <th scope="col" jhiSortBy="projet">
+                    <span jhiTranslate="uproSoutenanceEsiApp.eleve.projet">Classe</span> <fa-icon icon="sort"></fa-icon>
+                  </th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let eleve of eleves$ | async; index as i">
+                  <td>
+                    <a [routerLink]="['/eleve', eleve.id, 'view']">{{ eleve.id }}</a>
+                  </td>
+                  <td>
+                    <ngb-highlight [result]="eleve.nom" [term]="filter.value"></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight [result]="eleve.prenoms" [term]="filter.value"></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight [result]="eleve.matricule" [term]="filter.value"></ngb-highlight>
+                  </td>
+                  <td>
+                    <ngb-highlight [result]="eleve.projet?.theme" [term]="filter.value"></ngb-highlight>
+                  </td>
+                  <td class="text-right">
+                    <div class="btn-group">
+                      <button
+                        type="submit"
+                        [routerLink]="['/eleve', eleve.id, 'view']"
+                        class="btn btn-info btn-sm"
+                        data-cy="entityDetailsButton"
+                      >
+                        <fa-icon icon="eye"></fa-icon>
+                        <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                      </button>
 
-                    <div class="choix-eleve-soutient">
-                      <input class="eleveQuiSoutient" [value]="eleve.id" type="radio" name="eleveQuiSoutient" (change)="onChange($event)" />
+                      <div class="choix-eleve-soutient">
+                        <input
+                          class="eleveQuiSoutient"
+                          [value]="eleve.id"
+                          type="radio"
+                          name="eleveQuiSoutient"
+                          (change)="onChange($event)"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </ng-container>
       </ng-wizard-step>
 
-      <ng-wizard-step [title]="'Note'" [description]="'soutenance'">
+      <ng-wizard-step
+        [title]="'Etape 2'"
+        [description]="'soutenance'"
+        *jhiHasAnyAuthority="['ROLE_JURY', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
+      >
         <div class="col-12 d-flex justify-content-center">
           <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <div>
@@ -266,8 +278,6 @@
                 name="onoffswitch"
                 class="onoffswitch-checkbox"
                 id="statutBeneficiaire"
-                name="statutBeneficiaire"
-                formControlName="statutBeneficiaire"
               />
               <label class="onoffswitch-label" for="statutBeneficiaire">
                 <span class="onoffswitch-inner"></span>
@@ -295,12 +305,70 @@
         </div>
       </ng-wizard-step>
 
-      <ng-wizard-step [title]="'Etape 3'" [description]="'Depot de rapport'" [canEnter]="stepOk">
+      <ng-wizard-step *jhiHasAnyAuthority="['ROLE_AGENT_SCOLARITE', 'ROLE_ADMIN']" [title]="'Etape 3'" [description]="'Depot de rapport'">
         <span>Depot de rapport</span>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="uproSoutenanceEsiApp.projet.rapport" for="field_rapport">Rapport</label>
+          <div>
+            <div *ngIf="editForm.get('rapport')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-start"
+                (click)="openFile(editForm.get('rapport')!.value, editForm.get('rapportContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-start"
+                >{{ editForm.get('rapportContentType')!.value }}, {{ byteSize(editForm.get('rapport')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ rapport: null }); editForm.patchValue({ rapportContentType: null })"
+                class="btn btn-secondary btn-xs pull-end"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_rapport"
+              data-cy="rapport"
+              (change)="setFileData($event, 'rapport', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input type="hidden" class="form-control" name="rapport" id="field_rapport" data-cy="rapport" formControlName="rapport" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="rapportContentType"
+            id="field_rapportContentType"
+            formControlName="rapportContentType"
+          />
+        </div>
       </ng-wizard-step>
 
-      <ng-wizard-step [title]="'Etape 5'" [description]="'Cloture du dossier'" [state]="stepStates.error">
+      <ng-wizard-step
+        *jhiHasAnyAuthority="['ROLE_AGENT_SCOLARITE', 'ROLE_ADMIN']"
+        [title]="'Etape 4'"
+        [description]="'Cloture du dossier'"
+        [canExit]="true"
+      >
         <span>Cloture du dossier</span>
+
+        <div class="choix-eleve-soutient cloturerSoutenance d-flex justify-content-center align-items-center">
+          <input
+            class="eleveQuiSoutient"
+            [ngModel]="cloturerSoutenance"
+            type="checkbox"
+            name="cloturerSoutenance"
+            (change)="onChangeCloturerSoutenance($event)"
+          />
+        </div>
+
+        <button type="button" class="btn btn-primary" (click)="save()">
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
       </ng-wizard-step>
     </ng-wizard>
   </div>

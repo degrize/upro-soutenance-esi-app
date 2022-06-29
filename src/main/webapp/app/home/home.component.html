@@ -208,13 +208,13 @@
 
           <div class="activity-data">
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-5">
                 <div class="card">
                   <div class="title-document-pfe card-header">
-                    <h5 class="card-title">Rapport</h5>
+                    <h5 class="card-title">Rapport de Projet PFE</h5>
                     <img src="../../content/images/rapport.png" alt="" />
                   </div>
-                  <div class="card-body">
+                  <div class="card-body" *ngIf="eleveAccount?.eleve?.projet?.theme !== null">
                     <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
                     <p class="card-text">Vous pouvez telecharger votre rapport de pfe.</p>
                     <a href="../../content/pdf/rapport-UP-PRO.pdf" download="" class="card-link text-primary mt-2">
@@ -226,10 +226,10 @@
               <div class="col-sm-6">
                 <div class="card">
                   <div class="title-document-pfe card-header">
-                    <h5 class="card-title">Attestation</h5>
+                    <h5 class="card-title">Attestation des Soutenance PFE</h5>
                     <img src="../../content/images/rapport.png" alt="" />
                   </div>
-                  <ng-container *ngIf="eleveSoutenence?.note !== undefined">
+                  <ng-container *ngIf="eleveSoutenence?.note !== null">
                     <div class="card-body">
                       <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
                       <p class="card-text">LE certificat qui montre que vous avez soutenu</p>
@@ -271,7 +271,7 @@
       </div>
     </section>
 
-    <section *jhiHasAnyAuthority="'ROLE_ADMIN'" class="admin_dashboard">
+    <section *jhiHasAnyAuthority="['ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']" class="admin_dashboard">
       <div class="dash-content">
         <div class="overview">
           <div class="title">

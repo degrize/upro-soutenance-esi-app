@@ -22,6 +22,9 @@ import { IEleve } from '../../eleve/eleve.model';
 import { DecimalPipe } from '@angular/common';
 import { EleveService } from '../../eleve/service/eleve.service';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from '../../../config/pagination.constants';
+import { DataUtils, FileLoadError } from '../../../core/util/data-util.service';
+import { EventManager, EventWithContent } from '../../../core/util/event-manager.service';
+import { AlertError } from '../../../shared/alert/alert-error.model';
 
 const ELEVES: IEleve[] = [
   {
@@ -54,6 +57,7 @@ export class SoutenanceUpdateComponent implements OnInit {
   previous = '';
 
   choixEleve = 0;
+  cloturerSoutenance = false;
 
   isSaving = false;
   mentionValues = Object.keys(Mention);
@@ -74,6 +78,8 @@ export class SoutenanceUpdateComponent implements OnInit {
     projet: [],
     jury: [],
     anneeAcademique: [],
+    rapportContentType: [],
+    rapport: [],
   });
 
   // ng-wizard
@@ -105,6 +111,8 @@ export class SoutenanceUpdateComponent implements OnInit {
   filter = new FormControl('');
 
   constructor(
+    protected dataUtils: DataUtils,
+    protected eventManager: EventManager,
     protected soutenanceService: SoutenanceService,
     protected eleveService: EleveService,
     protected projetService: ProjetService,
@@ -222,6 +230,7 @@ export class SoutenanceUpdateComponent implements OnInit {
         soutenance.mention = Mention.EXCELENTE;
       }
     }
+    soutenance.rapportRendu = this.cloturerSoutenance;
     if (soutenance.id !== undefined) {
       this.subscribeToSaveResponse(this.soutenanceService.update(soutenance));
     } else {
@@ -246,8 +255,30 @@ export class SoutenanceUpdateComponent implements OnInit {
     console.log(this.choixEleve);
   }
 
+  onChangeCloturerSoutenance(e: any): void {
+    this.cloturerSoutenance = !this.cloturerSoutenance;
+    console.log(this.cloturerSoutenance);
+  }
+
   displayRadioValue(): boolean {
     return this.choixEleve !== 0 ? true : false;
+  }
+
+  byteSize(base64String: string): string {
+    return this.dataUtils.byteSize(base64String);
+  }
+
+  openFile(base64String: string, contentType: string | null | undefined): void {
+    this.dataUtils.openFile(base64String, contentType);
+  }
+
+  setFileData(event: Event, field: string, isImage: boolean): void {
+    this.dataUtils.loadFileToForm(event, this.editForm, field, isImage).subscribe({
+      error: (err: FileLoadError) =>
+        this.eventManager.broadcast(
+          new EventWithContent<AlertError>('uproSoutenanceEsiApp.error', { ...err, key: 'error.file.' + err.key })
+        ),
+    });
   }
 
   protected sort(): string[] {
@@ -290,6 +321,8 @@ export class SoutenanceUpdateComponent implements OnInit {
       jury: soutenance.jury,
       anneeAcademique: soutenance.anneeAcademique,
     });
+
+    this.cloturerSoutenance = soutenance.rapportRendu ? true : false;
 
     this.projetsCollection = this.projetService.addProjetToCollectionIfMissing(this.projetsCollection, soutenance.projet);
     this.juriesSharedCollection = this.juryService.addJuryToCollectionIfMissing(this.juriesSharedCollection, soutenance.jury);

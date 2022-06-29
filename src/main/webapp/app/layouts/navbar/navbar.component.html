@@ -83,7 +83,9 @@
               <span class="link-name active" id="dashboard">Dahsboard</span>
             </a>
           </li>
+
           <li
+            *jhiHasAnyAuthority="['ROLE_JURY', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
             ngbDropdown
             class="nav-item dropdown pointer"
             display="dynamic"
@@ -92,42 +94,51 @@
           >
             <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
               <i class="uil uil-files-landscapes"></i>
-              <span *jhiHasAnyAuthority="'ROLE_ADMIN'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
-                >Entities</span
-              >
-              <span *jhiHasAnyAuthority="'ROLE_ELEVE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main">Eleve</span>
-              <span *jhiHasAnyAuthority="'ROLE_DIRECTEUR_ETUDE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
-                >D.E</span
-              >
-              <span *jhiHasAnyAuthority="'ROLE_ENTREPRISE'" class="link-name" id="entity" jhiTranslate="global.menu.entities.main"
-                >Entreprise</span
-              >
+              <span class="link-name" id="jury" jhiTranslate="global.menu.entities.soutenance">JUry</span>
             </a>
-            <ul (click)="active_clic_component('entity')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <ul (click)="active_clic_component('jury')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="annee-academique"
+                  routerLink="soutenance"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.anneeAcademique">Annee Academique</span>
+                  <span jhiTranslate="global.menu.entities.soutenance">Soutenance</span>
                 </a>
               </li>
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="encadreur"
+                  routerLink="jury"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.encadreur">Encadreur</span>
+                  <span jhiTranslate="global.menu.entities.jury">Jury</span>
                 </a>
               </li>
+
+              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            </ul>
+          </li>
+
+          <li
+            *jhiHasAnyAuthority="['ROLE_ELEVE', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
+            ngbDropdown
+            class="nav-item dropdown pointer"
+            display="dynamic"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name" id="eleve" jhiTranslate="global.menu.entities.eleve">Eleve</span>
+            </a>
+            <ul (click)="active_clic_component('eleve')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
               <li>
                 <a
                   class="dropdown-item"
@@ -155,6 +166,63 @@
               <li>
                 <a
                   class="dropdown-item"
+                  routerLink="specialite"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="collapseNavbar()"
+                >
+                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.entities.specialite">Specialite</span>
+                </a>
+              </li>
+              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            </ul>
+          </li>
+          <li
+            *jhiHasAnyAuthority="['ROLE_ENCADREUR', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
+            ngbDropdown
+            class="nav-item dropdown pointer"
+            display="dynamic"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name" id="encadreur" jhiTranslate="global.menu.entities.encadreur">ENCADREUR</span>
+            </a>
+            <ul (click)="active_clic_component('encadreur')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="encadreur"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                  (click)="collapseNavbar()"
+                >
+                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
+                  <span jhiTranslate="global.menu.entities.encadreur">Encadreur</span>
+                </a>
+              </li>
+              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            </ul>
+          </li>
+
+          <li
+            *jhiHasAnyAuthority="['ROLE_ENTREPRISE', 'ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
+            ngbDropdown
+            class="nav-item dropdown pointer"
+            display="dynamic"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name" id="entreprise" jhiTranslate="global.menu.entities.entreprise">ENTREPRISE</span>
+            </a>
+            <ul (click)="active_clic_component('entreprise')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+              <li>
+                <a
+                  class="dropdown-item"
                   routerLink="entreprise"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
@@ -176,6 +244,23 @@
                   <span jhiTranslate="global.menu.entities.noteEntrepriseRapport">Note Entreprise Rapport</span>
                 </a>
               </li>
+              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            </ul>
+          </li>
+
+          <li
+            *jhiHasAnyAuthority="['ROLE_AGENT_SCOLARITE', 'ROLE_ADMIN']"
+            ngbDropdown
+            class="nav-item dropdown pointer"
+            display="dynamic"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name" id="scolarite">Scolarité</span>
+            </a>
+            <ul (click)="active_clic_component('scolarite')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
               <li>
                 <a
                   class="dropdown-item"
@@ -188,28 +273,34 @@
                   <span jhiTranslate="global.menu.entities.soutenance">Soutenance</span>
                 </a>
               </li>
+
+              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
+            </ul>
+          </li>
+
+          <li
+            *jhiHasAnyAuthority="['ROLE_DIRECTEUR_ETUDE', 'ROLE_ADMIN']"
+            ngbDropdown
+            class="nav-item dropdown pointer"
+            display="dynamic"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entitys-menu" data-cy="entity">
+              <i class="uil uil-files-landscapes"></i>
+              <span class="link-name" id="directeur_etude" jhiTranslate="global.menu.entities.main">Entities</span>
+            </a>
+            <ul (click)="active_clic_component('directeur_etude')" class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
               <li>
                 <a
                   class="dropdown-item"
-                  routerLink="jury"
+                  routerLink="annee-academique"
                   routerLinkActive="active"
                   [routerLinkActiveOptions]="{ exact: true }"
                   (click)="collapseNavbar()"
                 >
                   <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.jury">Jury</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  routerLink="specialite"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.specialite">Specialite</span>
+                  <span jhiTranslate="global.menu.entities.anneeAcademique">Annee Academique</span>
                 </a>
               </li>
               <li>
