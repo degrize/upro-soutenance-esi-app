@@ -15,12 +15,15 @@ import { ISpecialite } from 'app/entities/specialite/specialite.model';
 import { SpecialiteService } from 'app/entities/specialite/service/specialite.service';
 import { Sexe } from 'app/entities/enumerations/sexe.model';
 import { SituationMatrimoniale } from 'app/entities/enumerations/situation-matrimoniale.model';
+import { Account } from '../../../core/auth/account.model';
+import { AccountService } from '../../../core/auth/account.service';
 
 @Component({
   selector: 'jhi-eleve-update',
   templateUrl: './eleve-update.component.html',
 })
 export class EleveUpdateComponent implements OnInit {
+  account$?: Observable<Account | null>;
   isSaving = false;
   sexeValues = Object.keys(Sexe);
   situationMatrimonialeValues = Object.keys(SituationMatrimoniale);
@@ -45,6 +48,7 @@ export class EleveUpdateComponent implements OnInit {
 
   constructor(
     protected eleveService: EleveService,
+    private accountService: AccountService,
     protected encadreurService: EncadreurService,
     protected projetService: ProjetService,
     protected specialiteService: SpecialiteService,
@@ -58,6 +62,8 @@ export class EleveUpdateComponent implements OnInit {
 
       this.loadRelationshipsOptions();
     });
+
+    this.account$ = this.accountService.identity();
   }
 
   previousState(): void {

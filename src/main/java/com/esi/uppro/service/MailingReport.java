@@ -68,16 +68,8 @@ public class MailingReport {
         Set<User> users = new HashSet<>(userRepository.findByLoginNotIn(exclusions));
         for (User user : users) {
             log.info(user.toString());
-            if (user.getAuthoritiesCSV().toLowerCase().contains("admin")) {
-                reportDTO = reportService.adminDailyReport("daily");
-                mailService.sendReportEmail(user, reportDTO);
-            } else if (user.getAuthoritiesCSV().toLowerCase().contains("directeur_etude")) {
-                reportDTO = reportService.adminDailyReportManager("daily", user);
-                mailService.sendReportEmail(user, reportDTO);
-            } else if (user.getAuthoritiesCSV().toLowerCase().contains("inspecteur")) {
-                reportDTO = reportService.adminDailyReportBackOffice("daily", user);
-                mailService.sendReportEmail(user, reportDTO);
-            }
+            reportDTO = reportService.adminDailyReport("year");
+            mailService.sendReportEmail(user, reportDTO);
         }
     }
 
@@ -93,16 +85,8 @@ public class MailingReport {
         Set<User> users = new HashSet<>(userRepository.findByLoginNotIn(exclusions));
         for (User user : users) {
             log.info(user.toString());
-            if (user.getAuthoritiesCSV().toLowerCase().contains("admin")) {
-                reportDTO = reportService.adminDailyReport("weekly");
-                mailService.sendReportEmail(user, reportDTO);
-            } else if (user.getAuthoritiesCSV().toLowerCase().contains("directeur_etude")) {
-                reportDTO = reportService.adminDailyReportManager("year", user);
-                mailService.sendReportEmail(user, reportDTO);
-            } else if (user.getAuthoritiesCSV().toLowerCase().contains("inspecteur")) {
-                reportDTO = reportService.adminDailyReportBackOffice("year", user);
-                mailService.sendReportEmail(user, reportDTO);
-            }
+            reportDTO = reportService.adminDailyReport("year");
+            mailService.sendReportEmail(user, reportDTO);
         }
     }
 
@@ -119,10 +103,8 @@ public class MailingReport {
 
         Set<User> users = new HashSet<>(userRepository.findByLoginNotIn(exclusions));
         for (User user : users) {
-            log.info(user.toString());
-            if (user.getAuthoritiesCSV().toLowerCase().contains("eleve")) {
-                mailService.sendReportEmailDepotRapport(user);
-            } else if (user.getAuthoritiesCSV().toLowerCase().contains("prof_encadreur")) {
+            if (user.getEleve().getProjet().isValide() == false) {
+                log.info(user.toString());
                 mailService.sendReportEmailDepotRapport(user);
             }
         }

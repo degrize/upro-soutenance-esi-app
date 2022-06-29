@@ -46,6 +46,12 @@ public class Projet implements Serializable {
     @Column(name = "date_modification")
     private LocalDate dateModification;
 
+    @Column(name = "valide")
+    private boolean valide;
+
+    @Column(name = "date_soutenance")
+    private LocalDate dateSoutenance;
+
     @ManyToOne
     private AnneeAcademique anneeAcademique;
 
@@ -152,6 +158,22 @@ public class Projet implements Serializable {
         this.dateModification = dateModification;
     }
 
+    public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
+
+    public LocalDate getDateSoutenance() {
+        return dateSoutenance;
+    }
+
+    public void setDateSoutenance(LocalDate dateSoutenance) {
+        this.dateSoutenance = dateSoutenance;
+    }
+
     public AnneeAcademique getAnneeAcademique() {
         return this.anneeAcademique;
     }
@@ -220,6 +242,8 @@ public class Projet implements Serializable {
             ", cout=" + getCout() +
             ", dateAjout='" + getDateAjout() + "'" +
             ", dateModification='" + getDateModification() + "'" +
+            ", valide='" + isValide() + "'" +
+            ", dateSoutenance='" + getDateSoutenance() + "'" +
             "}";
     }
 }

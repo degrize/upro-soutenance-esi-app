@@ -50,8 +50,8 @@
         </div>
 
         <div>
-          <h2 class="about__subtitle">Je ?</h2>
-          <span class="about__profession">Etudiant en STIC</span>
+          <h2 class="about__subtitle">GeSoutenance?</h2>
+          <span class="about__profession">Institut National Polytechnique Houphouet Boigny</span>
           <p class="about__text">
             GeSoutenance est une application web permettant de gerer de facon automatique et rapide les soutenace a l'ESI
           </p>
@@ -185,17 +185,17 @@
             <div class="card box box1">
               <i class="uil uil-map-pin-alt"></i>
               <span class="text">Note</span>
-              <span class="number">14.5</span>
+              <span class="number"> {{ eleveSoutenence?.note }} </span>
             </div>
             <div class="card box box2">
               <i class="uil uil-analytics"></i>
               <span class="text">Mention</span>
-              <span class="number">Bien</span>
+              <span class="number">{{ eleveSoutenence?.mention }}</span>
             </div>
             <div class="card box box3">
               <i class="uil uil-medal"></i>
               <span class="text">Diplome</span>
-              <span class="number">DTS(Licence 3) Informatique</span>
+              <span class="number" *ngIf="eleveSoutenence?.note">{{ eleveAccount?.eleve?.specialite?.nom }}</span>
             </div>
           </div>
         </div>
@@ -217,7 +217,9 @@
                   <div class="card-body">
                     <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
                     <p class="card-text">Vous pouvez telecharger votre rapport de pfe.</p>
-                    <a href="#" class="card-link text-primary mt-2">Telecharger PDF</a>
+                    <a href="../../content/pdf/rapport-UP-PRO.pdf" download="" class="card-link text-primary mt-2">
+                      Telecharger PDF <i class="ri-download-line"></i>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -227,11 +229,15 @@
                     <h5 class="card-title">Attestation</h5>
                     <img src="../../content/images/rapport.png" alt="" />
                   </div>
-                  <div class="card-body">
-                    <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
-                    <p class="card-text">LE certificat qui montre que vous avez soutenu</p>
-                    <a href="#" class="card-link text-primary">Telecharger</a>
-                  </div>
+                  <ng-container *ngIf="eleveSoutenence?.note !== undefined">
+                    <div class="card-body">
+                      <h6 class="card-subtitle mb-2 text-muted">soutenance pfe</h6>
+                      <p class="card-text">LE certificat qui montre que vous avez soutenu</p>
+                      <a href="../../content/pdf/attestation_reussite_memoire.pdf" download="" class="card-link text-primary mt-2">
+                        Telecharger PDF <i class="ri-download-line"></i>
+                      </a>
+                    </div>
+                  </ng-container>
                 </div>
               </div>
             </div>
@@ -247,53 +253,18 @@
           <div class="activity-data">
             <div class="data names">
               <span class="data-title">Prof (Jury)</span>
-              <span class="data-list">Prem Shahi</span>
-              <span class="data-list">Deepa Chand</span>
-              <span class="data-list">Manisha Chand</span>
-              <span class="data-list">Pratima Shahi</span>
-              <span class="data-list">Man Shahi</span>
-              <span class="data-list">Ganesh Chand</span>
-              <span class="data-list">Bikash Chand</span>
             </div>
             <div class="data email">
               <span class="data-title">Email</span>
-              <span class="data-list">premshahi@gmail.com</span>
-              <span class="data-list">deepachand@gmail.com</span>
-              <span class="data-list">prakashhai@gmail.com</span>
-              <span class="data-list">manishachand@gmail.com</span>
-              <span class="data-list">pratimashhai@gmail.com</span>
-              <span class="data-list">manshahi@gmail.com</span>
-              <span class="data-list">ganeshchand@gmail.com</span>
             </div>
             <div class="data joined">
               <span class="data-title">Date</span>
-              <span class="data-list">2022-02-12</span>
-              <span class="data-list">2022-02-12</span>
-              <span class="data-list">2022-02-13</span>
-              <span class="data-list">2022-02-13</span>
-              <span class="data-list">2022-02-14</span>
-              <span class="data-list">2022-02-14</span>
-              <span class="data-list">2022-02-15</span>
             </div>
             <div class="data type">
               <span class="data-title">Type</span>
-              <span class="data-list">New</span>
-              <span class="data-list">Member</span>
-              <span class="data-list">Member</span>
-              <span class="data-list">New</span>
-              <span class="data-list">Member</span>
-              <span class="data-list">New</span>
-              <span class="data-list">Member</span>
             </div>
             <div class="data status">
               <span class="data-title">Status</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
-              <span class="data-list">Liked</span>
             </div>
           </div>
         </div>
@@ -320,7 +291,7 @@
               <span class="number"> {{ this.adminStatistics?.nbreEleveSoutenus }} </span>
             </div>
             <div class="card box box3">
-              <i class="uil uil-signout"></i>
+              <i class="uil uil-process"></i>
               <span class="text">Elèves Ajournés</span>
               <span class="number">{{ this.adminStatistics?.nbreEleveAjourne }}</span>
             </div>

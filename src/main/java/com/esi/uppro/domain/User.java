@@ -280,17 +280,6 @@ public class User extends AbstractAuditingEntity implements Serializable {
         return getClass().hashCode();
     }
 
-    public String getAuthoritiesCSV() {
-        StringBuilder sb = new StringBuilder();
-        for (Iterator<Authority> iter = this.authorities.iterator(); iter.hasNext();) {
-            sb.append(iter.next().getName());
-            if (iter.hasNext()) {
-                sb.append(',');
-            }
-        }
-        return sb.toString();
-    }
-
     // prettier-ignore
     @Override
     public String toString() {

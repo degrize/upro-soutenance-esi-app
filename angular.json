@@ -36,7 +36,11 @@
               "src/main/webapp/robots.txt"
             ],
             "styles": ["src/main/webapp/content/scss/vendor.scss", "src/main/webapp/content/scss/global.scss"],
-            "scripts": ["src/main/webapp/content/js/home.js", "./node_modules/scrollreveal/dist/scrollreveal.js"]
+            "scripts": [
+              "src/main/webapp/content/js/home.js",
+              "src/main/webapp/content/js/elevePage.js",
+              "./node_modules/scrollreveal/dist/scrollreveal.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -35,6 +35,8 @@ export class ProjetUpdateComponent implements OnInit {
     dateModification: [],
     anneeAcademique: [],
     entreprises: [],
+    valide: [false],
+    dateSoutenance: [],
   });
 
   constructor(

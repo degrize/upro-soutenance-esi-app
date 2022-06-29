@@ -24,147 +24,6 @@
           <!--<li class="nav__item"><a href="#portfolio" class="nav__link">Filieres</a></li>-->
           <!--<li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>-->
 
-          <!--ENTITES-->
-
-          <li
-            *ngSwitchCase="true"
-            ngbDropdown
-            class="nav__item dropdown pointer"
-            display="dynamic"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav__item dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu" data-cy="entity">
-              <span>
-                <fa-icon icon="th-list"></fa-icon>
-                <span jhiTranslate="global.menu.entities.main">Entities</span>
-              </span>
-            </a>
-            <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="annee-academique"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.anneeAcademique">Annee Academique</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="encadreur"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.encadreur">Encadreur</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="eleve"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.eleve">Eleve</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="projet"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.projet">Projet</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="entreprise"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.entreprise">Entreprise</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="note-entreprise-rapport"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.noteEntrepriseRapport">Note Entreprise Rapport</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="soutenance"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.soutenance">Soutenance</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="jury"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.jury">Jury</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="specialite"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.specialite">Specialite</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="genie"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                  (click)="collapseNavbar()"
-                >
-                  <fa-icon icon="asterisk" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.entities.genie">Genie</span>
-                </a>
-              </li>
-              <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->
-            </ul>
-          </li>
-
           <li ngbDropdown class="nav__item" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             <a class="nav__item dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="account-menu" data-cy="accountMenu">
               <span *ngIf="!account?.imageUrl">
@@ -176,36 +35,6 @@
               </span>
             </a>
             <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="account-menu">
-              <li *ngSwitchCase="true">
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="account/settings"
-                  routerLinkActive="active"
-                  (click)="collapseNavbar()"
-                  data-cy="settings"
-                >
-                  <fa-icon icon="wrench" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.account.settings">Settings</span>
-                </a>
-              </li>
-              <li *ngSwitchCase="true">
-                <a
-                  class="dropdown-item nav__link"
-                  routerLink="account/password"
-                  routerLinkActive="active"
-                  (click)="collapseNavbar()"
-                  data-cy="passwordItem"
-                >
-                  <fa-icon icon="lock" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.account.password">Password</span>
-                </a>
-              </li>
-              <li *ngSwitchCase="true">
-                <a class="dropdown-item nav__link" (click)="logout()" id="logout" data-cy="logout">
-                  <fa-icon icon="sign-out-alt" [fixedWidth]="true"></fa-icon>
-                  <span jhiTranslate="global.menu.account.logout">Sign out</span>
-                </a>
-              </li>
               <li *ngSwitchCase="false">
                 <a class="dropdown-item nav__link" (click)="login()" id="login" data-cy="login">
                   <fa-icon icon="sign-in-alt" [fixedWidth]="true"></fa-icon>
@@ -471,6 +300,19 @@
         </ul>
 
         <ul class="logout-mode">
+          <li>
+            <a class="nav__link" routerLink="account/settings" routerLinkActive="active" (click)="collapseNavbar()" data-cy="settings">
+              <i class="uil uil-wrench"></i>
+              <span class="link-name" jhiTranslate="global.menu.account.settings">Settings</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav__link" routerLink="account/password" routerLinkActive="active" (click)="collapseNavbar()" data-cy="passwordItem">
+              <i class="uil uil-lock"></i>
+              <span class="link-name" jhiTranslate="global.menu.account.password">Password</span>
+            </a>
+          </li>
+
           <li>
             <a class="nav__link" (click)="logout()" id="logout" data-cy="logout">
               <i class="uil uil-signout"></i>

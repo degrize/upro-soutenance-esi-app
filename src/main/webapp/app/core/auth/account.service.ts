@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 import { SessionStorageService } from 'ngx-webstorage';
 import { Observable, ReplaySubject, of } from 'rxjs';
@@ -9,6 +9,10 @@ import { shareReplay, tap, catchError } from 'rxjs/operators';
 import { StateStorageService } from 'app/core/auth/state-storage.service';
 import { ApplicationConfigService } from '../config/application-config.service';
 import { Account } from 'app/core/auth/account.model';
+import { createRequestOption } from '../request/request-util';
+import { IEleve } from '../../entities/eleve/eleve.model';
+import { EntityArrayResponseType } from '../../entities/eleve/service/eleve.service';
+import { IUser } from '../../admin/user-management/user-management.model';
 
 @Injectable({ providedIn: 'root' })
 export class AccountService {
@@ -35,6 +39,15 @@ export class AccountService {
     if (!identity) {
       this.accountCache$ = null;
     }
+  }
+
+  getUser(req?: any): Observable<HttpResponse<IUser>> {
+    const params: HttpParams = createRequestOption(req);
+    params.set('login', req.login);
+    return this.http.get<IUser>(this.applicationConfigService.getEndpointFor('api/account/user'), {
+      params,
+      observe: 'response',
+    });
   }
 
   hasAnyAuthority(authorities: string[] | string): boolean {

@@ -4,6 +4,7 @@ import com.esi.uppro.domain.Eleve;
 import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.repository.EleveRepository;
 import com.esi.uppro.repository.SoutenanceRepository;
+import com.esi.uppro.repository.UserRepository;
 import com.esi.uppro.service.EleveService;
 import com.esi.uppro.service.dto.EleveDTO;
 import com.esi.uppro.service.dto.SoutenanceDTO;
@@ -33,6 +34,9 @@ public class EleveServiceImpl implements EleveService {
     private final EleveMapper eleveMapper;
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private SoutenanceRepository soutenanceRepository;
 
     public EleveServiceImpl(EleveRepository eleveRepository, EleveMapper eleveMapper) {
@@ -45,6 +49,8 @@ public class EleveServiceImpl implements EleveService {
         log.debug("Request to save Eleve : {}", eleveDTO);
         Eleve eleve = eleveMapper.toEntity(eleveDTO);
         eleve = eleveRepository.save(eleve);
+
+        userRepository.saveEleve(eleve.getId());
         return eleveMapper.toDto(eleve);
     }
 

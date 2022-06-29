@@ -12,6 +12,8 @@ export interface IProjet {
   dateModification?: dayjs.Dayjs | null;
   anneeAcademique?: IAnneeAcademique | null;
   entreprises?: IEntreprise[] | null;
+  valide?: boolean | false;
+  dateSoutenance?: dayjs.Dayjs | null;
 }
 
 export class Projet implements IProjet {
@@ -24,7 +26,9 @@ export class Projet implements IProjet {
     public dateAjout?: dayjs.Dayjs | null,
     public dateModification?: dayjs.Dayjs | null,
     public anneeAcademique?: IAnneeAcademique | null,
-    public entreprises?: IEntreprise[] | null
+    public entreprises?: IEntreprise[] | null,
+    public valide?: boolean | false,
+    public dateSoutenance?: dayjs.Dayjs | null
   ) {}
 }
 

@@ -1,6 +1,7 @@
 package com.esi.uppro.repository;
 
 import com.esi.uppro.domain.Authority;
+import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.domain.User;
 import java.time.Instant;
 import java.util.List;
@@ -10,6 +11,8 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -38,7 +41,15 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Page<User> findAllByLoginNotIn(Pageable pageable, List<String> logins);
 
-    User findByLogin(String username);
+    User findByLogin(String login);
 
     Set<User> findByLoginNotIn(List<String> exclusions);
+
+    @Query("update User user set user.eleve.id = :id")
+    void saveEleve(@Param("id") Long id);
+
+    @Query(
+        "select user from User user left join fetch user.eleve left join fetch user.encadreur left join fetch user.entreprise left join fetch user.jury where user.login =:login"
+    )
+    Optional<User> findOneWithToOneRelationships(@Param("login") String login);
 }

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Lob;
 import javax.validation.constraints.*;
 
@@ -29,6 +30,10 @@ public class ProjetDTO implements Serializable {
     private LocalDate dateModification;
 
     private AnneeAcademiqueDTO anneeAcademique;
+
+    private boolean valide;
+
+    private LocalDate dateSoutenance;
 
     private Set<EntrepriseDTO> entreprises = new HashSet<>();
 
@@ -88,6 +93,22 @@ public class ProjetDTO implements Serializable {
         this.dateModification = dateModification;
     }
 
+    public boolean isValide() {
+        return valide;
+    }
+
+    public void setValide(boolean valide) {
+        this.valide = valide;
+    }
+
+    public LocalDate getDateSoutenance() {
+        return dateSoutenance;
+    }
+
+    public void setDateSoutenance(LocalDate dateSoutenance) {
+        this.dateSoutenance = dateSoutenance;
+    }
+
     public AnneeAcademiqueDTO getAnneeAcademique() {
         return anneeAcademique;
     }
@@ -137,6 +158,8 @@ public class ProjetDTO implements Serializable {
             ", dateModification='" + getDateModification() + "'" +
             ", anneeAcademique=" + getAnneeAcademique() +
             ", entreprises=" + getEntreprises() +
+            ", valide=" + isValide() +
+            ", dateSoutenance=" + getDateSoutenance() +
             "}";
     }
 }

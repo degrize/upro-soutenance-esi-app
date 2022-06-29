@@ -1,6 +1,7 @@
 package com.esi.uppro.web.rest;
 
 import com.esi.uppro.domain.Eleve;
+import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.repository.SoutenanceRepository;
 import com.esi.uppro.service.SoutenanceService;
 import com.esi.uppro.service.dto.AdminStatisticsDTO;
@@ -196,6 +197,14 @@ public class SoutenanceResource {
     public ResponseEntity<AdminStatisticsDTO> findAdminStatistics() {
         log.debug("REST request to get a statistics Admin");
         AdminStatisticsDTO result = soutenanceService.findAdminStatistics();
+
+        return ResponseEntity.ok().body(result);
+    }
+
+    @GetMapping(value = "/soutenances/eleve", params = { "projetId" })
+    public ResponseEntity<Soutenance> findSoutenanceEleve(@RequestParam(value = "projetId") Long projetId) {
+        log.debug(" ************* REST request to get a Soutennace ElEVE **  {} ", projetId);
+        Soutenance result = soutenanceService.findSoutenanceEleve(projetId);
 
         return ResponseEntity.ok().body(result);
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { IEleve } from '../eleve.model';
@@ -9,12 +9,21 @@ import { IEleve } from '../eleve.model';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/config/pagination.constants';
 import { EleveService } from '../service/eleve.service';
 import { EleveDeleteDialogComponent } from '../delete/eleve-delete-dialog.component';
+import { Account } from '../../../core/auth/account.model';
+import { AccountService } from '../../../core/auth/account.service';
+import { IUser } from '../../../admin/user-management/user-management.model';
+import { SoutenanceService } from '../../soutenance/service/soutenance.service';
+import { ISoutenance } from '../../soutenance/soutenance.model';
 
 @Component({
   selector: 'jhi-eleve',
   templateUrl: './eleve.component.html',
+  styleUrls: ['./eleve.component.scss'],
 })
 export class EleveComponent implements OnInit {
+  account: Account | null = null;
+  eleveAccount?: IUser | null;
+  eleveSoutenence?: ISoutenance | null;
   eleves?: IEleve[];
   isLoading = false;
   totalItems = 0;
@@ -26,6 +35,8 @@ export class EleveComponent implements OnInit {
 
   constructor(
     protected eleveService: EleveService,
+    private accountService: AccountService,
+    private soutenanceService: SoutenanceService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
     protected modalService: NgbModal
@@ -51,9 +62,23 @@ export class EleveComponent implements OnInit {
           this.onError();
         },
       });
+
+    this.accountService.getUser({ login: this.account?.login }).subscribe(
+      (res: HttpResponse<IUser>) => this.onSucessUser(res.body),
+      (res: HttpResponse<any>) => this.onError()
+    );
+
+    this.soutenanceService.getEleveSoutenance({ projetId: this.account?.eleve.projet?.id }).subscribe(
+      (res: HttpResponse<ISoutenance>) => this.onSucessSoutenanceEleve(res.body),
+      (res: HttpResponse<any>) => this.onError()
+    );
   }
 
   ngOnInit(): void {
+    this.accountService.getAuthenticationState().subscribe(account => {
+      this.account = account;
+      console.log(this.account?.login);
+    });
     this.handleNavigation();
   }
 
@@ -113,5 +138,17 @@ export class EleveComponent implements OnInit {
 
   protected onError(): void {
     this.ngbPaginationPage = this.page ?? 1;
+  }
+
+  protected onSucessUser(data: IUser | null): void {
+    this.eleveAccount = data;
+    console.log('DATA USER ELEVE');
+    console.log(data?.eleve);
+  }
+
+  protected onSucessSoutenanceEleve(data: ISoutenance | null): void {
+    this.eleveSoutenence = data;
+    console.log('DATA SOUTENANCE ELEVE');
+    console.log(data);
   }
 }

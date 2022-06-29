@@ -53,6 +53,10 @@ public class UserMapper {
             user.setImageUrl(userDTO.getImageUrl());
             user.setActivated(userDTO.isActivated());
             user.setLangKey(userDTO.getLangKey());
+            user.setEleve(userDTO.getEleve());
+            user.setEntreprise(userDTO.getEntreprise());
+            user.setEncadreur(userDTO.getEncadreur());
+            user.setJury(userDTO.getJury());
             Set<Authority> authorities = this.authoritiesFromStrings(userDTO.getAuthorities());
             user.setAuthorities(authorities);
             return user;

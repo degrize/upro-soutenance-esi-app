@@ -5,6 +5,7 @@ import com.esi.uppro.repository.UserRepository;
 import com.esi.uppro.security.SecurityUtils;
 import com.esi.uppro.service.MailService;
 import com.esi.uppro.service.UserService;
+import com.esi.uppro.service.dto.AdminStatisticsDTO;
 import com.esi.uppro.service.dto.AdminUserDTO;
 import com.esi.uppro.service.dto.PasswordChangeDTO;
 import com.esi.uppro.web.rest.errors.*;
@@ -17,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -190,5 +192,13 @@ public class AccountResource {
             password.length() < ManagedUserVM.PASSWORD_MIN_LENGTH ||
             password.length() > ManagedUserVM.PASSWORD_MAX_LENGTH
         );
+    }
+
+    @GetMapping(value = "/account/user", params = { "login" })
+    public ResponseEntity<User> findUser(@RequestParam(value = "login") String login) {
+        log.debug(" =========REST request to get a findUser : {}", login);
+        User result = userService.findUser(login);
+
+        return ResponseEntity.ok().body(result);
     }
 }

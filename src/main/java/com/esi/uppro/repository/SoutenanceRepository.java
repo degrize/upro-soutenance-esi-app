@@ -78,4 +78,7 @@ public interface SoutenanceRepository extends JpaRepository<Soutenance, Long> {
 
     @Query("select soutenance from Soutenance soutenance where soutenance.note >= 12")
     List<Soutenance> soutenancesvalide();
+
+    //@Query("select soutenance from Soutenance soutenance where soutenance.projet.id = :id")
+    Soutenance findByProjetId(Long id);
 }

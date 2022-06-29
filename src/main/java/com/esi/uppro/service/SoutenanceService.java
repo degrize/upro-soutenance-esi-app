@@ -1,5 +1,6 @@
 package com.esi.uppro.service;
 
+import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.service.dto.AdminStatisticsDTO;
 import com.esi.uppro.service.dto.SoutenanceDTO;
 import java.util.Optional;
@@ -66,4 +67,6 @@ public interface SoutenanceService {
     void delete(Long id);
 
     AdminStatisticsDTO findAdminStatistics();
+
+    Soutenance findSoutenanceEleve(Long projetId);
 }

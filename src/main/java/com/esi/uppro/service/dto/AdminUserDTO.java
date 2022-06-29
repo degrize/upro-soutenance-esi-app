@@ -1,8 +1,7 @@
 package com.esi.uppro.service.dto;
 
 import com.esi.uppro.config.Constants;
-import com.esi.uppro.domain.Authority;
-import com.esi.uppro.domain.User;
+import com.esi.uppro.domain.*;
 import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -46,6 +45,14 @@ public class AdminUserDTO {
 
     private Instant lastModifiedDate;
 
+    private Eleve eleve;
+
+    private Encadreur encadreur;
+
+    private Jury jury;
+
+    private Entreprise entreprise;
+
     private Set<String> authorities;
 
     public AdminUserDTO() {
@@ -65,6 +72,10 @@ public class AdminUserDTO {
         this.createdDate = user.getCreatedDate();
         this.lastModifiedBy = user.getLastModifiedBy();
         this.lastModifiedDate = user.getLastModifiedDate();
+        this.eleve = user.getEleve();
+        this.encadreur = user.getEncadreur();
+        this.jury = user.getJury();
+        this.entreprise = user.getEntreprise();
         this.authorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
     }
 
@@ -162,6 +173,38 @@ public class AdminUserDTO {
 
     public void setLastModifiedDate(Instant lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public Eleve getEleve() {
+        return eleve;
+    }
+
+    public void setEleve(Eleve eleve) {
+        this.eleve = eleve;
+    }
+
+    public Encadreur getEncadreur() {
+        return encadreur;
+    }
+
+    public void setEncadreur(Encadreur encadreur) {
+        this.encadreur = encadreur;
+    }
+
+    public Jury getJury() {
+        return jury;
+    }
+
+    public void setJury(Jury jury) {
+        this.jury = jury;
+    }
+
+    public Entreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(Entreprise entreprise) {
+        this.entreprise = entreprise;
     }
 
     public Set<String> getAuthorities() {

@@ -1,21 +1,15 @@
 package com.esi.uppro.service.impl;
 
 import com.esi.uppro.domain.AnneeAcademique;
-import com.esi.uppro.domain.Eleve;
 import com.esi.uppro.domain.Soutenance;
 import com.esi.uppro.repository.AnneeAcademiqueRepository;
 import com.esi.uppro.repository.SoutenanceRepository;
 import com.esi.uppro.service.SoutenanceService;
 import com.esi.uppro.service.dto.AdminStatisticsDTO;
-import com.esi.uppro.service.dto.ReportDTO;
 import com.esi.uppro.service.dto.SoutenanceDTO;
 import com.esi.uppro.service.mapper.SoutenanceMapper;
 import com.esi.uppro.utils.DateUtils;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
-import java.util.List;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,7 +112,7 @@ public class SoutenanceServiceImpl implements SoutenanceService {
         LocalDate startDate = LocalDate.of(annee, 1, 1);
         LocalDate endDate = LocalDate.of(annee + 1, 1, 1);
         int eleveSoutenus = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
-        int soutenanceAjourne = soutenanceRepository.nbresoutenancevalide(startDate, endDate);
+        int soutenanceAjourne = soutenanceRepository.nbresoutenancevAjournee(startDate, endDate);
         int rapportRendu = soutenanceRepository.nbreRapportRendu(startDate, endDate);
         int mentionPassable = soutenanceRepository.nbreSoutenanceMention(startDate, endDate, 10.0, 12.0);
         int mentionAssezBien = soutenanceRepository.nbreSoutenanceMention(startDate, endDate, 12.0, 14.0);
@@ -199,5 +193,10 @@ public class SoutenanceServiceImpl implements SoutenanceService {
         }
 
         return new LocalDate[] { startDate, endDate };
+    }
+
+    @Override
+    public Soutenance findSoutenanceEleve(Long projetId) {
+        return soutenanceRepository.findByProjetId(projetId);
     }
 }

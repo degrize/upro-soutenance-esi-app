@@ -15,14 +15,14 @@
     </style>
   </head>
   <body style="margin: 5px; padding: 5px; background-color: #fafafa">
-    <p th:text="#{email.createDocumentService.greeting(${user.lastName}, ${user.firstName})}">Dear</p>
+    <p th:text="#{email.createDocumentService.greeting(${user.getEleve().getPrenoms()}, ${user.getEleve().getNom()})}">Dear</p>
     <p th:text="#{email.createDocumentService.text1}">Veuilllez deposer la correction de rapport PFE a la bibliotheque de l'INPHB</p>
 
     <p th:text="#{email.createDocumentService.text2}" style="color: red">Penalite de refus d'acquisition du diplome</p>
     <p>
       <span th:text="#{email.createDocumentService.text3}">Regards, </span>
       <br />
-      <em th:text="#{email.createDocumentService.signature}">inphb/Esi-Ã©..</em>
+      <em th:text="#{email.createDocumentService.signature}">inphb/Esi..</em>
     </p>
   </body>
 </html>
