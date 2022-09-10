@@ -45,10 +45,16 @@ spring:
   liquibase:
     contexts: prod
   mail:
-    host: localhost
-    port: 25
-    username:
-    password:
+    host: smtp-mail.outlook.com
+    port: 587
+    username: kechiedou.meda18@inphb.ci
+    password: Degrize2000
+    protocol: smtp
+    tls: true
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+      ssl.trust: smtp-mail.outlook.com
   thymeleaf:
     cache: true
 
